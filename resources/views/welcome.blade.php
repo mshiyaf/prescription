@@ -215,25 +215,7 @@
           </div>
         </div>
 </div>
-<div class="modal fade bs-delete-modal-lg in" tabindex="-1" role="dialog" aria-hidden="true" style="display: none; padding-right: 15px;">
-    <div class="modal-dialog">
-      <div class="modal-content">
 
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              <h6>Are you sure to confirm?</h6>
-            </div>
-            <div class="modal-body" style="height: 60px;">
-
-            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                  <button type="button" class="cancel btn btn-primary">Cancel</button>
-                  <button type="button" class="deleteappointments btn btn-success">Submit</button>
-            </div>
-            </div>
-      </div>
-
-    </div>
-  </div>
   <div class="modal fade bs-recurring-modal-lg in" tabindex="-1" role="dialog" aria-hidden="true" style="display: none; padding-right: 15px;">
     <div class="modal-dialog">
       <div class="modal-content">
