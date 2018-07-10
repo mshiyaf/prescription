@@ -222,16 +222,31 @@
 
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              <h6>Recurring Appointment</h6>
+              <h6>Prescription</h6>
+
+              <ul class="nav nav-tabs">
+
+                <li class="active"><a data-toggle="tab" href="#new_prescription">New Prescription</a></li>
+                <li><a data-toggle="tab" href="#p_history">Prescription History</a></li>
+
+              </ul>
+
             </div>
             <div class="modal-body">
+
+
+            <div class="tab-content">
+            <div id="new_prescription" class="tab-pane fade in active">
+
+
+
             <form method="POST" action="https://www.booknmeet.com/dashboard/save-recurring-appointment" accept-charset="UTF-8" id="rcapp" data-parsley-validate><input name="_token" type="hidden" value="3oJqmpONVg6xPKCp7ITmSQl0njFufeCKwhehY3P6">
             <select class="form-control" style="margin-bottom: 10px;" required="required" id="rec_frequency" name="frequency"><option selected="selected" value="">Choose..</option><option value="weekly">Weekly</option><option value="biweekly">Biweekly</option><option value="monthly">Monthly</option><option value="custom">Custom</option></select>
             <input id="noa" class="form-control" type="number" max="5" min="1" placeholder="Number of appointments" style="display: none;margin-bottom: 10px" name="noa" />
             <input id="date" name="date" class="form-control" type="text" class="form-control" placeholder="DD/MM/YYYY" style="display: none;margin-bottom: 10px"/>
             <select class="form-control" id="time_slot" name="time_slot" style="display: none;margin-bottom: 10px"><option selected="selected" value="">Choose..</option></select>
             <span class="green"></span>
-			<textarea class="form-control" placeholder="Note" data-parsley-trigger="keyup" data-parsley-maxlength="100" data-parsley-validation-threshold="10" name="description" cols="50" rows="10" id="description"></textarea>
+			         <textarea class="form-control" placeholder="Note" data-parsley-trigger="keyup" data-parsley-maxlength="100" data-parsley-validation-threshold="10" name="description" cols="50" rows="10" id="description"></textarea>
             <hr/>
             <input type="hidden" name="app_id" id="rcapp_id" />
             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
@@ -239,6 +254,9 @@
                   <button class="recurringappointments btn btn-success">Submit</button>
             </div>
             </form>
+
+            </div>
+            </div>
             </div>
       </div>
 
