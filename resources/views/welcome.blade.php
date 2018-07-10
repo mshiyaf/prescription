@@ -59,7 +59,7 @@
       <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
               <div class="navbar nav_title" style="border: 0;">
-  <a href="https://www.booknmeet.com/dashboard" class="site_title"><img src="https://www.booknmeet.com/images/logo-BOOKNMET-ICON.png"  alt="..." id="logo_small"><img src="https://www.booknmeet.com/images/logo-booknmeet.png"  alt="..." id="logo_large"></a>
+  <a  class="site_title"><img src="https://www.booknmeet.com/images/logo-BOOKNMET-ICON.png"  alt="..." id="logo_small"><img src="https://www.booknmeet.com/images/logo-booknmeet.png"  alt="..." id="logo_large"></a>
 </div>
 <div class="clearfix"></div>
 
