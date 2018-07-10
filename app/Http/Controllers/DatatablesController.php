@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Package;
+use App\Appointment;
 use Yajra\Datatables\Datatables;
 
 class DatatablesController extends Controller
@@ -13,43 +13,50 @@ class DatatablesController extends Controller
     {
 
             $columns = array(
-              0 => 'package_id',
-              1 => 'packagename',
-              2 => 'packagetype',
-              3 => 'offerprice',
-              4 => 'created_at',
-              5 => 'updated_at',
-              6 => 'action'
+              0 => 'staff',
+              1 => 'service',
+              2 => 'time',
+              3 => 'status',
+              4 => 'name',
+              5 => 'mobile',
+              6 => 'email',
+              7 => 'address',
+              8 => 'description',
+              9 => 'action'
             );
 
 
-            $totalData = Package::count();
+            $totalData = Appointment::count();
             $limit = $request->input('length');
             $start = $request->input('start');
             $order = $columns[$request->input('order.0.column')];
             $dir = $request->input('order.0.dir');
 
             if(empty($request->input('search.value'))){
-              $packages = Package::offset($start)
+              $appointments = Appointment::offset($start)
                                   ->limit($limit)
                                   ->orderBy($order,$dir)
                                   ->get();
-              $totalFiltered = Package::count();
+              $totalFiltered = Appointment::count();
 
 
             }else{
               $search = $request->input('search.value');
-              $packages = Package::where('packagename', 'like', "%{$search}%")
-                                   ->orWhere('packagetype','like',"%{$search}%")
-                                   ->orWhere('offerprice','like',"%{$search}%")
-                                   ->orWhere('created_at','like',"%{$search}%")
-                                   ->orWhere('updated_at','like',"%{$search}%")
+              $appointments = Appointment::where('staff', 'like', "%{$search}%")
+                                   ->orWhere('service','like',"%{$search}%")
+                                   ->orWhere('time','like',"%{$search}%")
+                                   ->orWhere('status','like',"%{$search}%")
+                                   ->orWhere('name','like',"%{$search}%")
+                                   ->orWhere('mobile','like',"%{$search}%")
+                                   ->orWhere('email','like',"%{$search}%")
+                                   ->orWhere('address','like',"%{$search}%")
+                                   ->orWhere('description','like',"%{$search}%")
                                    ->offset($start)
                                    ->limit($limit)
                                    ->orderBy($order, $dir)
                                    ->get();
-             $totalFiltered = Package::where('packagename', 'like', "%{$search}%")
-                                       ->orWhere('packagetype','like',"%{$search}%")
+             $totalFiltered = Appointment::where('staff', 'like', "%{$search}%")
+                                       ->orWhere('name','like',"%{$search}%")
                                        ->count();
 
             }
@@ -57,18 +64,20 @@ class DatatablesController extends Controller
 
 
 
-            if($packages){
-                foreach($packages as $r){
-        				$nestedData['package_id'] = $r->package_id;
-        				$nestedData['packagename'] = $r->packagename;
-                $nestedData['packagetype'] = $r->packagetype;
-                $nestedData['offerprice'] = $r->offerprice;
-        				$nestedData['created_at'] = date('d-m-Y H:i',strtotime($r->created_at));
-                $nestedData['updated_at'] = date('d-m-Y H:i',strtotime($r->updated_at));
+            if($appointments){
+                foreach($appointments as $r){
+        				$nestedData['staff'] = $r->staff;
+        				$nestedData['service'] = $r->service;
+                $nestedData['time'] = $r->time;
+                $nestedData['status'] = $r->status;
+                $nestedData['name'] = $r->name;
+        				$nestedData['mobile'] = $r->mobile;
+                $nestedData['email'] = $r->email;
+                $nestedData['address'] = $r->address;
+                $nestedData['description'] = $r->description;
 
         				$nestedData['action'] = '
-        					<a href="/edit/'.$r->package_id.'" class="btn btn-warning btn-xs">Edit</a>
-        					<a href="/delete/'.$r->package_id.'" class="btn btn-danger btn-xs">Delete</a>
+        					<a href="/edit/'.$r->package_id.'" class="btn btn-primary btn-xs">Prescription</a>
         				';
         				$data[] = $nestedData;
         			}
