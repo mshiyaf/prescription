@@ -46,7 +46,7 @@
     <link href="https://www.booknmeet.com/assets/custom/custom.css" rel="stylesheet">
 
 	<link href="https://www.booknmeet.com/assets/dropdownstyle/css/cs-select.css" rel="stylesheet">
-<link href="https://www.booknmeet.com/assets/dropdownstyle/css/cs-skin-border.css" rel="stylesheet">
+  <link href="https://www.booknmeet.com/assets/dropdownstyle/css/cs-skin-border.css" rel="stylesheet">
 
 
 </head>
@@ -59,69 +59,68 @@
       <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
               <div class="navbar nav_title" style="border: 0;">
-  <a href="https://www.booknmeet.com/dashboard" class="site_title"><img src="https://www.booknmeet.com/images/logo-BOOKNMET-ICON.png"  alt="..." id="logo_small"><img src="https://www.booknmeet.com/images/logo-booknmeet.png"  alt="..." id="logo_large"></a>
-</div>
-<div class="clearfix"></div>
+                <a href="https://www.booknmeet.com/dashboard" class="site_title"><img src="https://www.booknmeet.com/images/logo-BOOKNMET-ICON.png"  alt="..." id="logo_small"><img src="https://www.booknmeet.com/images/logo-booknmeet.png"  alt="..." id="logo_large"></a>
+              </div>
+              <div class="clearfix"></div>
 
-<!-- menu prile quick info -->
-<div class="profile">
-  <div class="profile_pic">
-	        <img src="https://www.booknmeet.com/images/img.png" alt=""  class="img-circle profile_img">
-	  </div>
-  <div class="profile_info">
-    <span>Welcome,</span>
-
-
-    <h2>Dr. Santhi</h2>
-    <h2>Dr Santhis Clinic</h2>
-    <h2>Pandra</h2>
-  </div>
-</div>
-<!-- /menu prile quick info -->
-
-<br />
+                <!-- menu prile quick info -->
+                <div class="profile">
+                  <div class="profile_pic">
+                	        <img src="https://www.booknmeet.com/images/img.png" alt=""  class="img-circle profile_img">
+                	  </div>
+                  <div class="profile_info">
+                    <span>Welcome,</span>
 
 
-          <!-- sidebar menu -->
+                    <h2>Dr. Santhi</h2>
+                    <h2>Dr Santhis Clinic</h2>
+                    <h2>Pandra</h2>
+                  </div>
+                </div>
+                <!-- /menu prile quick info -->
 
-          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-
-            <div class="menu_section">
-              <h3>&nbsp;</h3>
-              <ul class="nav side-menu">
-         <li><a ><i class="fa fa-clock-o"></i> Appointments <span class="fa fa-chevron-down"></span></a>
-          <ul class="nav child_menu" style="display: none">
-            <li><a href="/">Todays Appointments</a></li>
-          </ul>
-          </li>
-
-              </ul>
-            </div>
-
-          </div>
-
-          <!-- /sidebar menu -->
+                <br />
 
 
+              <!-- sidebar menu -->
 
-          <!-- /menu footer buttons -->
-          <div class="sidebar-footer hidden-small">
-            <a data-toggle="tooltip" data-placement="top" target="_blank" href="https://facebook.com/booknmeet" title="Facebook">
-              <!--<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>-->
+              <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 
-        <i class="fa fa-facebook-f"></i>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" target="_blank" href="https://twitter.com/booknmeet" title="Twitter">
-              <i class="fa fa-twitter"></i>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" target="_blank" href="https://plus.google.com/+Booknmeet" title="Google Plus">
-              <i class="fa fa-google-plus"></i>
-            </a>
-            <a data-toggle="tooltip" data-placement="top" target="_blank" href="https://in.linkedin.com/in/booknmeet" title="LinkedIn">
-               <i class="fa fa-linkedin"></i>
-            </a>
-          </div>
-          <!-- /menu footer buttons -->
+                <div class="menu_section">
+                  <h3>&nbsp;</h3>
+                  <ul class="nav side-menu">
+                    <li><a ><i class="fa fa-clock-o"></i> Appointments <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu" style="display: none">
+                      <li><a href="/">Todays Appointments</a></li>
+                    </ul>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+
+              <!-- /sidebar menu -->
+
+
+
+              <!-- /menu footer buttons -->
+              <div class="sidebar-footer hidden-small">
+                <a data-toggle="tooltip" data-placement="top" target="_blank" href="https://facebook.com/booknmeet" title="Facebook">
+                  <!--<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>-->
+
+                  <i class="fa fa-facebook-f"></i>
+                </a>
+                <a data-toggle="tooltip" data-placement="top" target="_blank" href="https://twitter.com/booknmeet" title="Twitter">
+                  <i class="fa fa-twitter"></i>
+                </a>
+                <a data-toggle="tooltip" data-placement="top" target="_blank" href="https://plus.google.com/+Booknmeet" title="Google Plus">
+                  <i class="fa fa-google-plus"></i>
+                </a>
+                <a data-toggle="tooltip" data-placement="top" target="_blank" href="https://in.linkedin.com/in/booknmeet" title="LinkedIn">
+                   <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+              <!-- /menu footer buttons -->
           </div>
       </div>
 
@@ -138,7 +137,7 @@
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 				                    <img src="https://www.booknmeet.com/images/img.png" alt="">
 
-				  Dr. Santhi
+				                        Dr. Santhi
 
                   <span class=" fa fa-angle-down"></span>
                 </a>
@@ -150,17 +149,17 @@
                   </li>
                 </ul>
               </li>
-			  <li role="presentation" class="dropdown">
+			           <li role="presentation" class="dropdown">
                   <a href="/dashboard" class="dropdown-toggle info-number" aria-expanded="false">
                     <i class="fa fa-book"></i>
                     <span class="badge bg-green newAppCount"></span>
                   </a>
-              </li>
+                </li>
 
             </ul>
-			<audio id="sound"><source src="/bing.mp3" type="audio/mpeg"></audio>
+			         <audio id="sound"><source src="/bing.mp3" type="audio/mpeg"></audio>
           </nav>
-		  <div class="ui-pnotify dark ui-pnotify-fade-normal ui-pnotify-in ui-pnotify-fade-in ui-pnotify-move" aria-live="assertive" aria-role="alertdialog" style="display: none;position:absolute;width: 187px;right: 36px;top: 36px;cursor: auto;"><div class="alert ui-pnotify-container alert-info ui-pnotify-shadow" role="alert" style="min-height: 16px;"><div class="ui-pnotify-closer" aria-role="button" tabindex="0" title="Close" style="cursor: pointer; visibility: hidden; display: none;"><span class="glyphicon glyphicon-remove"></span></div><div class="ui-pnotify-sticker" aria-role="button" aria-pressed="true" tabindex="0" title="Unstick" style="cursor: pointer; visibility: hidden; display: none;"><span class="glyphicon glyphicon-play" aria-pressed="true"></span></div><div class="ui-pnotify-text" aria-role="alert">New appointment request</div></div></div>
+		        <div class="ui-pnotify dark ui-pnotify-fade-normal ui-pnotify-in ui-pnotify-fade-in ui-pnotify-move" aria-live="assertive" aria-role="alertdialog" style="display: none;position:absolute;width: 187px;right: 36px;top: 36px;cursor: auto;"><div class="alert ui-pnotify-container alert-info ui-pnotify-shadow" role="alert" style="min-height: 16px;"><div class="ui-pnotify-closer" aria-role="button" tabindex="0" title="Close" style="cursor: pointer; visibility: hidden; display: none;"><span class="glyphicon glyphicon-remove"></span></div><div class="ui-pnotify-sticker" aria-role="button" aria-pressed="true" tabindex="0" title="Unstick" style="cursor: pointer; visibility: hidden; display: none;"><span class="glyphicon glyphicon-play" aria-pressed="true"></span></div><div class="ui-pnotify-text" aria-role="alert">New appointment request</div></div></div>
         </div>
       </div>
       <!-- /top navigation -->
@@ -170,51 +169,49 @@
 
         <br />
         <div class="right_col_container">
-                                              <div class="flash-message">
+          <div class="flash-message">
                                                                                                                                                                                                             </div> <!-- end .flash-message -->
 
+              <div class="clearfix"></div>
 
-                  <div class="">
-          <div class="clearfix"></div>
+              <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2>Todays Appointments<small></small></h2>
 
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="x_panel">
-                <div class="x_title">
-                  <h2>Todays Appointments<small></small></h2>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+    				<form method="POST" action="https://www.booknmeet.com/dashboard/today-appointments" accept-charset="UTF-8"><input name="_token" type="hidden" value="3oJqmpONVg6xPKCp7ITmSQl0njFufeCKwhehY3P6">
+    					<table id="datatable-responsive" class="table table-striped dt-responsive nowrap" cellspacing="0" width="100%">
+                          <thead>
+                            <tr>
+                              <th>Staff</th>
+                              <th>Service</th>
+                              <th>Time</th>
+                              <th>Status</th>
+                              <th>Name</th>
+                              <th>Mobile Number</th>
+                              <th>Email</th>
+                              <th>Address</th>
+    			                    <th>Description</th>
+    			                    <th>Action</th>
+                            </tr>
+                          </thead>
+              </table>
+    				</form>
 
-                  <div class="clearfix"></div>
+                    </div>
+                  </div>
                 </div>
-                <div class="x_content">
-				<form method="POST" action="https://www.booknmeet.com/dashboard/today-appointments" accept-charset="UTF-8"><input name="_token" type="hidden" value="3oJqmpONVg6xPKCp7ITmSQl0njFufeCKwhehY3P6">
-					<table id="datatable-responsive" class="table table-striped dt-responsive nowrap" cellspacing="0" width="100%">
-                      <thead>
-                        <tr>
-                          <th>Staff</th>
-                          <th>Service</th>
-                          <th>Time</th>
-                          <th>Status</th>
-                          <th>Name</th>
-                          <th>Mobile Number</th>
-                          <th>Email</th>
-                          <th>Address</th>
-			                    <th>Description</th>
-			                    <th>Action</th>
-                        </tr>
-                      </thead>
-                    </table>
-				</form>
 
-                </div>
+                <br />
+                <br />
+                <br />
               </div>
             </div>
-
-            <br />
-            <br />
-            <br />
-          </div>
         </div>
-</div>
 
   <div class="modal fade bs-recurring-modal-lg in" tabindex="-1" role="dialog" aria-hidden="true" style="display: none; padding-right: 15px;">
     <div class="modal-dialog">
@@ -222,7 +219,6 @@
 
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              <h6>Prescription</h6>
 
               <ul class="nav nav-tabs">
 
@@ -316,32 +312,17 @@
   var app_id;
       $(document).ready(function() {
 		    setDataTable();
-			$("body").on('click',".markattend , .markabsent",function(){
-				var id = $(this).attr('id');
-				$(".deleteappointments").attr("data-id",id);
-				if($(this).hasClass("markattend")){
-					var action = "present";
-				}else{
-					var action = "absent";
-				}
-				$(".deleteappointments").attr("data-action",action);
-				$(".bs-delete-modal-lg").show();
 
-			});
       $("body").on('click',".prescription",function(){
         $(".bs-recurring-modal-lg").show();
         app_id = $(this).attr('id');
         $("#rcapp_id").val(app_id);
-
       });
+
 			$("body").on('click',".cancel,.close",function(){
 				$(this).parents(".modal").hide();
 			});
-			$(".deleteappointments").click(function(){
-				var id = $(this).attr("data-id");
-				var action = $(this).attr("data-action");
-				appointment_manage(id, action);
-			});
+
       });
 
 		function setDataTable(){
