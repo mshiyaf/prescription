@@ -14,4 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
     });
+Route::get('/u',function () {
+    return view('editit');
+  });
 Route::post('/appointment','DatatablesController@getData')->name('appointmentProcessing');
