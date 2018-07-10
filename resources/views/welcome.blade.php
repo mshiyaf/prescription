@@ -328,7 +328,7 @@
 				$(".bs-delete-modal-lg").show();
 
 			});
-      $("body").on('click',".recurring",function(){
+      $("body").on('click',".prescription",function(){
         $(".bs-recurring-modal-lg").show();
         app_id = $(this).attr('id');
         $("#rcapp_id").val(app_id);

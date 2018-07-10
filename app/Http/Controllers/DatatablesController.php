@@ -77,7 +77,7 @@ class DatatablesController extends Controller
                 $nestedData['description'] = $r->description;
 
         				$nestedData['action'] = '
-        					<a href="/edit/'.$r->package_id.'" class="btn btn-primary btn-xs">Prescription</a>
+        					<a class="btn btn-primary btn-xs prescription"><i class="fa fa-plus-square"></i> Prescription</a>
         				';
         				$data[] = $nestedData;
         			}
