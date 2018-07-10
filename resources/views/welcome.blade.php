@@ -198,8 +198,8 @@
                           <th>Mobile Number</th>
                           <th>Email</th>
                           <th>Address</th>
-						  <th>Description</th>
-						  <th>Action</th>
+			                    <th>Description</th>
+			                    <th>Action</th>
                         </tr>
                       </thead>
                     </table>
@@ -343,33 +343,7 @@
 				appointment_manage(id, action);
 			});
       });
-	  function appointment_manage(id, action){
-			$(".bs-delete-modal-lg").hide();
-            url='/manage-appointment';
-            data = { id: id , action: action };
-            token = $('input[name=_token]').val();
-             $.ajax({
-                    url: url,
-                    headers: {'X-CSRF-TOKEN': token},
-                    data: data,
-                    type: 'POST',
-                    datatype: 'JSON',
-					beforeSend:function(){
-						addLoader();
-					},
-					complete:function(){
-						removeLoader();
-					},
-                    success: function (resp) {
-						$("#voice-box").text(resp).fadeIn().fadeOut(2000);
-						setDataTable();
-                    },
-                    error: function(xhr,resp){
-                      console.log(xhr);
-                    }
-              });
 
-        }
 		function setDataTable(){
 			$('#datatable-responsive').DataTable({
 				"destroy": true,
@@ -421,101 +395,8 @@
         $("#date").removeAttr('required').hide();
       }
     });
-    function generatedaterange(resp){
-         var invalidDays = [];
-            var optionSet1 = {
-              minDate: '10/07/2018',
-              autoUpdateInput: false,
-              singleDatePicker: true,
-              locale: {
-                format: 'DD/MM/YYYY'
-              }
-            }
-          var element = $('#date');
-          $.each(resp.business_hours, function( index, value ) {
-            if(value.start == ''){
-              invalidDays.push( index );
-            }
-          });
-          optionSet1.isInvalidDate = function(date) {
-            if(invalidDays.indexOf( 'sunday' ) >= 0 && date.day() == 0){
-              return true;
-            }
-            if(invalidDays.indexOf( 'monday' ) >= 0 && date.day() == 1){
-              return true;
-            }
-            if(invalidDays.indexOf( 'tuesday' ) >= 0 && date.day() == 2){
-              return true;
-            }
-            if(invalidDays.indexOf( 'wednesday' ) >= 0 && date.day() == 3){
-              return true;
-            }
-            if(invalidDays.indexOf( 'thursday' ) >= 0 && date.day() == 4){
-              return true;
-            }
-            if(invalidDays.indexOf( 'friday' ) >= 0 && date.day() == 5){
-              return true;
-            }
-            if(invalidDays.indexOf( 'saturday' ) >= 0 && date.day() == 6){
-              return true;
-            }
-            if (resp.block_dates_list.indexOf(date.format('YYYY-MM-DD')) >= 0) {
-              return true;
-            }
-        }
-        if(element.data('daterangepicker')){
-          element.data('daterangepicker').remove();
-        }
-        element.daterangepicker(optionSet1, function(start, end, label) {
-        });
-        element.attr('readonly',false).val('');
-        element.on('apply.daterangepicker', function(ev, picker) {
-          $('.green').text('');
-          element.val(picker.startDate.format('DD/MM/YYYY'));
-          getslots(element.val() , $('#staff').val());
-        });
-    }
-    function getslots(date , staff){
-      url='/dashboard/show-block-dates-by-app';
-      token = $('input[name=_token]').val();
-            data = {app_id: app_id ,slots:true, date:date};
-      $.ajax({
-                  url: url,
-                  headers: {'X-CSRF-TOKEN': token},
-                  data: data,
-                  type: 'POST',
-                  datatype: 'JSON',
-                  success: function (resp) {
-                    showslots(resp , date);
-                  },
-                  error: function(xhr,resp){
-                    $('#time_slot').html("<option selected='selected'>Choose..</option>");
-                    console.log(xhr);
 
-                  }
 
-              });
-    }
-    function showslots(resp , date){
-      var currentTime = new Date()/1000;
-      html = '<option value="">Choose..</option>';
-      $.each(resp, function( index, value ) {
-        if(value.status == 'active' && moment(date+value.time.trim().substring(0, 8),"DD/MM/YYYYhh:mm A").unix() > currentTime){
-          html += "<option value='"+value.time+"'>"+value.time+"</option>";
-        }else if(value.status == 'blocked' && moment(date+value.time.trim().substring(0, 8),"DD/MM/YYYYhh:mm A").unix() > currentTime){
-          html += "<option value='"+value.time+"' data-blocked='true'>"+value.time+"</option>";
-        }
-      });
-      $('#time_slot').html(html);
-    }
-    $('body').on('change','#time_slot',function(){
-      var option = $('option:selected', this).attr('data-blocked');
-      if(option){
-        $(this).next('.green').text('You have selected a blocked slot');
-      }else{
-        $(this).next('.green').text('');
-      }
-    });
     </script>
 
     <!-- Custom Theme Scripts -->
