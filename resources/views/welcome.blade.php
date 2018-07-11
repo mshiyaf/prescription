@@ -440,8 +440,8 @@
             $("body").on('click', ".cancel,.close", function() {
                 $(this).parents(".modal").hide();
             });
+            });
 
-        });
 
         function setDataTable() {
             $('#datatable-responsive').DataTable({
@@ -541,13 +541,20 @@
 
         $(add_button).click(function(e) {
             e.preventDefault();
-            var $div1 = $('<hr/><div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="medicine">Choose Medicine *</label></div><div class="col-md-6 col-xs-12"><select class="form-control" required="" id="med_name" name="med_name"><option selected="selected" value="">Choose..</option><option value="120">dolo</option></select></div></div></div><br><div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="strength">Strength *</label></div><div class="col-md-6 col-xs-12"><input class="form-control" id="med_strength" required="" placeholder="Dosage" name="med_strength" type="text"></div></div></div><br>');
-            var $div2 = $('<div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="duration">Duration *</label></div><div class="col-md-3"><input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=""></div><div class="col-md-2"><select name="time" id="time" class="form-control" placeholder=" "><option>Days</option><option>Weeks</option><option>Months</option></select></div></div></div><br>');
-            var $div3 = $('<div class="row" id="intake"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="med_intake">Intake</label></div><div class="col-md-6 col-xs-12"><div id="med_intake" class="btn-group" data-toggle="buttons"><label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"><input type="radio" name="med_intake" value="before"> &nbsp; Before food &nbsp;</label><label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"><input type="radio" name="med_intake" value="after" checked="">After food</label></div></div></div></div><br>');
-            var $div4 = $('<div class="row" id="timing"><div class="form-group"><div class="col-sm-2"><input type="checkbox" id="mrngcheck"><label for="mrngcheck">Morning</label></div><div class="col-sm-2"><input type="checkbox" id="nooncheck"><label for="nooncheck">Noon</label></div><div class="col-sm-2"><input type="checkbox" id="eveningcheck"><label for="eveningcheck">Evening</label></div><div class="col-sm-5"><div class="col-sm-3"><label for="custom_timing">Other</label></div><input type="text" id="custom_timing"></div></div></div><br>');
-            var $div5 = $('<div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="description">Description (200 max)</label></div><div class="col-md-7 col-xs-12"><textarea class="form-control" data-parsley-trigger="keyup" data-parsley-maxlength="200" data-parsley-validation-threshold="10" name="description" cols="50" rows="5" id="description"></textarea></div></div></div><div class="form-group"><button type="button" class="del_medicine btn btn-primary">Remove</button></div>');
+            var $div1 = $('<hr/><div class="row" id="1"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="medicine">Choose Medicine *</label></div><div class="col-md-6 col-xs-12"><select class="form-control" required="" id="med_name" name="med_name"><option selected="selected" value="">Choose..</option><option value="120">dolo</option></select></div></div></div><br><div class="row" id="2"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="strength">Strength *</label></div><div class="col-md-6 col-xs-12"><input class="form-control" id="med_strength" required="" placeholder="Dosage" name="med_strength" type="text"></div></div></div><br>');
+            var $div2 = $('<div class="row" id="3"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="duration">Duration *</label></div><div class="col-md-3"><input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=""></div><div class="col-md-2"><select name="time" id="time" class="form-control" placeholder=" "><option>Days</option><option>Weeks</option><option>Months</option></select></div></div></div><br>');
+            var $div3 = $('<div class="row" id="4"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="med_intake">Intake</label></div><div class="col-md-6 col-xs-12"><div id="med_intake" class="btn-group" data-toggle="buttons"><label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"><input type="radio" name="med_intake" value="before"> &nbsp; Before food &nbsp;</label><label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"><input type="radio" name="med_intake" value="after" checked="">After food</label></div></div></div></div><br>');
+            var $div4 = $('<div class="row" id="5"><div class="form-group"><div class="col-sm-2"><input type="checkbox" id="mrngcheck"><label for="mrngcheck">Morning</label></div><div class="col-sm-2"><input type="checkbox" id="nooncheck"><label for="nooncheck">Noon</label></div><div class="col-sm-2"><input type="checkbox" id="eveningcheck"><label for="eveningcheck">Evening</label></div><div class="col-sm-5"><div class="col-sm-3"><label for="custom_timing">Other</label></div><input type="text" id="custom_timing"></div></div></div><br>');
+            var $div5 = $('<div class="row" id="6"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="description">Description (200 max)</label></div><div class="col-md-7 col-xs-12"><textarea class="form-control" data-parsley-trigger="keyup" data-parsley-maxlength="200" data-parsley-validation-threshold="10" name="description" cols="50" rows="5" id="description"></textarea></div></div></div><div class="form-group" id="7"><button type="button" class="del_medicine btn btn-primary">Remove</button></div>');
             $(wrapper).append($div1, $div2, $div3, $div4, $div5);
 
+
+        $(wrapper).on("click",".del_medicine", function(e){ //user click on remove text
+                e.preventDefault();
+
+                $("#1,#2,#3,#4,#5,#6,#7").remove();
+
+        });
         });
 
 
