@@ -249,7 +249,7 @@
                                         <div class="input_fields_wrap">
                                         <div class="m_initial">
                                         <div>
-                                          <hr/>
+
                                           <div class="row">
                                               <div class="form-group">
                                                   <div class="col-md-3 col-xs-12">
@@ -321,7 +321,7 @@
                                                   <div class="col-md-6 col-xs-12">
                                                       <div id="med_intake" class="btn-group" data-toggle="buttons">
                                                           <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                            <input type="radio" name="med_intake" value="before"> &nbsp; Before food &nbsp;
+                                                            <input type="radio" name="med_intake" value="before">Before food
                                                           </label>
                                                           <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                                                             <input type="radio" name="med_intake" value="after" checked="">After food
