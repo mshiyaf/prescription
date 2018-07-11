@@ -8,3 +8,10 @@
   padding: 3px 15px 0px 3px;
   border-bottom: 1px solid #e5e5e5;
 }
+
+@media (min-width: 992px){
+  #m_form_label {
+    padding-left: 45px;
+    width: 25%
+  }
+}
