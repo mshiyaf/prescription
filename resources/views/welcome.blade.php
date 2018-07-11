@@ -572,14 +572,6 @@
         $(wrapper).on("click",".del_medicine",function(e){
           e.preventDefault();
           $(this).parent().parent().remove();
-
-
-        $(wrapper).on("click",".del_medicine", function(e){ //user click on remove text
-                e.preventDefault();
-
-                $("#1,#2,#3,#4,#5,#6,#7").remove();
-
-        });
         });
 
 
