@@ -667,7 +667,7 @@
                     }
                 ]
             });
-        };
+        }
         $("#rec_frequency").change(function() {
             $('.green').text('');
             if ($("#rec_frequency").val() == 'weekly' || $("#rec_frequency").val() == 'monthly' || $("#rec_frequency").val() == 'biweekly') {
