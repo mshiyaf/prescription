@@ -604,8 +604,8 @@
             $("body").on('click', ".cancel,.close", function() {
                 $(this).parents(".modal").hide();
             });
+            });
 
-        });
 
         function setDataTable() {
             $('#datatable-responsive').DataTable({
@@ -715,6 +715,13 @@
           alert("clicked");
           $(this).parent().parent().remove();
 
+
+        $(wrapper).on("click",".del_medicine", function(e){ //user click on remove text
+                e.preventDefault();
+
+                $("#1,#2,#3,#4,#5,#6,#7").remove();
+
+        });
         });
 
         $('#submit').click(function(e){
