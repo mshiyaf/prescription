@@ -717,6 +717,38 @@
 
         });
 
+        $('#submit').click(function(e){
+          e.preventDefault();
+
+          $(".med_strength").each(function(){
+            var m_strength = $(this).val();
+            var m = join(",","m_strength");
+          });
+
+          var medicine_strength = $("input[name=med_strength]").val();
+          var appointment_id = 1;
+          var output = JSON.stringify(m);
+
+          $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+
+          $.ajax({
+            url: "/prescription",
+            method: 'post',
+
+            data: {
+              medicine_strength:medicine_strength,
+              appointment_id:appointment_id,
+              output:output
+            },
+            success: function(data){
+              alert('success');
+            }
+          });
+
 
     </script>
 
