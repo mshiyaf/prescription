@@ -526,7 +526,7 @@
                 ]
             });
         };
-      
+
 
         $(add_button).click(function(e) {
             e.preventDefault();
@@ -546,7 +546,7 @@
         $('#submit').click(function(e){
           e.preventDefault();
 
-          $(".input_fields_wrap").each(function(){
+          $(".m_initial").each(function(){
             var appointment_id = 1;
             var medicine_id = $("select[name=med_name]").val();
             var medicine_strength = $("input[name=med_strength]").val();
