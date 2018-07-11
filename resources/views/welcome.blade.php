@@ -48,6 +48,7 @@
     <link href="https://www.booknmeet.com/assets/dropdownstyle/css/cs-select.css" rel="stylesheet">
     <link href="https://www.booknmeet.com/assets/dropdownstyle/css/cs-skin-border.css" rel="stylesheet">
 
+    <link href="/css/app.css?v=24" rel="stylesheet">
 
 </head>
 
@@ -224,7 +225,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
 
-                        <div class="modal-header">
+                        <div class="modal-header" id="pres_tab">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 
                             <ul class="nav nav-tabs">
@@ -235,7 +236,7 @@
                             </ul>
 
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body" id="pres_modal">
 
 
                             <div class="tab-content">
@@ -243,141 +244,126 @@
 
 
 
-                                    <form method="POST" action="https://www.booknmeet.com/dashboard/save-recurring-appointment" accept-charset="UTF-8" id="rcapp" data-parsley-validate><input name="_token" type="hidden" value="3oJqmpONVg6xPKCp7ITmSQl0njFufeCKwhehY3P6">
+                                    <form  accept-charset="UTF-8" id="rcapp" data-parsley-validate>
                                         <div class="input_fields_wrap">
 
+                                          <div class="row">
+                                              <div class="form-group">
+                                                  <div class="col-md-3 col-xs-12">
+                                                      <label for="medicine">Choose Medicine *</label>
+                                                  </div>
+                                                  <div class="col-md-6 col-xs-12">
+
+                                                      <select class="form-control" required="" id="med_name" name="med_name"><option selected="selected" value="">Choose..</option><option value="120">dolo</option></select>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <br>
+
+
+                                          <div class="row">
+                                              <div class="form-group">
+                                                  <div class="col-md-3 col-xs-12">
+                                                      <label for="strength">Strength *</label>
+                                                  </div>
+                                                  <div class="col-md-6 col-xs-12">
+                                                      <input class="form-control" id="med_strength" required="" placeholder="Dosage" name="med_strength" type="text">
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <br>
+
+                                          <div class="row">
+                                              <div class="form-group">
+                                                  <div class="col-md-3 col-xs-12">
+                                                      <label for="duration">Duration *</label>
+                                                  </div>
+                                              <div class="col-md-3">
+                                                  <input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" ">
+                                              </div>
+
+                                              <div class="col-md-2">
+                                                  <select name="time" id="time" class="form-control" placeholder=" ">
+                                                  <option>Days</option>
+                                                  <option>Weeks</option>
+                                                  <option>Months</option>
+                                                </select>
+                                              </div>
+                                              </div>
+                                          </div>
+                                          <br>
+
+
+                                          <div class="row" id="intake">
+                                              <div class="form-group">
+                                                  <div class="col-md-3 col-xs-12">
+                                                      <label for="med_intake">Intake</label>
+                                                  </div>
+                                                  <div class="col-md-6 col-xs-12">
+                                                      <div id="med_intake" class="btn-group" data-toggle="buttons">
+                                                          <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                                            <input type="radio" name="med_intake" value="before"> &nbsp; Before food &nbsp;
+                                                          </label>
+                                                          <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                                            <input type="radio" name="med_intake" value="after" checked="">After food
+                                                          </label>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <br>
+
+
+                                          <div class="row" id="timing">
                                             <div class="form-group">
-                                                <button type="button" class="add_field_button btn btn-primary">Add Medicine</button>
-                                            </div>
-                                            <div class="row">
-                                                <div class="form-group">
-                                                    <div class="col-md-3 col-xs-12">
-                                                        <label for="medicine">Choose Medicine *</label>
-                                                    </div>
-                                                    <div class="col-md-6 col-xs-12">
+                                              <div class="col-sm-2">
+                                                    <input type="checkbox" id="mrngcheck">
+                                                    <label for="mrngcheck">Morning</label>
+                                              </div>
 
-                                                        <select class="form-control" required="" id="med_name" name="med_name"><option selected="selected" value="">Choose..</option><option value="120">dolo</option></select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <br>
-
-                                            <div id="strength"></div>
-                                            <div class="row">
-                                                <div class="form-group">
-                                                    <div class="col-md-3 col-xs-12">
-                                                        <label for="strength">Strength *</label>
-                                                    </div>
-                                                    <div class="col-md-6 col-xs-12">
-                                                        <input class="form-control" id="med_strength" required="" placeholder="Dosage" name="med_strength" type="text">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <br>
-
-
-
-
-                                            <div id="relation_area"></div>
-
-                                            <label>Duration</label>
-                                            <div class="form-row">
-
-                                                <div class="form-group col-md-3">
-                                                    <input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" ">
-                                                </div>
-
-                                                <div class="form-group col-md-2">
-                                                    <select name="time" id="time" class="form-control" placeholder=" ">
-                                                    <option>Days</option>
-                                                    <option>Weeks</option>
-                                                    <option>Months</option>
-                                                  </select>
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <div class="row" id="intake">
-                                                <div class="form-group">
-                                                    <div class="col-md-3 col-xs-12">
-                                                        <label for="gender" class="control-label col-md-3 col-sm-3 col-xs-12">Intake</label>
-                                                    </div>
-                                                    <div class="col-md-6 col-xs-12">
-                                                        <div id="med_intake" class="btn-group" data-toggle="buttons">
-                                                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                              <input type="radio" name="med_intake" value="before"> &nbsp; Before food &nbsp;
-                                                            </label>
-                                                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                              <input type="radio" name="med_intake" value="after" checked="">After food
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <div class="row" id="timing">
-
-                                            <div class="col-sm-4">
-                                                  <input type="checkbox" id="mrngcheck">
-                                                  <label for="mrngcheck">Morning</label>
-                                            </div>
-
-                                            <div class="col-sm-4">
-                                                  <input type="checkbox" id="nooncheck">
+                                              <div class="col-sm-2">
+                                                    <input type="checkbox" id="nooncheck">
                                                     <label for="nooncheck">Noon</label>
+                                              </div>
+
+                                              <div class="col-sm-2">
+                                                    <input type="checkbox" id="eveningcheck">
+                                                    <label for="eveningcheck">Evening</label>
+
+                                              </div>
+
+                                              <div class="col-sm-5">
+                                                <div class="col-sm-3">
+                                                    <label for="custom_timing">Other</label>
+                                                </div>
+                                                    <input type="text" id="custom_timing">
+                                              </div>
                                             </div>
-
-                                            <div class="col-sm-4">
-                                                  <input type="checkbox" id="eveningcheck">
-                                                  <label for="eveningcheck">Evening</label>
-
-                                            </div>
-
-                                            <div class="col-sm-4">
-                                                  <label for="custom_timing">Other</label>
-                                                  <input type="text" id="custom_timing">
+                                          </div>
+                                          <br>
 
 
-                                            </div>
+                                          <div class="row">
+                                              <div class="form-group">
+                                                  <div class="col-md-3 col-xs-12">
+                                                      <label for="description">Description (200 max)</label>
+                                                  </div>
+                                                  <div class="col-md-7 col-xs-12">
+                                                      <textarea class="form-control" data-parsley-trigger="keyup" data-parsley-maxlength="200" data-parsley-validation-threshold="10" name="description" cols="50" rows="5" id="description"></textarea>
+                                                  </div>
+                                              </div>
                                           </div>
 
                                             <br>
 
-                                            <div class="row">
-                                                <div class="form-group">
-                                                    <div class="col-md-3 col-xs-12">
-                                                        <label for="description">Description (100 max)</label>
-                                                    </div>
-                                                    <div class="col-md-6 col-xs-12">
-                                                        <textarea class="form-control" data-parsley-trigger="keyup" data-parsley-maxlength="100" data-parsley-validation-threshold="10" name="description" cols="50" rows="10" id="description"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <div class="row">
-                                                <div class="form-group">
-                                                    <div class="col-md-3 col-xs-12">
-                                                    </div>
-                                                    <div class="col-md-6 col-xs-12">
-                                                        <button type="button" class="cancel btn btn-primary">Cancel</button>
-                                                        <input class="btn btn-primary btn-submit" type="submit" value="Create">
-                                                    </div>
-                                                </div>
-
-                                                <br>
-                                                <input type="hidden" name="user_id" id="user_id" value="1c9ac0159c94d8d0cbedc973445af2da">
-                                            </div>
-
                                         </div>
 
-                                        <input id="noa" class="form-control" type="number" max="5" min="1" placeholder="Number of appointments" style="display: none;margin-bottom: 10px" name="noa" />
-                                        <input id="date" name="date" class="form-control" type="text" class="form-control" placeholder="DD/MM/YYYY" style="display: none;margin-bottom: 10px" />
-                                        <span class="green"></span>
-                                        <textarea class="form-control" placeholder="Note" data-parsley-trigger="keyup" data-parsley-maxlength="100" data-parsley-validation-threshold="10" name="description" cols="50" rows="10" id="description"></textarea>
+
                                         <hr/>
-                                        <input type="hidden" name="app_id" id="rcapp_id" />
-                                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                        <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-3">
+                                            <button type="button" id="add_medicine" class="add_field_button btn btn-primary">Add Medicine</button>
                                             <button type="button" class="cancel btn btn-primary">Cancel</button>
-                                            <button class="recurringappointments btn btn-success">Submit</button>
+                                            <button class="prescription_btn btn btn-success">Submit</button>
                                         </div>
                                     </form>
 
@@ -555,12 +541,16 @@
 
         $(add_button).click(function(e) {
             e.preventDefault();
-            var $div = $(
-                '<div class="form-group medclass"><div class="card"><article class="card-body">   <div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="service">Choose Service *</label></div><div class="col-md-6 col-xs-12"><select class="form-control" required="" id="service" name="service"><option selected="selected" value="">Choose..</option><option value="120">Homeopathy</option></select></div></div>                       </div><input id="med_strength" class="form-control" type="text"  placeholder="Dosage of medicine" /> <a href="#" class="remove_field">Remove</a></article></div></div>'
-            );
-            $(wrapper).append($div);
+            var $div1 = $('<hr/><div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="medicine">Choose Medicine *</label></div><div class="col-md-6 col-xs-12"><select class="form-control" required="" id="med_name" name="med_name"><option selected="selected" value="">Choose..</option><option value="120">dolo</option></select></div></div></div><br><div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="strength">Strength *</label></div><div class="col-md-6 col-xs-12"><input class="form-control" id="med_strength" required="" placeholder="Dosage" name="med_strength" type="text"></div></div></div><br>');
+            var $div2 = $('<div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="duration">Duration *</label></div><div class="col-md-3"><input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=""></div><div class="col-md-2"><select name="time" id="time" class="form-control" placeholder=" "><option>Days</option><option>Weeks</option><option>Months</option></select></div></div></div><br>');
+            var $div3 = $('<div class="row" id="intake"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="med_intake">Intake</label></div><div class="col-md-6 col-xs-12"><div id="med_intake" class="btn-group" data-toggle="buttons"><label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"><input type="radio" name="med_intake" value="before"> &nbsp; Before food &nbsp;</label><label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"><input type="radio" name="med_intake" value="after" checked="">After food</label></div></div></div></div><br>');
+            var $div4 = $('<div class="row" id="timing"><div class="form-group"><div class="col-sm-2"><input type="checkbox" id="mrngcheck"><label for="mrngcheck">Morning</label></div><div class="col-sm-2"><input type="checkbox" id="nooncheck"><label for="nooncheck">Noon</label></div><div class="col-sm-2"><input type="checkbox" id="eveningcheck"><label for="eveningcheck">Evening</label></div><div class="col-sm-5"><div class="col-sm-3"><label for="custom_timing">Other</label></div><input type="text" id="custom_timing"></div></div></div><br>');
+            var $div5 = $('<div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="description">Description (200 max)</label></div><div class="col-md-7 col-xs-12"><textarea class="form-control" data-parsley-trigger="keyup" data-parsley-maxlength="200" data-parsley-validation-threshold="10" name="description" cols="50" rows="5" id="description"></textarea></div></div></div><div class="form-group"><button type="button" class="del_medicine btn btn-primary">Remove</button></div>');
+            $(wrapper).append($div1, $div2, $div3, $div4, $div5);
 
         });
+
+
     </script>
 
     <!-- Custom Theme Scripts -->
@@ -570,8 +560,6 @@
     <script type="text/javascript">
         $(".greetings").fadeOut(5000);
     </script>
-
-
 
 
 
