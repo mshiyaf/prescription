@@ -561,8 +561,7 @@
             var custom_timing = $(this).find("input[id=custom_timing]").val();
             var description = $(this).find("textarea[name=description]").val();
 
-            console.log(morning);
-
+            
             $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
