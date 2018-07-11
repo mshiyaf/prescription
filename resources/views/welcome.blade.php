@@ -29,8 +29,8 @@
     <meta name="theme-color" content="#ffffff">
     <!-- end favicon -->
 
-    <meta name="_token" content="3oJqmpONVg6xPKCp7ITmSQl0njFufeCKwhehY3P6" />
-
+    {{-- <meta name="_token" content="3oJqmpONVg6xPKCp7ITmSQl0njFufeCKwhehY3P6" /> --}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Bootstrap -->
     <link href="https://www.booknmeet.com/assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -252,8 +252,7 @@
                                                   <div class="col-md-3 col-xs-12">
                                                       <label for="medicine">Choose Medicine *</label>
                                                   </div>
-                                                  <div class="col-md-6 col-xs-12">
-
+                                                  <div class="col-md-8 col-xs-12">
                                                       <select class="form-control" required="" id="med_name" name="med_name"><option selected="selected" value="">Choose..</option><option value="120">dolo</option></select>
                                                   </div>
                                               </div>
@@ -266,8 +265,25 @@
                                                   <div class="col-md-3 col-xs-12">
                                                       <label for="strength">Strength *</label>
                                                   </div>
-                                                  <div class="col-md-6 col-xs-12">
+                                                  <div class="col-md-2 col-xs-12">
                                                       <input class="form-control" id="med_strength" required="" placeholder="Dosage" name="med_strength" type="text">
+                                                  </div>
+                                                  <div class="col-md-3 col-xs-12" id="m_form_label">
+                                                      <label for="m_form">Dosage Form *</label>
+                                                  </div>
+                                                  <div class="col-md-3 col-xs-12">
+                                                      <select class="form-control" required="" id="m_form" name="m_form">
+                                                        <option selected="selected" value="">Form..</option>
+                                                        <option value="1">Tablet</option>
+                                                        <option value="2">Suspension</option>
+                                                        <option value="3">Ointment</option>
+                                                        <option value="4">Syrup</option>
+                                                        <option value="5">Eye Drop</option>
+                                                        <option value="6">Ear Drop</option>
+                                                        <option value="7">Suppository</option>
+                                                        <option value="8">Nebulizer</option>
+                                                        <option value="9">Inhaler</option>
+                                                      </select>
                                                   </div>
                                               </div>
                                           </div>
@@ -297,7 +313,7 @@
                                           <div class="row" id="intake">
                                               <div class="form-group">
                                                   <div class="col-md-3 col-xs-12">
-                                                      <label for="med_intake">Intake</label>
+                                                      <label for="med_intake">Intake *</label>
                                                   </div>
                                                   <div class="col-md-6 col-xs-12">
                                                       <div id="med_intake" class="btn-group" data-toggle="buttons">
@@ -332,7 +348,7 @@
 
                                               </div>
 
-                                              <div class="col-sm-5">
+                                              <div class="col-sm-6">
                                                 <div class="col-sm-3">
                                                     <label for="custom_timing">Other</label>
                                                 </div>
@@ -345,11 +361,11 @@
 
                                           <div class="row">
                                               <div class="form-group">
-                                                  <div class="col-md-3 col-xs-12">
+                                                  <div class="col-md-4 col-xs-12">
                                                       <label for="description">Description (200 max)</label>
                                                   </div>
                                                   <div class="col-md-7 col-xs-12">
-                                                      <textarea class="form-control" data-parsley-trigger="keyup" data-parsley-maxlength="200" data-parsley-validation-threshold="10" name="description" cols="50" rows="5" id="description"></textarea>
+                                                      <textarea class="form-control" data-parsley-trigger="keyup" data-parsley-maxlength="200" data-parsley-validation-threshold="10" name="description" cols="50" rows="4" id="description"></textarea>
                                                   </div>
                                               </div>
                                           </div>
@@ -363,7 +379,7 @@
                                         <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-3">
                                             <button type="button" id="add_medicine" class="add_field_button btn btn-primary">Add Medicine</button>
                                             <button type="button" class="cancel btn btn-primary">Cancel</button>
-                                            <button class="prescription_btn btn btn-success">Submit</button>
+                                            <button type="submit" id="submit" class="prescription_btn btn btn-success">Submit</button>
                                         </div>
                                     </form>
 
@@ -541,12 +557,47 @@
 
         $(add_button).click(function(e) {
             e.preventDefault();
-            var $div1 = $('<hr/><div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="medicine">Choose Medicine *</label></div><div class="col-md-6 col-xs-12"><select class="form-control" required="" id="med_name" name="med_name"><option selected="selected" value="">Choose..</option><option value="120">dolo</option></select></div></div></div><br><div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="strength">Strength *</label></div><div class="col-md-6 col-xs-12"><input class="form-control" id="med_strength" required="" placeholder="Dosage" name="med_strength" type="text"></div></div></div><br>');
-            var $div2 = $('<div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="duration">Duration *</label></div><div class="col-md-3"><input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=""></div><div class="col-md-2"><select name="time" id="time" class="form-control" placeholder=" "><option>Days</option><option>Weeks</option><option>Months</option></select></div></div></div><br>');
-            var $div3 = $('<div class="row" id="intake"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="med_intake">Intake</label></div><div class="col-md-6 col-xs-12"><div id="med_intake" class="btn-group" data-toggle="buttons"><label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"><input type="radio" name="med_intake" value="before"> &nbsp; Before food &nbsp;</label><label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"><input type="radio" name="med_intake" value="after" checked="">After food</label></div></div></div></div><br>');
-            var $div4 = $('<div class="row" id="timing"><div class="form-group"><div class="col-sm-2"><input type="checkbox" id="mrngcheck"><label for="mrngcheck">Morning</label></div><div class="col-sm-2"><input type="checkbox" id="nooncheck"><label for="nooncheck">Noon</label></div><div class="col-sm-2"><input type="checkbox" id="eveningcheck"><label for="eveningcheck">Evening</label></div><div class="col-sm-5"><div class="col-sm-3"><label for="custom_timing">Other</label></div><input type="text" id="custom_timing"></div></div></div><br>');
-            var $div5 = $('<div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="description">Description (200 max)</label></div><div class="col-md-7 col-xs-12"><textarea class="form-control" data-parsley-trigger="keyup" data-parsley-maxlength="200" data-parsley-validation-threshold="10" name="description" cols="50" rows="5" id="description"></textarea></div></div></div><div class="form-group"><button type="button" class="del_medicine btn btn-primary">Remove</button></div>');
-            $(wrapper).append($div1, $div2, $div3, $div4, $div5);
+            var $div1 = $('<hr/><div class="row" class="med_name"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="medicine">Choose Medicine *</label></div><div class="col-md-8 col-xs-12"><select class="form-control" required="" id="med_name" name="med_name"><option selected="selected" value="">Choose..</option><option value="120">dolo</option></select></div></div></div><br>');
+            var $div2 = $('<div class="row"><div class="form-group med_strength"><div class="col-md-3 col-xs-12"><label for="strength">Strength *</label></div><div class="col-md-2 col-xs-12"><input class="form-control" id="med_strength" required="" placeholder="Dosage" name="med_strength" type="text"></div><div class="col-md-3 col-xs-12" id="m_form_label"><label for="m_form">Dosage Form *</label></div><div class="col-md-3 col-xs-12"><select class="form-control" required="" id="m_form" name="m_form"><option selected="selected" value="">Choose..</option><option value="1">Tablet</option><option value="2">Suspension</option><option value="3">Ointment</option><option value="4">Syrup</option><option value="5">Eye Drop</option><option value="6">Ear Drop</option><option value="7">Suppository</option><option value="8">Nebulizer</option><option value="9">Inhaler</option></select></div></div></div><br>');
+            var $div3 = $('<div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="duration">Duration *</label></div><div class="col-md-3"><input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=""></div><div class="col-md-2"><select name="time" id="time" class="form-control" placeholder=" "><option>Days</option><option>Weeks</option><option>Months</option></select></div></div></div><br>');
+            var $div4 = $('<div class="row" id="intake"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="med_intake">Intake *</label></div><div class="col-md-6 col-xs-12"><div id="med_intake" class="btn-group" data-toggle="buttons"><label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"><input type="radio" name="med_intake" value="before"> &nbsp; Before food &nbsp;</label><label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"><input type="radio" name="med_intake" value="after" checked="">After food</label></div></div></div></div><br>');
+            var $div5 = $('<div class="row" id="timing"><div class="form-group"><div class="col-sm-2"><input type="checkbox" id="mrngcheck"><label for="mrngcheck">Morning</label></div><div class="col-sm-2"><input type="checkbox" id="nooncheck"><label for="nooncheck">Noon</label></div><div class="col-sm-2"><input type="checkbox" id="eveningcheck"><label for="eveningcheck">Evening</label></div><div class="col-sm-6"><div class="col-sm-3"><label for="custom_timing">Other</label></div><input type="text" id="custom_timing"></div></div></div><br>');
+            var $div6 = $('<div class="row"><div class="form-group"><div class="col-md-4 col-xs-12"><label for="description">Description (200 max)</label></div><div class="col-md-7 col-xs-12"><textarea class="form-control" data-parsley-trigger="keyup" data-parsley-maxlength="200" data-parsley-validation-threshold="10" name="description" cols="50" rows="4" id="description"></textarea></div></div></div><div class="form-group"><button type="button" class="del_medicine btn btn-primary">Remove</button></div>');
+            $(wrapper).append($div1, $div2, $div3, $div4, $div5, $div6);
+
+        });
+
+        $('#submit').click(function(e){
+          e.preventDefault();
+
+          $(".med_strength").each(function(){
+            var m_strength = $(this).val();
+            var m = join(",","m_strength");
+          });
+
+          var medicine_strength = $("input[name=med_strength]").val();
+          var appointment_id = 1;
+          var output = JSON.stringify(m);
+
+          $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+
+          $.ajax({
+            url: "/prescription",
+            method: 'post',
+
+            data: {
+              medicine_strength:medicine_strength,
+              appointment_id:appointment_id,
+              output:output
+            },
+            success: function(data){
+              alert('success');
+            }
+          });
 
         });
 
