@@ -349,7 +349,7 @@
                                               <div class="col-sm-2">
 
                                                     <input type="checkbox" value="1" id="eveningcheck">
-                                                    <label for="eveningcheck">Evening</label>
+                                                    <label>Evening</label>
 
                                               </div>
 
