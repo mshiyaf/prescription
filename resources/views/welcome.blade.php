@@ -568,28 +568,7 @@
               }
             });
 
-            if(medicine_id=="" && medicine_strength=="" && duration=="")
-            // $("#ack").html("Packagename,Packagetype and Totalcost fields are mandatory");
-            {
-              $(".ack").html("This field is required");
-              $(".ack").css("color", "red");
 
-            // alert("Packagename,Packagetype and Totalcost fields are mandatory");
-            }
-             if (medicine_id=="") {
-              $("#ack1").html("This field is required");
-              $("#ack1").css("color", "red");
-            }
-             if (medicine_strength=="") {
-              $("#ack2").html("This field is required");
-              $("#ack2").css("color", "red");
-            }
-            if (duration=="") {
-              $("#ack3").html("This field is required");
-              $("#ack3").css("color", "red");
-            }
-            else
-            {
             $.ajax({
               url: "/prescription",
               method: 'post',
@@ -612,7 +591,7 @@
                 alert('success');
               }
             });
-          }
+
 
           });
 
