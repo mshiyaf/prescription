@@ -11,11 +11,10 @@ class PrescriptionsController extends Controller
       $request->validate([
 
           'medicine_strength' => 'required'
-          // 'packagetype' => 'required',
-          // 'duration'=>'required',
-          // 'totalcost'=> 'required',
-          // 'from_date'=>'required',
-          // 'to_date'=>'required'
+          'medicine_id' => 'required',
+          'appointment_id'=>'required',
+          'duration'=> 'required'
+
         ]);
 
         $prescription = new Prescription;
