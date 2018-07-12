@@ -29,8 +29,7 @@
     <meta name="theme-color" content="#ffffff">
     <!-- end favicon -->
 
-    <meta name="_token" content="3oJqmpONVg6xPKCp7ITmSQl0njFufeCKwhehY3P6" />
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Bootstrap -->
     <link href="https://www.booknmeet.com/assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -336,17 +335,20 @@
                                           <div class="row" id="timing">
                                             <div class="form-group">
                                               <div class="col-sm-2">
-                                                    <input type="checkbox" id="mrngcheck">
+
+                                                    <input type="checkbox" value="1" id="mrngcheck">
                                                     <label for="mrngcheck">Morning</label>
                                               </div>
 
                                               <div class="col-sm-2">
-                                                    <input type="checkbox" id="nooncheck">
+
+                                                    <input type="checkbox" value="1" id="nooncheck">
                                                     <label for="nooncheck">Noon</label>
                                               </div>
 
                                               <div class="col-sm-2">
-                                                    <input type="checkbox" id="eveningcheck">
+
+                                                    <input type="checkbox" value="1" id="eveningcheck">
                                                     <label for="eveningcheck">Evening</label>
 
                                               </div>
@@ -384,7 +386,7 @@
                                     <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-3">
                                         <button type="button" id="add_medicine" class="add_field_button btn btn-primary">Add Medicine</button>
                                         <button type="button" class="cancel btn btn-primary">Cancel</button>
-                                        <button class="prescription_btn btn btn-success">Submit</button>
+                                        <button class="prescription_btn btn btn-success" id="submit">Submit</button>
                                     </div>
 
                                 </div>
@@ -524,45 +526,12 @@
                 ]
             });
         };
-        $("#rec_frequency").change(function() {
-            $('.green').text('');
-            if ($("#rec_frequency").val() == 'weekly' || $("#rec_frequency").val() == 'monthly' || $("#rec_frequency").val() == 'biweekly') {
-                $("#noa").attr('required', true).show();
-                $("#time_slot").removeAttr('required').hide();
-                $("#date").removeAttr('required').hide();
-            } else if ($("#rec_frequency").val() == 'custom') {
-                $("#noa").removeAttr('required').hide();
-                $("#time_slot").attr('required', true).show();
-                $("#date").attr('required', true).show();
-                token = $('input[name=_token]').val();
-                url = '/dashboard/show-block-dates-by-app';
-                data = {
-                    app_id: app_id
-                };
-                $.ajax({
-                    url: url,
-                    headers: {
-                        'X-CSRF-TOKEN': token
-                    },
-                    data: data,
-                    type: 'POST',
-                    datatype: 'JSON',
-                    success: function(resp) {
-                        generatedaterange(resp);
-                    }
 
-                });
-            } else {
-                $("#noa").removeAttr('required').hide();
-                $("#time_slot").removeAttr('required').hide();
-                $("#date").removeAttr('required').hide();
-            }
-        });
 
         $(add_button).click(function(e) {
             e.preventDefault();
 
-            var $div1 = ('<div class="m_initial card" style="border-radius: 10px; border: 1px solid rgb(26, 187, 156);"><div class="card-body" style="padding: 17px 0px 6px 15px;"><div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="medicine">Choose Medicine *</label></div><div class="col-md-8 col-xs-12"><select class="form-control" required="" id="med_name" name="med_name"><option selected="selected" value="">Choose..</option><option value="120">dolo</option></select></div></div></div><br><div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="strength">Strength *</label></div><div class="col-md-2 col-xs-12"><input class="form-control" id="med_strength" required="" placeholder="Dosage" name="med_strength" type="text"></div><div class="col-md-3 col-xs-12" id="m_form_label"><label for="m_form">Dosage Form *</label></div><div class="col-md-3 col-xs-12"><select class="form-control" required="" id="m_form" name="m_form"><option selected="selected" value="">Form..</option><option value="1">Tablet</option><option value="2">Suspension</option><option value="3">Ointment</option><option value="4">Syrup</option><option value="5">Eye Drop</option><option value="6">Ear Drop</option><option value="7">Suppository</option><option value="8">Nebulizer</option><option value="9">Inhaler</option></select></div></div></div><br><div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="duration">Duration *</label></div><div class="col-md-3"><input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" "></div><div class="col-md-2"><select name="time" id="time" class="form-control" placeholder=" "><option>Days</option><option>Weeks</option><option>Months</option></select></div></div></div><br><div class="row" id="intake"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="med_intake">Intake *</label></div><div class="col-md-6 col-xs-12"><div id="med_intake" class="btn-group" data-toggle="buttons"><label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"><input type="radio" name="med_intake" value="before">Before food</label><label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"><input type="radio" name="med_intake" value="after" checked="">After food</label></div></div></div></div><br><div class="row" id="timing"><div class="form-group"><div class="col-sm-2"><input type="checkbox" id="mrngcheck"><label for="mrngcheck">Morning</label></div><div class="col-sm-2"><input type="checkbox" id="nooncheck"><label for="nooncheck">Noon</label></div><div class="col-sm-2"><input type="checkbox" id="eveningcheck"><label for="eveningcheck">Evening</label></div><div class="col-sm-6"><div class="col-sm-3"><label for="custom_timing">Other</label></div><input type="text" id="custom_timing"></div></div></div><br><div class="row"><div class="form-group"><div class="col-md-4 col-xs-12"><label for="description">Description (200 max)</label></div><div class="col-md-7 col-xs-12"><textarea class="form-control" data-parsley-trigger="keyup" data-parsley-maxlength="200" data-parsley-validation-threshold="10" name="description" cols="50" rows="4" id="description"></textarea></div></div></div><br><div class="form-group"><button type="button" class="del_medicine btn btn-primary">Remove</button></div></div></div>');
+            var $div1 = ('<div class="m_initial card" style="border-radius: 10px; border: 1px solid rgb(26, 187, 156);"><div class="card-body" style="padding: 17px 0px 6px 15px;"><div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="medicine">Choose Medicine *</label></div><div class="col-md-8 col-xs-12"><select class="form-control" required="" id="med_name" name="med_name"><option selected="selected" value="">Choose..</option><option value="120">dolo</option></select></div></div></div><br><div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="strength">Strength *</label></div><div class="col-md-2 col-xs-12"><input class="form-control" id="med_strength" required="" placeholder="Dosage" name="med_strength" type="text"></div><div class="col-md-3 col-xs-12" id="m_form_label"><label for="m_form">Dosage Form *</label></div><div class="col-md-3 col-xs-12"><select class="form-control" required="" id="m_form" name="m_form"><option selected="selected" value="">Form..</option><option value="1">Tablet</option><option value="2">Suspension</option><option value="3">Ointment</option><option value="4">Syrup</option><option value="5">Eye Drop</option><option value="6">Ear Drop</option><option value="7">Suppository</option><option value="8">Nebulizer</option><option value="9">Inhaler</option></select></div></div></div><br><div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="duration">Duration *</label></div><div class="col-md-3"><input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" "></div><div class="col-md-2"><select name="time" id="time" class="form-control" placeholder=" "><option>Days</option><option>Weeks</option><option>Months</option></select></div></div></div><br><div class="row" id="intake"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="med_intake">Intake *</label></div><div class="col-md-6 col-xs-12"><div id="med_intake" class="btn-group" data-toggle="buttons"><label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"><input type="radio" name="med_intake" value="before">Before food</label><label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"><input type="radio" name="med_intake" value="after" checked="">After food</label></div></div></div></div><br><div class="row" id="timing"><div class="form-group"><div class="col-sm-2"><input type="checkbox" value="1" id="mrngcheck"><label for="mrngcheck">Morning</label></div><div class="col-sm-2"><input type="checkbox" value="1" id="nooncheck"><label for="nooncheck">Noon</label></div><div class="col-sm-2"><input type="checkbox" value="1" id="eveningcheck"><label for="eveningcheck">Evening</label></div><div class="col-sm-6"><div class="col-sm-3"><label for="custom_timing">Other</label></div><input type="text" id="custom_timing"></div></div></div><br><div class="row"><div class="form-group"><div class="col-md-4 col-xs-12"><label for="description">Description (200 max)</label></div><div class="col-md-7 col-xs-12"><textarea class="form-control" data-parsley-trigger="keyup" data-parsley-maxlength="200" data-parsley-validation-threshold="10" name="description" cols="50" rows="4" id="description"></textarea></div></div></div><br><div class="form-group"><button type="button" class="del_medicine btn btn-primary">Remove</button></div></div></div>');
 
             $(wrapper).append($div1);
 
@@ -574,6 +543,80 @@
 
         });
 
+        $('#submit').click(function(e){
+          e.preventDefault();
+
+          $(".m_initial").each(function(){
+            var appointment_id = 1;
+            var medicine_id = $(this).find("select[name=med_name]").val();
+            var medicine_strength = $(this).find("input[name=med_strength]").val();
+            var dosage_form = $(this).find("select[name=m_form]").val();
+            var duration = $(this).find("input[name=duration]").val();
+            var time = $(this).find("select[name=time]").val();
+            var full_dur = duration+time;
+            var intake_timing = $(this).find("input[name=med_intake]:checked").val();
+            var morning = $(this).find("input[id=mrngcheck]").is(":checked") ? 1:0;
+            var afternoon = $(this).find("input[id=nooncheck]").is(":checked") ? 1:0;
+            var evening = $(this).find("input[id=eveningcheck]").is(":checked") ? 1:0;
+            var custom_timing = $(this).find("input[id=custom_timing]").val();
+            var description = $(this).find("textarea[name=description]").val();
+
+
+            $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              }
+            });
+
+            if(medicine_id=="" && medicine_strength=="" && duration=="")
+            // $("#ack").html("Packagename,Packagetype and Totalcost fields are mandatory");
+            {
+              $(".ack").html("This field is required");
+              $(".ack").css("color", "red");
+
+            // alert("Packagename,Packagetype and Totalcost fields are mandatory");
+            }
+             if (medicine_id=="") {
+              $("#ack1").html("This field is required");
+              $("#ack1").css("color", "red");
+            }
+             if (medicine_strength=="") {
+              $("#ack2").html("This field is required");
+              $("#ack2").css("color", "red");
+            }
+            if (duration=="") {
+              $("#ack3").html("This field is required");
+              $("#ack3").css("color", "red");
+            }
+            else
+            {
+            $.ajax({
+              url: "/prescription",
+              method: 'post',
+              dataType:'json',
+              data: {
+                appointment_id:appointment_id,
+                 medicine_id:medicine_id,
+                 medicine_strength:medicine_strength,
+                 dosage_form:dosage_form,
+                 full_dur:full_dur,
+                 intake_timing:intake_timing,
+                 morning:morning,
+                 afternoon:afternoon,
+                 evening:evening,
+                 custom_timing:custom_timing,
+                 description:description
+
+              },
+              success: function(data){
+                alert('success');
+              }
+            });
+          }
+
+          });
+
+    });
 
     </script>
 
