@@ -255,11 +255,8 @@
                                                       <label for="medicine">Enter Medicine *</label>
                                                   </div>
                                                   <div class="col-md-8 col-xs-12">
-<<<<<<< HEAD
                                                       <select class="form-control" required="" id="med_name" name="med_name"><option selected="selected" value="">Choose..</option><option value="120">dolo</option><option value="130">otrivin</option></select>
-=======
                                                       <input type="text" class="form-control typeahead tt-query" autocomplete="off" spellcheck="false" required="" id="med_name" name="med_name">
->>>>>>> origin/shiyaf
                                                   </div>
                                               </div>
                                           </div>
@@ -327,11 +324,7 @@
                                                             <input type="radio" name="med_intake1" value="before">Before food</input>
                                                           </label>
                                                           <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-<<<<<<< HEAD
                                                             <input type="radio" name="med_intake1" value="after">After food</input>
-=======
-                                                            <input type="radio" name="med_intake" value="after" >After food
->>>>>>> origin/shiyaf
                                                           </label>
                                                       </div>
                                                   </div>
@@ -627,14 +620,11 @@
 
         $(add_button).click(function(e) {
             e.preventDefault();
-<<<<<<< HEAD
 
             x++;
             var med_intake = 'med_intake'+x;
-            var $div1 = ('<div class="m_initial card" style="border-radius: 10px; border: 1px solid rgb(26, 187, 156);"><div class="card-body" style="padding: 17px 0px 6px 15px;"><div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="medicine">Choose Medicine *</label></div><div class="col-md-8 col-xs-12"><select class="form-control" required="" id="med_name" name="med_name"><option selected="selected" value="">Choose..</option><option value="120">dolo</option></select></div></div></div><br><div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="strength">Strength *</label></div><div class="col-md-2 col-xs-12"><input class="form-control" id="med_strength" required="" placeholder="Dosage" name="med_strength" type="text"></div><div class="col-md-3 col-xs-12" id="m_form_label"><label for="m_form">Dosage Form *</label></div><div class="col-md-3 col-xs-12"><select class="form-control" required="" id="m_form" name="m_form"><option selected="selected" value="">Form..</option><option value="1">Tablet</option><option value="2">Suspension</option><option value="3">Ointment</option><option value="4">Syrup</option><option value="5">Eye Drop</option><option value="6">Ear Drop</option><option value="7">Suppository</option><option value="8">Nebulizer</option><option value="9">Inhaler</option></select></div></div></div><br><div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="duration">Duration *</label></div><div class="col-md-3"><input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" "></div><div class="col-md-2"><select name="time" id="time" class="form-control" placeholder=" "><option>Days</option><option>Weeks</option><option>Months</option></select></div></div></div><br><div class="row" id="intake"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="med_intake">Intake *</label></div><div class="col-md-6 col-xs-12"><div id="med_intake" class="btn-group" data-toggle="buttons"><label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"><input type="radio" name='+med_intake+' value="before">Before food</input></label><label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"><input type="radio" name='+med_intake+' value="after">After food</input></label></div></div></div></div><br><div class="row" id="timing"><div class="form-group"><div class="col-sm-2"><input type="checkbox" value="1" id="mrngcheck"><label>Morning</label></div><div class="col-sm-2"><input type="checkbox" value="1" id="nooncheck"><label>Noon</label></div><div class="col-sm-2"><input type="checkbox" value="1" id="eveningcheck"><label>Evening</label></div><div class="col-sm-6"><div class="col-sm-3"><label for="custom_timing">Other</label></div><input type="text" id="custom_timing"></div></div></div><br><div class="row"><div class="form-group"><div class="col-md-4 col-xs-12"><label for="description">Description (200 max)</label></div><div class="col-md-7 col-xs-12"><textarea class="form-control" data-parsley-trigger="keyup" data-parsley-maxlength="200" data-parsley-validation-threshold="10" name="description" cols="50" rows="4" id="description"></textarea></div></div></div><br><div class="form-group"><button type="button" class="del_medicine btn btn-primary">Remove</button></div></div></div>');
-=======
+
             var $div1 = ('<div class="panel"><a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><h4 class="panel-title">Collapsible Group Items #1<button type="button" class="del_medicine btn btn-primary">Delete</button></h4></a><div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo"><div class="panel-body"><table class="table table-bordered"><thead><tr><th>#</th><th>First Name</th><th>Last Name</th><th>Username</th></tr></thead><tbody><tr><th scope="row">1</th><td>Mark</td><td>Otto</td><td>@mdo</td></tr><tr><th scope="row">2</th><td>Jacob</td><td>Thornton</td><td>@fat</td></tr><tr><th scope="row">3</th><td>Larry</td><td>the Bird</td><td>@twitter</td></tr></tbody></table></div></div></div>');
->>>>>>> origin/shiyaf
 
             $(wrapper).append($div1);
 
@@ -673,13 +663,10 @@
               }
             });
 
-<<<<<<< HEAD
+
                         $("#input_pres").parsley().validate();
                         if($("#input_pres").parsley().isValid())
                         {
-=======
->>>>>>> origin/shiyaf
-
             $.ajax({
               url: "/prescription",
               method: 'post',

@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Prescription;
 use App\Medicine;
-<<<<<<< HEAD
+
 use App\Appointment;
-=======
->>>>>>> origin/shiyaf
+
 use Illuminate\Http\Request;
 
 
@@ -41,7 +40,7 @@ class PrescriptionsController extends Controller
     return response()->json(['success' => true]);
   }
 
-<<<<<<< HEAD
+
 
       public function show(){
 
@@ -52,7 +51,7 @@ class PrescriptionsController extends Controller
           return view('welcome', compact('prescription','medicines','appointments'));
 
       }
-=======
+
   public function getMedicineName(){
 
       $medicine = Medicine::all('medicine_name')->toArray();
@@ -61,5 +60,4 @@ class PrescriptionsController extends Controller
   }
 
 
->>>>>>> origin/shiyaf
 }

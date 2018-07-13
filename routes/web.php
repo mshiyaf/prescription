@@ -15,8 +15,7 @@ Route::get('/', 'PrescriptionsController@show');
 Route::post('/appointment','DatatablesController@getData')->name('appointmentProcessing');
 Route::get('/crawl','GoutteController@getCrawl');
 Route::post('/prescription','PrescriptionsController@store');
-<<<<<<< HEAD
+
 Route::get('/crawl','Gouttecontroller@crawl');
-=======
+
 Route::get('/get-medicine-names','PrescriptionsController@getMedicineName');
->>>>>>> origin/shiyaf
