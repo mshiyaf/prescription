@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {return view('welcome');});
+Route::get('/', 'PrescriptionsController@show');
 Route::post('/appointment','DatatablesController@getData')->name('appointmentProcessing');
 Route::post('/prescription','PrescriptionsController@store');
+Route::get('/crawl','Gouttecontroller@crawl');

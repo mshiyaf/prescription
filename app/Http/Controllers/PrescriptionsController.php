@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Prescription;
+use App\Medicine;
+use App\Appointment;
 use Illuminate\Http\Request;
 
 class PrescriptionsController extends Controller
@@ -35,4 +37,14 @@ class PrescriptionsController extends Controller
     return response()->json(['success' => true]);
   }
 
+
+      public function show(){
+
+          $prescription =Prescription::all();
+          $medicines = Medicine::all();
+          $appointments = Appointment::all();
+
+          return view('welcome', compact('prescription','medicines','appointments'));
+
+      }
 }

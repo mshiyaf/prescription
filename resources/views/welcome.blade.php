@@ -255,7 +255,7 @@
                                                       <label for="medicine">Choose Medicine *</label>
                                                   </div>
                                                   <div class="col-md-8 col-xs-12">
-                                                      <select class="form-control" required="" id="med_name" name="med_name"><option selected="selected" value="">Choose..</option><option value="120">dolo</option></select>
+                                                      <select class="form-control" required="" id="med_name" name="med_name"><option selected="selected" value="">Choose..</option><option value="120">dolo</option><option value="130">otrivin</option></select>
                                                   </div>
                                               </div>
                                           </div>
@@ -297,7 +297,7 @@
                                                       <label for="duration">Duration *</label>
                                                   </div>
                                               <div class="col-md-3">
-                                                  <input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" ">
+                                                  <input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" " required>
                                               </div>
 
                                               <div class="col-md-2">
@@ -390,9 +390,14 @@
                                     </div>
 
                                 </div>
+                                <div id="p_history" class="tab-pane fade in">
+                                  @foreach ($prescription as $p)
+                                      <h4>{{ $p->id }}</h4>
+                                  @endforeach
+
+                                </div>
                             </div>
                         </div>
-                    </div>
 
                 </div>
             </div>
@@ -573,7 +578,9 @@
               }
             });
 
-
+            $("#input_pres").parsley().validate();
+            if($("#input_pres").parsley().isValid())
+            {
             $.ajax({
               url: "/prescription",
               method: 'post',
