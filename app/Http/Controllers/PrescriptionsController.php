@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Prescription;
 use App\Medicine;
 use App\Appointment;
+<<<<<<< HEAD
 use DB;
+=======
+>>>>>>> cf399ace88cce0920280ef9d40c4b5ed7ebfe72e
 use Illuminate\Http\Request;
 
 class PrescriptionsController extends Controller
@@ -52,6 +55,7 @@ class PrescriptionsController extends Controller
       public function get_history(){
         $mobile = request('mobile');
         $id = request('id');
+<<<<<<< HEAD
         $x = 0;
         $med_name = " ";
         $med_strength = " ";
@@ -83,4 +87,26 @@ class PrescriptionsController extends Controller
       }
 
 
+=======
+        $data = " ";
+
+        $appointment = Appointment::where('mobile',"=",$mobile)->pluck("id")->all();
+        foreach ($appointment as $a) {
+          $prescriptions = Prescription::where('appointment_id',"=",$a)->pluck("medicine_id")->all();
+          foreach ($prescriptions as $p) {
+            $medicine = Medicine::find($p);
+            $data = $data."<br>".$medicine->medicine_name;
+          }
+        }
+
+        return response()->json(['value'=>$data]);
+      }
+
+      // public function get_prescription_history(){
+      //   $id = request('id');
+      //   $prescriptions = Prescription::where('appointment_id',"=",$id)->pluck("id")->all();
+      //   $data = view('/get_prescription_history', compact('prescriptions'))->render();
+      //   return response()->json(['options'=>$data]);
+      // }
+>>>>>>> cf399ace88cce0920280ef9d40c4b5ed7ebfe72e
 }

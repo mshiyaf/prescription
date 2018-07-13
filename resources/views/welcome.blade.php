@@ -546,11 +546,16 @@
               mobile:mobile
             },
             success: function(data){
+<<<<<<< HEAD
 
                 $("#p_history").html('');
                 $("#p_history").html(data.med_details);
 
 
+=======
+              $("#p_history").html('');
+              $("#p_history").html(data.value);
+>>>>>>> cf399ace88cce0920280ef9d40c4b5ed7ebfe72e
             }
           });
 
