@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "23e084587394eb31b0b45baac6682b1d",
+=======
+    "content-hash": "cddc110d55d91c9a3138bb9ead1778af",
+>>>>>>> origin/shiyaf
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
