@@ -51,20 +51,18 @@ class PrescriptionsController extends Controller
       public function get_history(){
         $mobile = request('mobile');
         $id = request('id');
+        $data = " ";
+
         $appointment = Appointment::where('mobile',"=",$mobile)->pluck("id")->all();
         foreach ($appointment as $a) {
           $prescriptions = Prescription::where('appointment_id',"=",$a)->pluck("medicine_id")->all();
           foreach ($prescriptions as $p) {
             $medicine = Medicine::find($p);
-            $data = $data + $medicine->medicine_name;
+            $data = $data."<br>".$medicine->medicine_name;
           }
         }
-        $prescriptions = Prescription::where('appointment_id',"=",$id)->pluck("id")->all();
-        $medicine = Medicine::all();
 
-        $data = view('/get_history', compact('appointment'))->render();
-        $data2 = view('get_prescription_history',compact('prescriptions'))->render();
-        return response()->json(['app'=>$data,'pres'=>$data2]);
+        return response()->json(['value'=>$data]);
       }
 
       // public function get_prescription_history(){
