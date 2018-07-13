@@ -230,7 +230,7 @@
                             <ul class="nav nav-tabs">
 
                                 <li class="active"><a data-toggle="tab" href="#new_prescription">New Prescription</a></li>
-                                <li><a data-toggle="tab" href="#p_history">Prescription History</a></li>
+                                <li><a data-toggle="tab" href="#p_history" onclick="get_history()">Prescription History</a></li>
 
                             </ul>
 
@@ -391,9 +391,7 @@
 
                                 </div>
                                 <div id="p_history" class="tab-pane fade in">
-                                  @foreach ($prescription as $p)
-                                      <h4>{{ $p->id }}</h4>
-                                  @endforeach
+
 
                                 </div>
                             </div>
@@ -456,6 +454,7 @@
         var x = 1;
         var add_button = $(".add_field_button");
         var wrapper = $("#input_pres");
+        var wrapper2 = $('#p_history');
         $(document).ready(function() {
             setDataTable();
 
@@ -491,22 +490,22 @@
                         data: 'staff',
                         name: 'bm_company_staff.staff_name'
                     },
-                    {
-                        data: 'service',
-                        name: 'bm_services.service_name'
-                    },
-                    {
-                        data: 'time',
-                        name: 'appointment_time'
-                    },
-                    {
-                        data: 'status',
-                        name: 'appointment_status'
-                    },
-                    {
-                        data: 'name',
-                        name: 'bm_users.name'
-                    },
+                    // {
+                    //     data: 'service',
+                    //     name: 'bm_services.service_name'
+                    // },
+                    // {
+                    //     data: 'time',
+                    //     name: 'appointment_time'
+                    // },
+                    // {
+                    //     data: 'status',
+                    //     name: 'appointment_status'
+                    // },
+                    // {
+                    //     data: 'name',
+                    //     name: 'bm_users.name'
+                    // },
                     {
                         data: 'mobile',
                         name: 'bm_users.mobile_number'
@@ -532,6 +531,28 @@
                 ]
             });
         };
+
+        function get_history(){
+          var mobile = "esrtdgh";
+          $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+          });
+          $.ajax({
+            url: '/get_history',
+            method: 'post',
+            data: {
+              mobile:mobile
+            },
+            success: function(data){
+              $("#p_history").html('');
+              $("#p_history").html(data.value);
+            }
+          });
+
+        };
+
 
 
         $(add_button).click(function(e) {
@@ -605,9 +626,10 @@
             });
 
 
-          });
+          }
 
     });
+  });
 
     </script>
 

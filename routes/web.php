@@ -15,3 +15,5 @@ Route::get('/', 'PrescriptionsController@show');
 Route::post('/appointment','DatatablesController@getData')->name('appointmentProcessing');
 Route::post('/prescription','PrescriptionsController@store');
 Route::get('/crawl','Gouttecontroller@crawl');
+Route::post('/get_history','PrescriptionsController@get_history');
+Route::post('/get_prescription_history','PrescriptionsController@get_prescription_history');
