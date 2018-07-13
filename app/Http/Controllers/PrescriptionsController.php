@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Prescription;
+use App\Medicine;
 use Illuminate\Http\Request;
+
 
 class PrescriptionsController extends Controller
 {
     public function store(Request $request){
       $request->validate([
 
-          'medicine_strength' => 'required'
+          'medicine_strength' => 'required',
           'medicine_id' => 'required',
           'appointment_id'=>'required',
-          'duration'=> 'required'
+          'full_dur'=> 'required'
 
         ]);
 
@@ -34,5 +36,13 @@ class PrescriptionsController extends Controller
 
     return response()->json(['success' => true]);
   }
+
+  public function getMedicineName(){
+
+      $medicine = Medicine::all('medicine_name')->toArray();
+      return array_column($medicine, 'medicine_name');
+
+  }
+
 
 }

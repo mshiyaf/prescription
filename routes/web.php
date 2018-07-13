@@ -14,4 +14,5 @@
 Route::get('/', function () {return view('welcome');});
 Route::post('/appointment','DatatablesController@getData')->name('appointmentProcessing');
 Route::get('/crawl','GoutteController@getCrawl');
-Route::post('/prescription','PrescriptionsController@store')
+Route::post('/prescription','PrescriptionsController@store');
+Route::get('/get-medicine-names','PrescriptionsController@getMedicineName');
