@@ -325,11 +325,11 @@
                                                   </div>
                                                   <div class="col-md-3 col-xs-12">
                                                       <div id="med_intake" class="btn-group" data-toggle="buttons">
-                                                          <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                            <input type="radio" id="med_intake1" name="med_intake1"  onclick="document.getElementById('med_intake1').value=this.clicked ? Before food : After food">Before food</input>
+                                                          <label class="btn btn-default" id="med_intake_but" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                                            <input type="radio"  name="med_intake"  value="before">Before food</input>
                                                           </label>
                                                           <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                            <input type="radio" name="med_intake1"  onclick="document.getElementById('med_intakess').value=this.clicked ? After food : Before food">After food</input>
+                                                            <input type="radio" name="med_intake"  value="after">After food</input>
                                                           </label>
                                                       </div>
                                                   </div>
@@ -559,7 +559,7 @@
 
             $(".btn-group > label.btn").on("click", function(){
                 // num = +this.value;
-                m_inval = $(this).find("input[name=med_intake]").val();
+                 m_inval = $(this).find("input[name=med_intake]").val();
 
             });
 
@@ -652,17 +652,15 @@
         $(add_button).click(function(e) {
             e.preventDefault();
 
-            x++;
-            var med_intake = 'med_intake'+x;
+
             var mname=document.getElementById("med_name").value;
             var mstrength=document.getElementById("med_strength").value;
             var mform=document.getElementById("m_form").value;
             var mdur=document.getElementById("duration").value;
             var mtime=document.getElementById("time").value;
-            var mintake=document.getElementById("med_intake1").value;
 
 
-            var $div1 = ('<div class="panel"><a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><h4>'+mname+'</h4></a><div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo"><div class="panel-body"><table class="table "><thead><th>Strength</th><td>'+mstrength+'</td></thead><th >Dosage form</th><td>'+mform+'</td><th >Duration</th><td>'+mdur+''+mtime+'</td><th>Intake</th><td>'+mintake+'</td></table></div></div><button type="button" class="del_medicine btn btn-primary">Delete</button></div>');
+            var $div1 = ('<div class="panel" ><a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><h4 id="mname">'+mname+'</h4></a><div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo"><div class="panel-body"><table class="table "><thead><th >Strength</th><td id="mstrength">'+mstrength+'</td></thead><th >Dosage form</th><td id="mform">'+mform+'</td><th >Duration</th><td id="mdur">'+mdur+''+mtime+'</td><th>Intake</th><td id="mval">'+m_inval+'</td></table></div></div><button type="button" class="del_medicine btn btn-primary">Delete</button></div>');
 
             $(wrapper).append($div1);
 
@@ -679,19 +677,21 @@
 
         $('#submit').click(function(e){
           e.preventDefault();
-          var n=0;
+          // var n=0;
 
-          $(".m_initial").each(function(){
-            n++;
+          $(".panel").each(function(){
+            // n++;
             var appointment_id = 1;
-            var medicine_id = $(this).find("select[name=med_name]").val();
-            var medicine_strength = $(this).find("input[name=med_strength]").val();
-            var dosage_form = $(this).find("select[name=m_form]").val();
-            var duration = $(this).find("input[name=duration]").val();
-            var time = $(this).find("select[name=time]").val();
-            var full_dur = duration+time;
+            var medicine_name = $(this).find("#mname").html();
+
+            var medicine_strength = $(this).find("#mstrength").html();
+            alert(medicine_strength);
+            var dosage_form = $(this).find("#mform").html();
+            var duration = $(this).find("#mdur").html();
+            // var time = $(this).find("select[name=time]").val();
+            // var full_dur = duration+time;
             var medicine_intake = 'med_intake'+n;
-            var intake_timing = $(this).find("input[name="+medicine_intake+"]:checked").val();
+            var intake_timing = $(this).find("#mval").html();
             var morning = $(this).find("input[id=mrngcheck]").is(":checked") ? 1:0;
             var afternoon = $(this).find("input[id=nooncheck]").is(":checked") ? 1:0;
             var evening = $(this).find("input[id=eveningcheck]").is(":checked") ? 1:0;
@@ -714,10 +714,10 @@
               dataType:'json',
               data: {
                 appointment_id:appointment_id,
-                 medicine_id:medicine_id,
+                 medicine_name:medicine_name,
                  medicine_strength:medicine_strength,
                  dosage_form:dosage_form,
-                 full_dur:full_dur,
+                 // full_dur:full_dur,
                  intake_timing:intake_timing,
                  morning:morning,
                  afternoon:afternoon,
