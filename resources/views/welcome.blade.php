@@ -47,7 +47,7 @@
     <link href="https://www.booknmeet.com/assets/dropdownstyle/css/cs-select.css" rel="stylesheet">
     <link href="https://www.booknmeet.com/assets/dropdownstyle/css/cs-skin-border.css" rel="stylesheet">
 
-    <link href="/css/app.css?v=31" rel="stylesheet">
+    <link href="/css/app.css?v=33" rel="stylesheet">
 
 </head>
 
@@ -251,11 +251,17 @@
 
                                           <div class="row">
                                               <div class="form-group">
-                                                  <div class="col-md-3 col-xs-12">
+                                                  <div class="col-md-2 col-xs-12">
                                                       <label for="medicine">Enter Medicine *</label>
                                                   </div>
-                                                  <div class="col-md-8 col-xs-12">
+                                                  <div class="col-md-3 col-xs-12">
                                                       <input type="text" class="form-control typeahead tt-query" autocomplete="off" spellcheck="false" required="" id="med_name" name="med_name">
+                                                  </div>
+                                                  <div class="col-md-3 col-xs-12" id="m_form_label">
+                                                      <label for="m_brand">Brand *</label>
+                                                  </div>
+                                                  <div class="col-md-3 col-xs-12">
+                                                      <input type="text" class="form-control typeahead tt-query" autocomplete="off" spellcheck="false" required="" id="med_brand" name="med_brand">
                                                   </div>
                                               </div>
                                           </div>
@@ -264,10 +270,10 @@
 
                                           <div class="row">
                                               <div class="form-group">
-                                                  <div class="col-md-3 col-xs-12">
+                                                  <div class="col-md-2 col-xs-12">
                                                       <label for="strength">Strength *</label>
                                                   </div>
-                                                  <div class="col-md-2 col-xs-12">
+                                                  <div class="col-md-3 col-xs-12">
                                                       <input class="form-control" id="med_strength" required="" placeholder="Dosage" name="med_strength" type="text">
                                                   </div>
                                                   <div class="col-md-3 col-xs-12" id="m_form_label">
@@ -293,7 +299,7 @@
 
                                           <div class="row">
                                               <div class="form-group">
-                                                  <div class="col-md-3 col-xs-12">
+                                                  <div class="col-md-2 col-xs-12">
                                                       <label for="duration">Duration *</label>
                                                   </div>
                                               <div class="col-md-3">
@@ -314,10 +320,10 @@
 
                                           <div class="row" id="intake">
                                               <div class="form-group">
-                                                  <div class="col-md-3 col-xs-12">
+                                                  <div class="col-md-2 col-xs-12">
                                                       <label for="med_intake">Intake *</label>
                                                   </div>
-                                                  <div class="col-md-6 col-xs-12">
+                                                  <div class="col-md-3 col-xs-12">
                                                       <div id="med_intake" class="btn-group" data-toggle="buttons">
                                                           <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                                                             <input type="radio" id="med_intake1" name="med_intake1"  onclick="document.getElementById('med_intake1').value=this.clicked ? Before food : After food">Before food</input>
@@ -326,6 +332,12 @@
                                                             <input type="radio" name="med_intake1"  onclick="document.getElementById('med_intakess').value=this.clicked ? After food : Before food">After food</input>
                                                           </label>
                                                       </div>
+                                                  </div>
+                                                  <div class="col-md-3 col-xs-12" id="m_form_label">
+                                                      <label for="m_amount">Intake Amount</label>
+                                                  </div>
+                                                  <div class="col-md-3 col-xs-12">
+                                                      <input type="text" class="form-control" id="med_amount" name="med_amount">
                                                   </div>
                                               </div>
                                           </div>
@@ -336,19 +348,22 @@
                                             <div class="form-group">
                                               <div class="col-sm-2">
 
-                                                    <input type="checkbox" value="1" id="mrngcheck">
+                                                    <input type="hidden" name="mrngcheck" id="mrngcheck" value="0">
+                                                    <input type="checkbox" value="1" id="mrngcheck" onchange="document.getElementById('mrngcheck').value = this.checked ? 1 : 0">
                                                     <label>Morning</label>
                                               </div>
 
                                               <div class="col-sm-2">
 
-                                                    <input type="checkbox" value="1" id="nooncheck">
+                                                    <input type="hidden" name="nooncheck" id="nooncheck" value="0">
+                                                    <input type="checkbox" value="1" id="nooncheck" onchange="document.getElementById('nooncheck').value = this.checked ? 1 : 0">
                                                     <label>Noon</label>
                                               </div>
 
                                               <div class="col-sm-2">
 
-                                                    <input type="checkbox" value="1" id="eveningcheck">
+                                                    <input type="hidden" name="eveningcheck" id="eveningcheck" value="0">
+                                                    <input type="checkbox" value="1" id="eveningcheck" onchange="document.getElementById('eveningcheck').value = this.checked ? 1 : 0">
                                                     <label>Evening</label>
 
                                               </div>
@@ -365,8 +380,9 @@
 
                                           <div class="row" id="add_medicine">
                                               <div class="form-group">
-                                                  <div class="col-md-2 col-xs-12">
+                                                  <div class="col-md-8 col-xs-12">
                                                     <button type="button" id="add_medicine" class="add_field_button btn btn-primary">Add Medicine</button>
+                                                    <button class="btn btn-primary" type="reset">Reset</button>
                                                   </div>
                                               </div>
                                           </div>
@@ -379,15 +395,15 @@
                                         <div class="input_fields_wrap">
                                               <div class="x_panel">
                                                 <div class="x_title">
-                                                  <h2><i class="fa fa-align-left"></i> Added Medicines </h2>
+                                                  <h5><i class="fa fa-align-left"></i> Added Medicines </h5>
                                                   <div class="clearfix"></div>
                                                 </div>
                                                 <div class="x_content">
 
                                                   <!-- start accordion -->
                                                   <div id="input_pres" class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
-                                                    <div class="panel">
-                                                      {{-- <a class="panel-heading collapsed" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                    {{-- <div class="panel">
+                                                      <a class="panel-heading collapsed" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                                         <h4 class="panel-title">Collapsible Group Items #1 <button type="button" class="del_medicine btn btn-primary">Delete</button></h4>
                                                       </a>
                                                       <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
@@ -423,8 +439,8 @@
                                                             </tbody>
                                                           </table>
                                                         </div>
-                                                      </div> --}}
-                                                    </div>
+                                                      </div>
+                                                    </div> --}}
                                                   </div>
                                                   <!-- end of accordion -->
 
@@ -517,7 +533,7 @@
     <script src="https://www.booknmeet.com/assets/typeahead.bundle.js"></script>
     <script>
         var app_id;
-        var x = 1;
+        var m_inval = null;
         var add_button = $(".add_field_button");
         var wrapper = $("#input_pres");
         $(document).ready(function() {
@@ -539,6 +555,22 @@
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
                 prefetch: {url:'/get-medicine-names',cache:false}
             });
+
+
+            $(".btn-group > label.btn").on("click", function(){
+                // num = +this.value;
+                m_inval = $(this).find("input[name=med_intake]").val();
+
+            });
+
+            // Constructing the suggestion engine
+            var medicines = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.whitespace,
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                prefetch: {url:'/get-medicine-names',cache:false}
+            });
+
+
 
             // Initializing the typeahead
             $('.typeahead').typeahead({
@@ -633,6 +665,9 @@
             var $div1 = ('<div class="panel"><a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><h4>'+mname+'</h4></a><div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo"><div class="panel-body"><table class="table "><thead><th>Strength</th><td>'+mstrength+'</td></thead><th >Dosage form</th><td>'+mform+'</td><th >Duration</th><td>'+mdur+''+mtime+'</td><th>Intake</th><td>'+mintake+'</td></table></div></div><button type="button" class="del_medicine btn btn-primary">Delete</button></div>');
 
             $(wrapper).append($div1);
+
+            $('#rcapp')[0].reset();
+
 
         });
 
