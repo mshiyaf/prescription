@@ -255,7 +255,6 @@
                                                       <label for="medicine">Enter Medicine *</label>
                                                   </div>
                                                   <div class="col-md-8 col-xs-12">
-                                                      <select class="form-control" required="" id="med_name" name="med_name"><option selected="selected" value="">Choose..</option><option value="120">dolo</option><option value="130">otrivin</option></select>
                                                       <input type="text" class="form-control typeahead tt-query" autocomplete="off" spellcheck="false" required="" id="med_name" name="med_name">
                                                   </div>
                                               </div>
@@ -690,7 +689,7 @@
               }
             });
 
-
+          }
           });
 
     });
