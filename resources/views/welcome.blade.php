@@ -276,15 +276,15 @@
                                                   <div class="col-md-3 col-xs-12">
                                                       <select class="form-control" required="" id="m_form" name="m_form">
                                                         <option selected="selected" value="">Form..</option>
-                                                        <option value="1">Tablet</option>
-                                                        <option value="2">Suspension</option>
-                                                        <option value="3">Ointment</option>
-                                                        <option value="4">Syrup</option>
-                                                        <option value="5">Eye Drop</option>
-                                                        <option value="6">Ear Drop</option>
-                                                        <option value="7">Suppository</option>
-                                                        <option value="8">Nebulizer</option>
-                                                        <option value="9">Inhaler</option>
+                                                        <option value="Tablet">Tablet</option>
+                                                        <option value="Suspension">Suspension</option>
+                                                        <option value="Ointment">Ointment</option>
+                                                        <option value="Syrup">Syrup</option>
+                                                        <option value="Eye Drop">Eye Drop</option>
+                                                        <option value="Ear Drop">Ear Drop</option>
+                                                        <option value="Suppository">Suppository</option>
+                                                        <option value="Nebulizer">Nebulizer</option>
+                                                        <option value="Inhaler">Inhaler</option>
                                                       </select>
                                                   </div>
                                               </div>
@@ -320,10 +320,10 @@
                                                   <div class="col-md-6 col-xs-12">
                                                       <div id="med_intake" class="btn-group" data-toggle="buttons">
                                                           <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                            <input type="radio" name="med_intake1" value="before">Before food</input>
+                                                            <input type="radio" id="med_intake1" name="med_intake1"  onclick="document.getElementById('med_intake1').value=this.clicked ? Before food : After food">Before food</input>
                                                           </label>
                                                           <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                            <input type="radio" name="med_intake1" value="after">After food</input>
+                                                            <input type="radio" name="med_intake1"  onclick="document.getElementById('med_intakess').value=this.clicked ? After food : Before food">After food</input>
                                                           </label>
                                                       </div>
                                                   </div>
@@ -387,7 +387,7 @@
                                                   <!-- start accordion -->
                                                   <div id="input_pres" class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
                                                     <div class="panel">
-                                                      <a class="panel-heading collapsed" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                      {{-- <a class="panel-heading collapsed" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                                         <h4 class="panel-title">Collapsible Group Items #1 <button type="button" class="del_medicine btn btn-primary">Delete</button></h4>
                                                       </a>
                                                       <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
@@ -423,7 +423,7 @@
                                                             </tbody>
                                                           </table>
                                                         </div>
-                                                      </div>
+                                                      </div> --}}
                                                     </div>
                                                   </div>
                                                   <!-- end of accordion -->
@@ -622,8 +622,15 @@
 
             x++;
             var med_intake = 'med_intake'+x;
+            var mname=document.getElementById("med_name").value;
+            var mstrength=document.getElementById("med_strength").value;
+            var mform=document.getElementById("m_form").value;
+            var mdur=document.getElementById("duration").value;
+            var mtime=document.getElementById("time").value;
+            var mintake=document.getElementById("med_intake1").value;
 
-            var $div1 = ('<div class="panel"><a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><h4 class="panel-title">Collapsible Group Items #1<button type="button" class="del_medicine btn btn-primary">Delete</button></h4></a><div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo"><div class="panel-body"><table class="table table-bordered"><thead><tr><th>#</th><th>First Name</th><th>Last Name</th><th>Username</th></tr></thead><tbody><tr><th scope="row">1</th><td>Mark</td><td>Otto</td><td>@mdo</td></tr><tr><th scope="row">2</th><td>Jacob</td><td>Thornton</td><td>@fat</td></tr><tr><th scope="row">3</th><td>Larry</td><td>the Bird</td><td>@twitter</td></tr></tbody></table></div></div></div>');
+
+            var $div1 = ('<div class="panel"><a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><h4>'+mname+'</h4></a><div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo"><div class="panel-body"><table class="table "><thead><th>Strength</th><td>'+mstrength+'</td></thead><th >Dosage form</th><td>'+mform+'</td><th >Duration</th><td>'+mdur+''+mtime+'</td><th>Intake</th><td>'+mintake+'</td></table></div></div><button type="button" class="del_medicine btn btn-primary">Delete</button></div>');
 
             $(wrapper).append($div1);
 

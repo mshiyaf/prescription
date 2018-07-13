@@ -8,7 +8,7 @@ use App\Medicine;
 
 class GoutteController extends Controller
 {
-    public function getCrawl()
+    public function crawl()
     {
         $client = new Client();
         $alpha = array("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
@@ -38,8 +38,9 @@ class GoutteController extends Controller
         // });
 
 
-      }
+
 
 
     }
+}
 }
