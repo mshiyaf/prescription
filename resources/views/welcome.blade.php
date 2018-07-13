@@ -320,10 +320,10 @@
                                                   <div class="col-md-6 col-xs-12">
                                                       <div id="med_intake" class="btn-group" data-toggle="buttons">
                                                           <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                            <input type="radio" name="med_intake" value="before">Before food
+                                                            <input type="radio" name="med_intake1" value="before">Before food</input>
                                                           </label>
                                                           <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                            <input type="radio" name="med_intake" value="after" checked="">After food
+                                                            <input type="radio" name="med_intake1" value="after">After food</input>
                                                           </label>
                                                       </div>
                                                   </div>
@@ -349,7 +349,7 @@
                                               <div class="col-sm-2">
 
                                                     <input type="checkbox" value="1" id="eveningcheck">
-                                                    <label for="eveningcheck">Evening</label>
+                                                    <label>Evening</label>
 
                                               </div>
 
@@ -453,6 +453,7 @@
     <script src="https://www.booknmeet.com/assets/datepicker/daterangepicker.js"></script>
     <script>
         var app_id;
+        var x = 1;
         var add_button = $(".add_field_button");
         var wrapper = $("#input_pres");
         $(document).ready(function() {
@@ -536,7 +537,9 @@
         $(add_button).click(function(e) {
             e.preventDefault();
 
-            var $div1 = ('<div class="m_initial card" style="border-radius: 10px; border: 1px solid rgb(26, 187, 156);"><div class="card-body" style="padding: 17px 0px 6px 15px;"><div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="medicine">Choose Medicine *</label></div><div class="col-md-8 col-xs-12"><select class="form-control" required="" id="med_name" name="med_name"><option selected="selected" value="">Choose..</option><option value="120">dolo</option><option value="130">otrivin</option></select></div></div></div><br><div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="strength">Strength *</label></div><div class="col-md-2 col-xs-12"><input class="form-control" id="med_strength" required="" placeholder="Dosage" name="med_strength" type="text"></div><div class="col-md-3 col-xs-12" id="m_form_label"><label for="m_form">Dosage Form *</label></div><div class="col-md-3 col-xs-12"><select class="form-control" required="" id="m_form" name="m_form"><option selected="selected" value="">Form..</option><option value="1">Tablet</option><option value="2">Suspension</option><option value="3">Ointment</option><option value="4">Syrup</option><option value="5">Eye Drop</option><option value="6">Ear Drop</option><option value="7">Suppository</option><option value="8">Nebulizer</option><option value="9">Inhaler</option></select></div></div></div><br><div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="duration">Duration *</label></div><div class="col-md-3"><input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" "></div><div class="col-md-2"><select name="time" id="time" class="form-control" placeholder=" "><option>Days</option><option>Weeks</option><option>Months</option></select></div></div></div><br><div class="row" id="intake"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="med_intake">Intake *</label></div><div class="col-md-6 col-xs-12"><div id="med_intake" class="btn-group" data-toggle="buttons"><label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"><input type="radio" name="med_intake" value="before">Before food</label><label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"><input type="radio" name="med_intake" value="after" checked="">After food</label></div></div></div></div><br><div class="row" id="timing"><div class="form-group"><div class="col-sm-2"><input type="checkbox" value="1" id="mrngcheck"><label for="mrngcheck">Morning</label></div><div class="col-sm-2"><input type="checkbox" value="1" id="nooncheck"><label for="nooncheck">Noon</label></div><div class="col-sm-2"><input type="checkbox" value="1" id="eveningcheck"><label for="eveningcheck">Evening</label></div><div class="col-sm-6"><div class="col-sm-3"><label for="custom_timing">Other</label></div><input type="text" id="custom_timing"></div></div></div><br><div class="row"><div class="form-group"><div class="col-md-4 col-xs-12"><label for="description">Description (200 max)</label></div><div class="col-md-7 col-xs-12"><textarea class="form-control" data-parsley-trigger="keyup" data-parsley-maxlength="200" data-parsley-validation-threshold="10" name="description" cols="50" rows="4" id="description"></textarea></div></div></div><br><div class="form-group"><button type="button" class="del_medicine btn btn-primary">Remove</button></div></div></div>');
+            x++;
+            var med_intake = 'med_intake'+x;
+            var $div1 = ('<div class="m_initial card" style="border-radius: 10px; border: 1px solid rgb(26, 187, 156);"><div class="card-body" style="padding: 17px 0px 6px 15px;"><div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="medicine">Choose Medicine *</label></div><div class="col-md-8 col-xs-12"><select class="form-control" required="" id="med_name" name="med_name"><option selected="selected" value="">Choose..</option><option value="120">dolo</option></select></div></div></div><br><div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="strength">Strength *</label></div><div class="col-md-2 col-xs-12"><input class="form-control" id="med_strength" required="" placeholder="Dosage" name="med_strength" type="text"></div><div class="col-md-3 col-xs-12" id="m_form_label"><label for="m_form">Dosage Form *</label></div><div class="col-md-3 col-xs-12"><select class="form-control" required="" id="m_form" name="m_form"><option selected="selected" value="">Form..</option><option value="1">Tablet</option><option value="2">Suspension</option><option value="3">Ointment</option><option value="4">Syrup</option><option value="5">Eye Drop</option><option value="6">Ear Drop</option><option value="7">Suppository</option><option value="8">Nebulizer</option><option value="9">Inhaler</option></select></div></div></div><br><div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="duration">Duration *</label></div><div class="col-md-3"><input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" "></div><div class="col-md-2"><select name="time" id="time" class="form-control" placeholder=" "><option>Days</option><option>Weeks</option><option>Months</option></select></div></div></div><br><div class="row" id="intake"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="med_intake">Intake *</label></div><div class="col-md-6 col-xs-12"><div id="med_intake" class="btn-group" data-toggle="buttons"><label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"><input type="radio" name='+med_intake+' value="before">Before food</input></label><label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"><input type="radio" name='+med_intake+' value="after">After food</input></label></div></div></div></div><br><div class="row" id="timing"><div class="form-group"><div class="col-sm-2"><input type="checkbox" value="1" id="mrngcheck"><label>Morning</label></div><div class="col-sm-2"><input type="checkbox" value="1" id="nooncheck"><label>Noon</label></div><div class="col-sm-2"><input type="checkbox" value="1" id="eveningcheck"><label>Evening</label></div><div class="col-sm-6"><div class="col-sm-3"><label for="custom_timing">Other</label></div><input type="text" id="custom_timing"></div></div></div><br><div class="row"><div class="form-group"><div class="col-md-4 col-xs-12"><label for="description">Description (200 max)</label></div><div class="col-md-7 col-xs-12"><textarea class="form-control" data-parsley-trigger="keyup" data-parsley-maxlength="200" data-parsley-validation-threshold="10" name="description" cols="50" rows="4" id="description"></textarea></div></div></div><br><div class="form-group"><button type="button" class="del_medicine btn btn-primary">Remove</button></div></div></div>');
 
             $(wrapper).append($div1);
 
@@ -550,8 +553,10 @@
 
         $('#submit').click(function(e){
           e.preventDefault();
+          var n=0;
 
           $(".m_initial").each(function(){
+            n++;
             var appointment_id = 1;
             var medicine_id = $(this).find("select[name=med_name]").val();
             var medicine_strength = $(this).find("input[name=med_strength]").val();
@@ -559,13 +564,13 @@
             var duration = $(this).find("input[name=duration]").val();
             var time = $(this).find("select[name=time]").val();
             var full_dur = duration+time;
-            var intake_timing = $(this).find("input[name=med_intake]:checked").val();
+            var medicine_intake = 'med_intake'+n;
+            var intake_timing = $(this).find("input[name="+medicine_intake+"]:checked").val();
             var morning = $(this).find("input[id=mrngcheck]").is(":checked") ? 1:0;
             var afternoon = $(this).find("input[id=nooncheck]").is(":checked") ? 1:0;
             var evening = $(this).find("input[id=eveningcheck]").is(":checked") ? 1:0;
             var custom_timing = $(this).find("input[id=custom_timing]").val();
             var description = $(this).find("textarea[name=description]").val();
-
 
             $.ajaxSetup({
             headers: {
@@ -573,9 +578,10 @@
               }
             });
 
-            $("#input_pres").parsley().validate();
-            if($("#input_pres").parsley().isValid())
-            {
+                        $("#input_pres").parsley().validate();
+                        if($("#input_pres").parsley().isValid())
+                        {
+
             $.ajax({
               url: "/prescription",
               method: 'post',
