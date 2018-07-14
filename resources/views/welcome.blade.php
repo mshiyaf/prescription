@@ -552,10 +552,10 @@
             });
 
 
-            $(".btn-group > label.btn").on("click", function(){
+            $("#med_intake > label.btn").on("click", function(){
                 // num = +this.value;
                 m_inval = $(this).find("input[name=med_intake]").val();
-
+                alert(m_inval);
             });
 
             // Constructing the suggestion engine
