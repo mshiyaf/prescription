@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Prescription;
 use App\Medicine;
+
+use App\Appointment;
+
 use Illuminate\Http\Request;
 
 
@@ -13,14 +16,14 @@ class PrescriptionsController extends Controller
       $request->validate([
 
           'medicine_strength' => 'required',
-          'medicine_id' => 'required',
+          // 'medicine_id' => 'required',
           'appointment_id'=>'required',
           'full_dur'=> 'required'
 
         ]);
 
         $prescription = new Prescription;
-        $prescription->medicine_id = request('medicine_id');
+        $prescription->medicine_name = request('medicine_name');
         $prescription->medicine_strength = request('medicine_strength');
         $prescription->appointment_id = request('appointment_id');
         $prescription->dosage_form = request('dosage_form');
@@ -36,6 +39,18 @@ class PrescriptionsController extends Controller
 
     return response()->json(['success' => true]);
   }
+
+
+
+      public function show(){
+
+          $prescription =Prescription::all();
+          $medicines = Medicine::all();
+          $appointments = Appointment::all();
+
+          return view('welcome', compact('prescription','medicines','appointments'));
+
+      }
 
   public function getMedicineName(){
 
