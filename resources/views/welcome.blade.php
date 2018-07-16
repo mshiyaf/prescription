@@ -47,7 +47,7 @@
     <link href="https://www.booknmeet.com/assets/dropdownstyle/css/cs-select.css" rel="stylesheet">
     <link href="https://www.booknmeet.com/assets/dropdownstyle/css/cs-skin-border.css" rel="stylesheet">
 
-    <link href="/css/app.css?v=35" rel="stylesheet">
+    <link href="/css/app.css?v=7" rel="stylesheet">
 
 </head>
 
@@ -326,10 +326,10 @@
                                                   <div class="col-md-3 col-xs-12">
                                                       <div id="med_intake" class="btn-group" data-toggle="buttons">
                                                           <label class="btn btn-default" id="med_intake_but" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                            <input type="radio"  name="med_intake"  value="before">Before food</input>
+                                                            <input type="radio"  name="med_intake"  value="Before Food">Before food</input>
                                                           </label>
                                                           <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                            <input type="radio" name="med_intake"  value="after">After food</input>
+                                                            <input type="radio" name="med_intake"  value="After Food">After food</input>
                                                           </label>
                                                       </div>
                                                   </div>
@@ -640,7 +640,7 @@
             }
             var custom_timing=document.getElementById("custom_timing").value;
 
-            var $div1 = ('<div id="to_delete"><div class="panel added_medicine col-md-11 col-xs-9"><a class="panel-heading collapsed" role="tab" id="heading'+x+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+x+'" aria-expanded="false" aria-controls="collapse'+x+'"><h5  id="mname">'+mname+'</h5></a><div id="collapse'+x+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+x+'"><div class="panel-body"><div class="col-md-2"><h4>Brand</h4><p id="mbrand">'+mbrand+'</p></div><div class="col-md-2"><h4>Strength</h4><p id="mstrength">'+mstrength+'</p></div><div class="col-md-2"><h4>Dosage form</h4><p id="mform">'+mform+'</p></div><div class="col-md-2"><h4>Duration</h4><p id="mdur">'+mdur+''+mtime+'</p></div><div class="col-md-2"><h4>Intake</h4><p id="mval">'+m_inval+'</p></div><div class="col-md-2"><h4>Intake Amount</h4><p id="mintake_amount">'+mintake_amount+'</p></div><div class="col-md-2"><h4>Intake Time</h4><p id="mintake_time">'+mintake_time+'</p></div><div class="col-md-2"><h4>Custom Intake Time</h4><p id="custom_timing">'+custom_timing+'</p></div><div class="col-md-1 col-xs-1"><button type="button"  class="edit_medicine btn btn-primary">Edit</button></div></div></div></div><div class="col-md-1 col-xs-1"><button type="button" class="del_medicine btn btn-primary">Delete</button></div></div>');
+            var $div1 = ('<div id="to_delete"><div class="panel added_medicine col-md-11 col-xs-9"><a class="added_medicine_head panel-heading collapsed" role="tab" id="heading'+x+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+x+'" aria-expanded="false" aria-controls="collapse'+x+'"><h5 id="mname">'+mname+'</h5></a><div id="collapse'+x+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+x+'"><div class="panel-body row"><div class="col-md-2 card mlist_card"><h4 class="h_med">Brand</h4><p id="mbrand">'+mbrand+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Strength</h4><p id="mstrength">'+mstrength+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Dosage Form</h4><p id="mform">'+mform+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Duration</h4><p id="mdur">'+mdur+' '+mtime+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake</h4><p id="mval">'+m_inval+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake Amount</h4><p id="mintake_amount">'+mintake_amount+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake Time</h4><p id="mintake_time">'+mintake_time+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Other</h4><p id="custom_timing">'+custom_timing+'</p></div></div><div><div class="col-md-1 col-xs-1" style="float:right; margin-right:10px; margin-bottom: 5px;"><button type="button" class="edit_medicine btn btn-primary">Edit</button></div></div></div></div><div class="col-md-1 col-xs-1"><button type="button" class="del_medicine btn btn-primary">Delete</button></div></div>');
 
             $(wrapper).append($div1);
 
@@ -657,22 +657,15 @@
 
         $(wrapper).on("click",".edit_medicine",function(e){
           e.preventDefault();
-        //   $(this).each(function(){
-        //     var mname=document.getElementById("mname").value;
-        //     alert(mname);
-        //   })
-        //
-            // var mname = document.getElementById("mname").value().filter('h5').text();
-        //     // $(this).filter(function(){
-        //     //   var mname=$(this).filter("#mname").html();
-        //     //   console.log(mname);
-        //     // })
-        //
-        //   // var mname=$(this).siblings().find("#mname").html();
-        //
-        //
-        //
-        // });
+          // var mname2;
+          var mname2 = $(this).parent().parent().parent().getElementById("m_brand").html();
+          // var mname3 = mname2.getElementById("m_brand").html();
+          console.log(mname2);
+          // var mname=$(this).siblings().find("#mname").html();
+
+
+
+        });
 
           //
           // var x =$(this).closest('h5').find('#mname').text();

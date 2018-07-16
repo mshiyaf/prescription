@@ -80,10 +80,32 @@
   padding: 0px 0px 0px 0px;
 }
 
+.added_medicine_head {
+  background: #395760f7 !important;
+}
+
 #mname {
   margin-top: -6px;
-  margin-bottom: -2px;
-  font-size: 13px;
+  margin-bottom: -4px;
+  font-size: 16px;
   font-weight: 600;
+  color: white;
+}
+
+.h_med {
+  font-weight: 600 !important;
+}
+
+.mlist_card {
+  margin: 1px;
+  padding: 0px 0px 0px 5px;
+  width: 174px;
+  min-height: 90px;
+  position: relative;
+  display: block;
+  margin-bottom: .75rem;
+  background-color: inherit;
+  border-radius: .25rem;
+  border: 1px solid rgba(0, 0, 0, 0);
 }
 
