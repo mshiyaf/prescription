@@ -635,6 +635,17 @@
 
         });
 
+        $(wrapper).on("click",".edit_medicine",function(e){
+          e.preventDefault();
+          $(this).siblings().each(function(){
+            var mname = getElementById("mname").value();
+          });
+          // var mname=$(this).siblings().find("#mname").html();
+          console.log(mname);
+
+
+        });
+
         $('#submit').click(function(e){
           e.preventDefault();
           // var n=0;
