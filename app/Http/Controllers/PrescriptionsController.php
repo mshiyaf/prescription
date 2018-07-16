@@ -53,11 +53,7 @@ class PrescriptionsController extends Controller
         $mobile = request('mobile');
         $id = request('id');
         $x = 0;
-        // $med_details = collect(['med_name', 'med_strength','dosage_form','duration']);
-        // $med_name = " ";
-        // $med_strength = " ";
-        // $form = " ";
-        // $duration = " ";
+
         $appointment = Appointment::where('mobile',"=",$mobile)->pluck("id")->all();
         foreach ($appointment as $a) {
           $prescriptions = Prescription::select("medicine_id","medicine_strength","dosage_form","duration")->where('appointment_id',"=",$a)->get();
@@ -66,29 +62,19 @@ class PrescriptionsController extends Controller
             $x++;
 
             $medicine = Medicine::find($p->medicine_id);
-            // $medicine = Medicine::all();
-          //
-            // $med_name = $med_name."<br>".$medicine->medicine_name;
-            // // $data = view('/get_history', compact('prescriptions'))->render();
-            //
-            // $med_strength = $med_strength."<br>".$p->medicine_strength;
-            // $form = $form."<br>".$p->dosage_form;
-            // $duration = $duration."<br>".$p->duration;
+
             if($x==1){
             $details = collect([$medicine->medicine_name,$p->medicine_strength,$p->dosage_form,$p->duration]);
             }
             else
             $details = $details->concat([$medicine->medicine_name,$p->medicine_strength,$p->dosage_form,$p->duration]);
-            // $med_details = $med_details->concat($med);
-             // $details = $details->concat(['med_name'=>$medicine->medicine_name,'med_strength'=>$p->medicine_strength,'dosage_form'=>$p->dosage_form,'duration'=>$p->duration]);
-            // }
+
             $details->all();
-            // $med_details = $med_details."<br>".$medicine->medicine_name."<br>".$p->medicine_strength."<br>".$p->dosage_form."<br>".$p->duration."<br>";
+
           }
         }
 
-        //return response()->json(['med_details'=>$details,'count'=>$x]);
-        $data = view('/get_history', ['med_details'=>$details]->render());
+        $data = view('/get_history', ['details'=>$details])->render();
 
         return response()->json(['details'=>$data]);
       }
