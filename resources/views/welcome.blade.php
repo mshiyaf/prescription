@@ -658,9 +658,11 @@
         $(wrapper).on("click",".edit_medicine",function(e){
           e.preventDefault();
           // var mname2;
-          var mname2 = $(this).parent().parent().parent().getElementById("m_brand").html();
-          // var mname3 = mname2.getElementById("m_brand").html();
-          console.log(mname2);
+          // var mname2 = $(this).parent().parent().parent().parent().html();
+          var mname1 = $(this).parent().parent().parent().parent().find("#mname").text();
+          var mbrand1 = $(this).parent().parent().parent().parent().find("#mbrand").text();
+          console.log(mname1);
+          console.log(mbrand1);
           // var mname=$(this).siblings().find("#mname").html();
 
 
@@ -668,14 +670,14 @@
         });
 
           //
-          // var x =$(this).closest('h5').find('#mname').text();
-          var x=$(this).parent().parent().parent();
-          var p=$('x').filter("#mstrength").text();
-          // var x=$("div").find("#mname").text();
-          console.log(p);
-
-          // alert(x);
-        });
+        //   // var x =$(this).closest('h5').find('#mname').text();
+        //   var x=$(this).parent().parent().parent();
+        //   var p=$('x').filter("#mstrength").text();
+        //   // var x=$("div").find("#mname").text();
+        //   console.log(p);
+        //
+        //   // alert(x);
+        // });
 
         $('#submit').click(function(e){
           e.preventDefault();
