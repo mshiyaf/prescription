@@ -546,22 +546,17 @@
               mobile:mobile
             },
             success: function(data){
-<<<<<<< HEAD
-
-                $("#p_history").html('');
-                $("#p_history").html(data.med_details);
-
-
-=======
               $("#p_history").html('');
-              $("#p_history").html(data.value);
->>>>>>> cf399ace88cce0920280ef9d40c4b5ed7ebfe72e
+        			$("#p_history").html(data.details);
             }
           });
 
         };
 
-
+		// function display_history(array details){
+    //   $("#p_history").html('');
+		// 	$("#p_history").html(details);
+		// }
 
         $(add_button).click(function(e) {
             e.preventDefault();

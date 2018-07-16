@@ -16,7 +16,4 @@ Route::post('/appointment','DatatablesController@getData')->name('appointmentPro
 Route::post('/prescription','PrescriptionsController@store');
 Route::get('/crawl','Gouttecontroller@crawl');
 Route::post('/get_history','PrescriptionsController@get_history');
-<<<<<<< HEAD
-=======
 Route::post('/get_prescription_history','PrescriptionsController@get_prescription_history');
->>>>>>> cf399ace88cce0920280ef9d40c4b5ed7ebfe72e
