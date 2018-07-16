@@ -620,7 +620,7 @@
             }
             var custom_timing=document.getElementById("custom_timing").value;
 
-            var $div1 = ('<div id="to_delete"><div class="panel added_medicine col-md-11 col-xs-9"><a class="panel-heading collapsed" role="tab" id="heading'+x+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+x+'" aria-expanded="false" aria-controls="collapse'+x+'"><h5 id="mname">'+mname+'</h5></a><div id="collapse'+x+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+x+'"><div class="panel-body"><div class="col-md-2"><h4>Brand</h4><p id="mbrand">'+mbrand+'</p></div><div class="col-md-2"><h4>Strength</h4><p id="mstrength">'+mstrength+'</p></div><div class="col-md-2"><h4>Dosage form</h4><p id="mform">'+mform+'</p></div><div class="col-md-2"><h4>Duration</h4><p id="mdur">'+mdur+''+mtime+'</p></div><div class="col-md-2"><h4>Intake</h4><p id="mval">'+m_inval+'</p></div><div class="col-md-2"><h4>Intake Amount</h4><p id="mintake_amount">'+mintake_amount+'</p></div><div class="col-md-2"><h4>Intake Time</h4><p id="mintake_time">'+mintake_time+'</p></div><div class="col-md-2"><h4>Custom Intake Time</h4><p id="custom_timing">'+custom_timing+'</p></div><div class="col-md-1 col-xs-1"><button type="button" class="edit_medicine btn btn-primary">Edit</button></div></div></div></div><div class="col-md-1 col-xs-1"><button type="button" class="del_medicine btn btn-primary">Delete</button></div></div>');
+            var $div1 = ('<div id="to_delete"><div class="panel added_medicine col-md-11 col-xs-9"><a class="panel-heading collapsed" role="tab" id="heading'+x+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+x+'" aria-expanded="false" aria-controls="collapse'+x+'"><h5  id="mname">'+mname+'</h5></a><div id="collapse'+x+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+x+'"><div class="panel-body"><div class="col-md-2"><h4>Brand</h4><p id="mbrand">'+mbrand+'</p></div><div class="col-md-2"><h4>Strength</h4><p id="mstrength">'+mstrength+'</p></div><div class="col-md-2"><h4>Dosage form</h4><p id="mform">'+mform+'</p></div><div class="col-md-2"><h4>Duration</h4><p id="mdur">'+mdur+''+mtime+'</p></div><div class="col-md-2"><h4>Intake</h4><p id="mval">'+m_inval+'</p></div><div class="col-md-2"><h4>Intake Amount</h4><p id="mintake_amount">'+mintake_amount+'</p></div><div class="col-md-2"><h4>Intake Time</h4><p id="mintake_time">'+mintake_time+'</p></div><div class="col-md-2"><h4>Custom Intake Time</h4><p id="custom_timing">'+custom_timing+'</p></div><div class="col-md-1 col-xs-1"><button type="button"  class="edit_medicine btn btn-primary">Edit</button></div></div></div></div><div class="col-md-1 col-xs-1"><button type="button" class="del_medicine btn btn-primary">Delete</button></div></div>');
 
             $(wrapper).append($div1);
 
@@ -637,13 +637,31 @@
 
         $(wrapper).on("click",".edit_medicine",function(e){
           e.preventDefault();
-          $(this).siblings().each(function(){
-            var mname = getElementById("mname").value();
-          });
-          // var mname=$(this).siblings().find("#mname").html();
-          console.log(mname);
+        //   $(this).each(function(){
+        //     var mname=document.getElementById("mname").value;
+        //     alert(mname);
+        //   })
+        //
+            // var mname = document.getElementById("mname").value().filter('h5').text();
+        //     // $(this).filter(function(){
+        //     //   var mname=$(this).filter("#mname").html();
+        //     //   console.log(mname);
+        //     // })
+        //
+        //   // var mname=$(this).siblings().find("#mname").html();
+        //
+        //
+        //
+        // });
 
+          //
+          // var x =$(this).closest('h5').find('#mname').text();
+          var x=$(this).parent().parent().parent();
+          var p=$('x').filter("#mstrength").text();
+          // var x=$("div").find("#mname").text();
+          console.log(p);
 
+          // alert(x);
         });
 
         $('#submit').click(function(e){
