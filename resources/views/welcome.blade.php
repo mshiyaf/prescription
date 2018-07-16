@@ -659,6 +659,7 @@
             var mform=document.getElementById("m_form").value;
             var mdur=document.getElementById("duration").value;
             var mtime=document.getElementById("time").value;
+            var mintake_amount=document.getElementById("med_amount").value;
             var mintake_time="";
             if (document.getElementById("mrngcheck").value==1) {
               var mrngcheck=1;
@@ -677,7 +678,7 @@
             }
             var custom_timing=document.getElementById("custom_timing").value;
 
-            var $div1 = ('<div class="panel" ><a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><h4 id="mname">'+mname+'</h4></a><div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo"><div class="panel-body"><table class="table "><thead><th >Brand</th><td id="mstrength">'+mbrand+'</td></thead><thead><th >Strength</th><td id="mstrength">'+mstrength+'</td></thead><thead><th >Dosage form</th><td id="mform">'+mform+'</td></thead><thead><th >Duration</th><td id="mdur">'+mdur+''+mtime+'</td></thead><th>Intake</th><td id="mval">'+m_inval+'</td><th>Intake timing</th><td id="mintake_timing">'+mintake_time+'</td><th>Custom intake timing<td id="cunstom_time">'+custom_timing+'</td></th></table></div></div><button type="button" class="del_medicine btn btn-primary">Delete</button></div>');
+            var $div1 = ('<div class="panel" ><a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><h4 id="mname">'+mname+'</h4></a><div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo"><div class="panel-body"><table class="table "><thead><th >Brand</th><td id="mstrength">'+mbrand+'</td></thead><thead><th >Strength</th><td id="mstrength">'+mstrength+'</td></thead><thead><th >Dosage form</th><td id="mform">'+mform+'</td></thead><thead><th >Duration</th><td id="mdur">'+mdur+''+mtime+'</td></thead><th>Intake</th><td id="mval">'+m_inval+'</td><th>Intake Amount</th><td id="mintake_amount">'+mintake_amount+'</td><th>Intake timing</th><td id="mintake_timing">'+mintake_time+'</td><th>Custom intake timing<td id="cunstom_time">'+custom_timing+'</td></th></table></div></div><button type="button" class="del_medicine btn btn-primary">Delete</button></div>');
 
             $(wrapper).append($div1);
 
