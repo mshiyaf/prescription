@@ -76,3 +76,14 @@
   margin: 0;
 }
 
+.added_medicine {
+  padding: 0px 0px 0px 0px;
+}
+
+#mname {
+  margin-top: -6px;
+  margin-bottom: -2px;
+  font-size: 13px;
+  font-weight: 600;
+}
+

@@ -15,10 +15,10 @@ class PrescriptionsController extends Controller
     public function store(Request $request){
       $request->validate([
 
-          'medicine_strength' => 'required',
-          // 'medicine_id' => 'required',
-          'appointment_id'=>'required',
-          'full_dur'=> 'required'
+          // 'medicine_strength' => 'required',
+          // // 'medicine_id' => 'required',
+          // 'appointment_id'=>'required',
+          // 'full_dur'=> 'required'
 
         ]);
 

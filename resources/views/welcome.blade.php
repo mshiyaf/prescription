@@ -47,7 +47,7 @@
     <link href="https://www.booknmeet.com/assets/dropdownstyle/css/cs-select.css" rel="stylesheet">
     <link href="https://www.booknmeet.com/assets/dropdownstyle/css/cs-skin-border.css" rel="stylesheet">
 
-    <link href="/css/app.css?v=33" rel="stylesheet">
+    <link href="/css/app.css?v=35" rel="stylesheet">
 
 </head>
 
@@ -249,7 +249,7 @@
                                         <div class="m_initial card" style="border-radius: 10px; border: 1px solid rgb(26, 187, 156);">
                                         <div class="card-body" style="padding: 22px 18px 7px 20px;">
 
-                                          <div class="row">
+                                          <div class="row" id="m_name">
                                               <div class="form-group">
                                                   <div class="col-md-2 col-xs-12">
                                                       <label for="medicine">Enter Medicine *</label>
@@ -268,7 +268,7 @@
                                           <br>
 
 
-                                          <div class="row">
+                                          <div class="row" id="m_strength">
                                               <div class="form-group">
                                                   <div class="col-md-2 col-xs-12">
                                                       <label for="strength">Strength *</label>
@@ -297,16 +297,16 @@
                                           </div>
                                           <br>
 
-                                          <div class="row">
+                                          <div class="row" id="m_dur">
                                               <div class="form-group">
                                                   <div class="col-md-2 col-xs-12">
                                                       <label for="duration">Duration *</label>
                                                   </div>
-                                              <div class="col-md-3">
+                                              <div class="col-md-1 col-xs-4">
                                                   <input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" " required>
                                               </div>
 
-                                              <div class="col-md-2">
+                                              <div class="col-md-2 col-xs-8">
                                                   <select name="time" id="time" class="form-control" placeholder=" ">
                                                   <option>Days</option>
                                                   <option>Weeks</option>
@@ -393,82 +393,31 @@
                                         </div>
 
                                         <div class="input_fields_wrap">
-                                              <div class="x_panel">
+                                            <div class="x_panel">
                                                 <div class="x_title">
                                                   <h5><i class="fa fa-align-left"></i> Added Medicines </h5>
                                                   <div class="clearfix"></div>
                                                 </div>
-                                                <div class="x_content">
 
+                                                <div class="x_content">
                                                   <!-- start accordion -->
                                                   <div id="input_pres" class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
-                                                    {{-- <div class="panel">
-                                                      <a class="panel-heading collapsed" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                                        <h4 class="panel-title">Collapsible Group Items #1 <button type="button" class="del_medicine btn btn-primary">Delete</button></h4>
-                                                      </a>
-                                                      <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                                        <div class="panel-body">
-                                                          <table class="table table-bordered">
-                                                            <thead>
-                                                              <tr>
-                                                                <th>#</th>
-                                                                <th>First Name</th>
-                                                                <th>Last Name</th>
-                                                                <th>Username</th>
-                                                              </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                              <tr>
-                                                                <th scope="row">1</th>
-                                                                <td>Mark</td>
-                                                                <td>Otto</td>
-                                                                <td>@mdo</td>
-                                                              </tr>
-                                                              <tr>
-                                                                <th scope="row">2</th>
-                                                                <td>Jacob</td>
-                                                                <td>Thornton</td>
-                                                                <td>@fat</td>
-                                                              </tr>
-                                                              <tr>
-                                                                <th scope="row">3</th>
-                                                                <td>Larry</td>
-                                                                <td>the Bird</td>
-                                                                <td>@twitter</td>
-                                                              </tr>
-                                                            </tbody>
-                                                          </table>
-                                                        </div>
-                                                      </div>
-                                                    </div> --}}
                                                   </div>
                                                   <!-- end of accordion -->
-
-
                                                 </div>
-                                              </div>
                                             </div>
+                                        </div>
                                     </form>
 
 
-
-                                    {{-- <div class="row">
-                                        <div class="form-group">
-                                            <div class="col-md-4 col-xs-12">
-                                                <label for="description">Description (200 max)</label>
-                                            </div>
-                                            <div class="col-md-8 col-xs-12">
-                                                <textarea class="form-control" data-parsley-trigger="keyup" data-parsley-maxlength="200" data-parsley-validation-threshold="10" name="description" cols="50" rows="4" id="description" style="margin-bottom: 12px;"></textarea>
-                                            </div>
-                                      </div>
-                                    </div> --}}
                                     <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-5">
-
                                       <button type="button" class="cancel btn btn-primary">Cancel</button>
                                       <button class="prescription_btn btn btn-success" id="submit">Submit</button>
                                     </div>
 
                                 </div>
+
+
                                 <div id="p_history" class="tab-pane fade in">
                                   @foreach ($prescription as $p)
                                       <h4>{{ $p->id }}</h4>
@@ -533,6 +482,7 @@
     <script src="https://www.booknmeet.com/assets/typeahead.bundle.js"></script>
     <script>
         var app_id;
+        var x = 0;
         var m_inval = null;
         var add_button = $(".add_field_button");
         var wrapper = $("#input_pres");
@@ -560,16 +510,7 @@
             $("#med_intake > label.btn").on("click", function(){
                 // num = +this.value;
                 m_inval = $(this).find("input[name=med_intake]").val();
-                alert(m_inval);
             });
-
-            // Constructing the suggestion engine
-            var medicines = new Bloodhound({
-                datumTokenizer: Bloodhound.tokenizers.whitespace,
-                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                prefetch: {url:'/get-medicine-names',cache:false}
-            });
-
 
 
             // Initializing the typeahead
@@ -653,14 +594,16 @@
             e.preventDefault();
 
 
-            var mname=document.getElementById("med_name").value;
-            var mstrength=document.getElementById("med_strength").value;
-            var mform=document.getElementById("m_form").value;
-            var mdur=document.getElementById("duration").value;
-            var mtime=document.getElementById("time").value;
+            x++;
+
+            var mname = document.getElementById("med_name").value;
+            var mstrength = document.getElementById("med_strength").value;
+            var mform = document.getElementById("m_form").value;
+            var mdur = document.getElementById("duration").value;
+            var mtime = document.getElementById("time").value;
 
 
-            var $div1 = ('<div class="panel" ><a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><h4 id="mname">'+mname+'</h4></a><div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo"><div class="panel-body"><table class="table "><thead><th >Strength</th><td id="mstrength">'+mstrength+'</td></thead><th >Dosage form</th><td id="mform">'+mform+'</td><th >Duration</th><td id="mdur">'+mdur+''+mtime+'</td><th>Intake</th><td id="mval">'+m_inval+'</td></table></div></div><button type="button" class="del_medicine btn btn-primary">Delete</button></div>');
+            var $div1 = ('<div id="to_delete"><div class="panel added_medicine col-md-11 col-xs-9"><a class="panel-heading collapsed" role="tab" id="heading'+x+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+x+'" aria-expanded="false" aria-controls="collapse'+x+'"><h5 id="mname">'+mname+'</h5></a><div id="collapse'+x+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+x+'"><div class="panel-body"><div class="col-md-2"><h4>Strength</h4><p id="mstrength">'+mstrength+'</p></div><div class="col-md-2"><h4>Dosage form</h4><p id="mform">'+mform+'</p></div><div class="col-md-2"><h4>Duration</h4><p id="mdur">'+mdur+''+mtime+'</p></div><div class="col-md-2"><h4>Intake</h4><p id="mval">'+m_inval+'</p></div></div></div></div><div class="col-md-1 col-xs-1"><button type="button" class="del_medicine btn btn-primary">Delete</button></div></div>');
 
             $(wrapper).append($div1);
 
@@ -671,7 +614,7 @@
 
         $(wrapper).on("click",".del_medicine",function(e){
           e.preventDefault();
-          $(this).parent().parent().parent().remove();
+          $(this).parent().parent().remove();
 
         });
 
@@ -679,24 +622,23 @@
           e.preventDefault();
           // var n=0;
 
-          $(".panel").each(function(){
+          $(".added_medicine").each(function(){
             // n++;
             var appointment_id = 1;
             var medicine_name = $(this).find("#mname").html();
-
+            alert(medicine_name);
             var medicine_strength = $(this).find("#mstrength").html();
-            alert(medicine_strength);
             var dosage_form = $(this).find("#mform").html();
-            var duration = $(this).find("#mdur").html();
+            // var duration = $(this).find("#mdur").html();
             // var time = $(this).find("select[name=time]").val();
             // var full_dur = duration+time;
-            var medicine_intake = 'med_intake'+n;
+            // var medicine_intake = 'med_intake'+n;
             var intake_timing = $(this).find("#mval").html();
-            var morning = $(this).find("input[id=mrngcheck]").is(":checked") ? 1:0;
-            var afternoon = $(this).find("input[id=nooncheck]").is(":checked") ? 1:0;
-            var evening = $(this).find("input[id=eveningcheck]").is(":checked") ? 1:0;
-            var custom_timing = $(this).find("input[id=custom_timing]").val();
-            var description = $(this).find("textarea[name=description]").val();
+            // var morning = $(this).find("input[id=mrngcheck]").is(":checked") ? 1:0;
+            // var afternoon = $(this).find("input[id=nooncheck]").is(":checked") ? 1:0;
+            // var evening = $(this).find("input[id=eveningcheck]").is(":checked") ? 1:0;
+            // var custom_timing = $(this).find("input[id=custom_timing]").val();
+            // var description = $(this).find("textarea[name=description]").val();
 
             $.ajaxSetup({
             headers: {
@@ -705,9 +647,9 @@
             });
 
 
-                        $("#input_pres").parsley().validate();
-                        if($("#input_pres").parsley().isValid())
-                        {
+            $("#input_pres").parsley().validate();
+            if($("#input_pres").parsley().isValid())
+            {
             $.ajax({
               url: "/prescription",
               method: 'post',
@@ -719,11 +661,11 @@
                  dosage_form:dosage_form,
                  // full_dur:full_dur,
                  intake_timing:intake_timing,
-                 morning:morning,
-                 afternoon:afternoon,
-                 evening:evening,
-                 custom_timing:custom_timing,
-                 description:description
+                 // morning:morning,
+                 // afternoon:afternoon,
+                 // evening:evening,
+                 // custom_timing:custom_timing,
+                 // description:description
 
               },
               success: function(data){

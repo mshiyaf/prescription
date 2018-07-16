@@ -18,7 +18,7 @@ class CreatePrescriptionsTable extends Migration
             $table->integer('appointment_id')->unsigned();
             $table->string('medicine_name');
             $table->string('medicine_strength');
-            $table->integer('dosage_form');
+            $table->string('dosage_form');
             $table->string('duration');
             $table->string('intake_timing');
             $table->integer('morning');
