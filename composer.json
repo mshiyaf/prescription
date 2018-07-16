@@ -9,8 +9,7 @@
         "fabpot/goutte": "^3.2",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.6.*",
-        "laravel/tinker": "^1.0",
-        "weidner/goutte": "^1.0"
+        "laravel/tinker": "^1.0"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

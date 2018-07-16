@@ -10,8 +10,80 @@
 
 @media (min-width: 992px) {
   #m_form_label {
-    padding-left: 40px;
+    padding-left: 87px;
     width: 25%;
   }
+}
+
+@media (max-width: 992px) {
+  #m_form_label {
+    padding-top: 20px;
+  }
+}
+
+.typeahead,
+.tt-query,
+.tt-hint {
+  line-height: 30px;
+  outline: medium none;
+}
+
+.typeahead {
+  background-color: #FFFFFF;
+}
+
+.twitter-typeahead {
+  width: 100%;
+}
+
+.typeahead:focus {
+  border: 2px solid #CCD0D7;
+}
+
+.tt-query {
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+
+.tt-hint {
+  color: #999999;
+}
+
+.tt-menu {
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 12px;
+  padding: 8px 0;
+  width: 100%;
+}
+
+.tt-suggestion {
+  font-size: 12px;
+  /* Set suggestion dropdown font size */
+  padding: 3px 20px;
+}
+
+.tt-suggestion:hover {
+  cursor: pointer;
+  background-color: #1ABB9C;
+  color: #FFFFFF;
+}
+
+.tt-suggestion p {
+  margin: 0;
+}
+
+.added_medicine {
+  padding: 0px 0px 0px 0px;
+}
+
+#mname {
+  margin-top: -6px;
+  margin-bottom: -2px;
+  font-size: 13px;
+  font-weight: 600;
 }
 

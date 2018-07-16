@@ -47,7 +47,7 @@
     <link href="https://www.booknmeet.com/assets/dropdownstyle/css/cs-select.css" rel="stylesheet">
     <link href="https://www.booknmeet.com/assets/dropdownstyle/css/cs-skin-border.css" rel="stylesheet">
 
-    <link href="/css/app.css?v=25" rel="stylesheet">
+    <link href="/css/app.css?v=35" rel="stylesheet">
 
 </head>
 
@@ -221,7 +221,7 @@
             </div>
 
             <div class="modal fade bs-recurring-modal-lg in" tabindex="-1" role="dialog" aria-hidden="true" style="display: none; padding-right: 15px;">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-lg">
                     <div class="modal-content">
 
                         <div class="modal-header" id="pres_tab">
@@ -243,31 +243,37 @@
 
 
 
-                                    <form  id="input_pres" accept-charset="UTF-8" id="rcapp" data-parsley-validate>
+                                    <form accept-charset="UTF-8" id="rcapp" data-parsley-validate>
 
                                         <div class="input_fields_wrap">
                                         <div class="m_initial card" style="border-radius: 10px; border: 1px solid rgb(26, 187, 156);">
-                                        <div class="card-body" style="padding: 17px 0px 6px 15px;">
+                                        <div class="card-body" style="padding: 22px 18px 7px 20px;">
 
-                                          <div class="row">
+                                          <div class="row" id="m_name">
                                               <div class="form-group">
-                                                  <div class="col-md-3 col-xs-12">
-                                                      <label for="medicine">Choose Medicine *</label>
+                                                  <div class="col-md-2 col-xs-12">
+                                                      <label for="medicine">Enter Medicine *</label>
                                                   </div>
-                                                  <div class="col-md-8 col-xs-12">
-                                                      <select class="form-control" required="" id="med_name" name="med_name"><option selected="selected" value="">Choose..</option><option value="120">dolo</option><option value="130">otrivin</option></select>
+                                                  <div class="col-md-3 col-xs-12">
+                                                      <input type="text" class="form-control typeahead tt-query" autocomplete="off" spellcheck="false" required="" id="med_name" name="med_name">
+                                                  </div>
+                                                  <div class="col-md-3 col-xs-12" id="m_form_label">
+                                                      <label for="m_brand">Brand *</label>
+                                                  </div>
+                                                  <div class="col-md-3 col-xs-12">
+                                                      <input type="text" class="form-control typeahead tt-query" autocomplete="off" spellcheck="false" required="" id="med_brand" name="med_brand">
                                                   </div>
                                               </div>
                                           </div>
                                           <br>
 
 
-                                          <div class="row">
+                                          <div class="row" id="m_strength">
                                               <div class="form-group">
-                                                  <div class="col-md-3 col-xs-12">
+                                                  <div class="col-md-2 col-xs-12">
                                                       <label for="strength">Strength *</label>
                                                   </div>
-                                                  <div class="col-md-2 col-xs-12">
+                                                  <div class="col-md-3 col-xs-12">
                                                       <input class="form-control" id="med_strength" required="" placeholder="Dosage" name="med_strength" type="text">
                                                   </div>
                                                   <div class="col-md-3 col-xs-12" id="m_form_label">
@@ -276,31 +282,31 @@
                                                   <div class="col-md-3 col-xs-12">
                                                       <select class="form-control" required="" id="m_form" name="m_form">
                                                         <option selected="selected" value="">Form..</option>
-                                                        <option value="1">Tablet</option>
-                                                        <option value="2">Suspension</option>
-                                                        <option value="3">Ointment</option>
-                                                        <option value="4">Syrup</option>
-                                                        <option value="5">Eye Drop</option>
-                                                        <option value="6">Ear Drop</option>
-                                                        <option value="7">Suppository</option>
-                                                        <option value="8">Nebulizer</option>
-                                                        <option value="9">Inhaler</option>
+                                                        <option value="Tablet">Tablet</option>
+                                                        <option value="Suspension">Suspension</option>
+                                                        <option value="Ointment">Ointment</option>
+                                                        <option value="Syrup">Syrup</option>
+                                                        <option value="Eye Drop">Eye Drop</option>
+                                                        <option value="Ear Drop">Ear Drop</option>
+                                                        <option value="Suppository">Suppository</option>
+                                                        <option value="Nebulizer">Nebulizer</option>
+                                                        <option value="Inhaler">Inhaler</option>
                                                       </select>
                                                   </div>
                                               </div>
                                           </div>
                                           <br>
 
-                                          <div class="row">
+                                          <div class="row" id="m_dur">
                                               <div class="form-group">
-                                                  <div class="col-md-3 col-xs-12">
+                                                  <div class="col-md-2 col-xs-12">
                                                       <label for="duration">Duration *</label>
                                                   </div>
-                                              <div class="col-md-3">
+                                              <div class="col-md-1 col-xs-4">
                                                   <input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" " required>
                                               </div>
 
-                                              <div class="col-md-2">
+                                              <div class="col-md-2 col-xs-8">
                                                   <select name="time" id="time" class="form-control" placeholder=" ">
                                                   <option>Days</option>
                                                   <option>Weeks</option>
@@ -314,18 +320,24 @@
 
                                           <div class="row" id="intake">
                                               <div class="form-group">
-                                                  <div class="col-md-3 col-xs-12">
+                                                  <div class="col-md-2 col-xs-12">
                                                       <label for="med_intake">Intake *</label>
                                                   </div>
-                                                  <div class="col-md-6 col-xs-12">
+                                                  <div class="col-md-3 col-xs-12">
                                                       <div id="med_intake" class="btn-group" data-toggle="buttons">
-                                                          <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                            <input type="radio" name="med_intake1" value="before">Before food</input>
+                                                          <label class="btn btn-default" id="med_intake_but" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                                            <input type="radio"  name="med_intake"  value="before">Before food</input>
                                                           </label>
                                                           <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                            <input type="radio" name="med_intake1" value="after">After food</input>
+                                                            <input type="radio" name="med_intake"  value="after">After food</input>
                                                           </label>
                                                       </div>
+                                                  </div>
+                                                  <div class="col-md-3 col-xs-12" id="m_form_label">
+                                                      <label for="m_amount">Intake Amount</label>
+                                                  </div>
+                                                  <div class="col-md-3 col-xs-12">
+                                                      <input type="text" class="form-control" id="med_amount" name="med_amount">
                                                   </div>
                                               </div>
                                           </div>
@@ -336,19 +348,22 @@
                                             <div class="form-group">
                                               <div class="col-sm-2">
 
-                                                    <input type="checkbox" value="1" id="mrngcheck">
-                                                    <label for="mrngcheck">Morning</label>
+                                                    <input type="hidden" name="mrngcheck" id="mrngcheck" value="0">
+                                                    <input type="checkbox" value="1" id="mrngcheck" onchange="document.getElementById('mrngcheck').value = this.checked ? 1 : 0">
+                                                    <label>Morning</label>
                                               </div>
 
                                               <div class="col-sm-2">
 
-                                                    <input type="checkbox" value="1" id="nooncheck">
-                                                    <label for="nooncheck">Noon</label>
+                                                    <input type="hidden" name="nooncheck" id="nooncheck" value="0">
+                                                    <input type="checkbox" value="1" id="nooncheck" onchange="document.getElementById('nooncheck').value = this.checked ? 1 : 0">
+                                                    <label>Noon</label>
                                               </div>
 
                                               <div class="col-sm-2">
 
-                                                    <input type="checkbox" value="1" id="eveningcheck">
+                                                    <input type="hidden" name="eveningcheck" id="eveningcheck" value="0">
+                                                    <input type="checkbox" value="1" id="eveningcheck" onchange="document.getElementById('eveningcheck').value = this.checked ? 1 : 0">
                                                     <label>Evening</label>
 
                                               </div>
@@ -363,33 +378,46 @@
                                           </div>
                                           <br>
 
-
-                                          <div class="row">
+                                          <div class="row" id="add_medicine">
                                               <div class="form-group">
-                                                  <div class="col-md-4 col-xs-12">
-                                                      <label for="description">Description (200 max)</label>
-                                                  </div>
-                                                  <div class="col-md-7 col-xs-12">
-                                                      <textarea class="form-control" data-parsley-trigger="keyup" data-parsley-maxlength="200" data-parsley-validation-threshold="10" name="description" cols="50" rows="4" id="description"></textarea>
+                                                  <div class="col-md-8 col-xs-12">
+                                                    <button type="button" id="add_medicine" class="add_field_button btn btn-primary">Add Medicine</button>
+                                                    <button class="btn btn-primary" type="reset">Reset</button>
                                                   </div>
                                               </div>
                                           </div>
-                                          <br>
 
 
                                         </div>
                                         </div>
                                         </div>
 
+                                        <div class="input_fields_wrap">
+                                            <div class="x_panel">
+                                                <div class="x_title">
+                                                  <h5><i class="fa fa-align-left"></i> Added Medicines </h5>
+                                                  <div class="clearfix"></div>
+                                                </div>
+
+                                                <div class="x_content">
+                                                  <!-- start accordion -->
+                                                  <div id="input_pres" class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                                                  </div>
+                                                  <!-- end of accordion -->
+                                                </div>
+                                            </div>
+                                        </div>
                                     </form>
 
-                                    <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-3">
-                                        <button type="button" id="add_medicine" class="add_field_button btn btn-primary">Add Medicine</button>
-                                        <button type="button" class="cancel btn btn-primary">Cancel</button>
-                                        <button class="prescription_btn btn btn-success" id="submit">Submit</button>
+
+                                    <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-5">
+                                      <button type="button" class="cancel btn btn-primary">Cancel</button>
+                                      <button class="prescription_btn btn btn-success" id="submit">Submit</button>
                                     </div>
 
                                 </div>
+
+
                                 <div id="p_history" class="tab-pane fade in">
 
 
@@ -449,9 +477,11 @@
     <script src="https://www.booknmeet.com/assets/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
     <script src="https://www.booknmeet.com/assets/moment/min/moment.min.js"></script>
     <script src="https://www.booknmeet.com/assets/datepicker/daterangepicker.js"></script>
+    <script src="https://www.booknmeet.com/assets/typeahead.bundle.js"></script>
     <script>
         var app_id;
-        var x = 1;
+        var x = 0;
+        var m_inval = null;
         var add_button = $(".add_field_button");
         var wrapper = $("#input_pres");
         var wrapper2 = $('#p_history');
@@ -467,6 +497,31 @@
             $("body").on('click', ".cancel,.close", function() {
                 $(this).parents(".modal").hide();
             });
+
+            // Constructing the suggestion engine
+            var medicines = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.whitespace,
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                prefetch: {url:'/get-medicine-names',cache:false}
+            });
+
+
+            $("#med_intake > label.btn").on("click", function(){
+                // num = +this.value;
+                m_inval = $(this).find("input[name=med_intake]").val();
+            });
+
+
+            // Initializing the typeahead
+            $('.typeahead').typeahead({
+                hint: true,
+                highlight: true, /* Enable substring highlighting */
+                minLength: 1 /* Specify minimum characters required for showing result */
+            },
+            {
+                source: medicines
+            });
+
 
         });
 
@@ -553,48 +608,85 @@
 
         };
 
-		// function display_history(array details){
-    //   $("#p_history").html('');
-		// 	$("#p_history").html(details);
-		// }
+
 
         $(add_button).click(function(e) {
             e.preventDefault();
 
             x++;
-            var med_intake = 'med_intake'+x;
-            var $div1 = ('<div class="m_initial card" style="border-radius: 10px; border: 1px solid rgb(26, 187, 156);"><div class="card-body" style="padding: 17px 0px 6px 15px;"><div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="medicine">Choose Medicine *</label></div><div class="col-md-8 col-xs-12"><select class="form-control" required="" id="med_name" name="med_name"><option selected="selected" value="">Choose..</option><option value="120">dolo</option></select></div></div></div><br><div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="strength">Strength *</label></div><div class="col-md-2 col-xs-12"><input class="form-control" id="med_strength" required="" placeholder="Dosage" name="med_strength" type="text"></div><div class="col-md-3 col-xs-12" id="m_form_label"><label for="m_form">Dosage Form *</label></div><div class="col-md-3 col-xs-12"><select class="form-control" required="" id="m_form" name="m_form"><option selected="selected" value="">Form..</option><option value="1">Tablet</option><option value="2">Suspension</option><option value="3">Ointment</option><option value="4">Syrup</option><option value="5">Eye Drop</option><option value="6">Ear Drop</option><option value="7">Suppository</option><option value="8">Nebulizer</option><option value="9">Inhaler</option></select></div></div></div><br><div class="row"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="duration">Duration *</label></div><div class="col-md-3"><input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" "></div><div class="col-md-2"><select name="time" id="time" class="form-control" placeholder=" "><option>Days</option><option>Weeks</option><option>Months</option></select></div></div></div><br><div class="row" id="intake"><div class="form-group"><div class="col-md-3 col-xs-12"><label for="med_intake">Intake *</label></div><div class="col-md-6 col-xs-12"><div id="med_intake" class="btn-group" data-toggle="buttons"><label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"><input type="radio" name='+med_intake+' value="before">Before food</input></label><label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default"><input type="radio" name='+med_intake+' value="after">After food</input></label></div></div></div></div><br><div class="row" id="timing"><div class="form-group"><div class="col-sm-2"><input type="checkbox" value="1" id="mrngcheck"><label>Morning</label></div><div class="col-sm-2"><input type="checkbox" value="1" id="nooncheck"><label>Noon</label></div><div class="col-sm-2"><input type="checkbox" value="1" id="eveningcheck"><label>Evening</label></div><div class="col-sm-6"><div class="col-sm-3"><label for="custom_timing">Other</label></div><input type="text" id="custom_timing"></div></div></div><br><div class="row"><div class="form-group"><div class="col-md-4 col-xs-12"><label for="description">Description (200 max)</label></div><div class="col-md-7 col-xs-12"><textarea class="form-control" data-parsley-trigger="keyup" data-parsley-maxlength="200" data-parsley-validation-threshold="10" name="description" cols="50" rows="4" id="description"></textarea></div></div></div><br><div class="form-group"><button type="button" class="del_medicine btn btn-primary">Remove</button></div></div></div>');
+
+            var mname=document.getElementById("med_name").value;
+            var mbrand=document.getElementById("med_brand").value;
+            var mstrength=document.getElementById("med_strength").value;
+            var mform=document.getElementById("m_form").value;
+            var mdur=document.getElementById("duration").value;
+            var mtime=document.getElementById("time").value;
+            var mintake_amount=document.getElementById("med_amount").value;
+            var mintake_time="";
+            if (document.getElementById("mrngcheck").value==1) {
+              var mrngcheck=1;
+              var str1 ="morning ";
+            mintake_time =  mintake_time.concat(str1);
+            }
+            if (document.getElementById("nooncheck").value==1) {
+              var nooncheck=1;
+              var str2=" noon";
+            mintake_time=  mintake_time.concat(str2);
+            }
+            if (document.getElementById("eveningcheck").value==1) {
+              var eveningcheck=1;
+              var str3=" evening";
+              mintake_time=mintake_time.concat(str3);
+            }
+            var custom_timing=document.getElementById("custom_timing").value;
+
+            var $div1 = ('<div id="to_delete"><div class="panel added_medicine col-md-11 col-xs-9"><a class="panel-heading collapsed" role="tab" id="heading'+x+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+x+'" aria-expanded="false" aria-controls="collapse'+x+'"><h5 id="mname">'+mname+'</h5></a><div id="collapse'+x+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+x+'"><div class="panel-body"><div class="col-md-2"><h4>Brand</h4><p id="mbrand">'+mbrand+'</p></div><div class="col-md-2"><h4>Strength</h4><p id="mstrength">'+mstrength+'</p></div><div class="col-md-2"><h4>Dosage form</h4><p id="mform">'+mform+'</p></div><div class="col-md-2"><h4>Duration</h4><p id="mdur">'+mdur+''+mtime+'</p></div><div class="col-md-2"><h4>Intake</h4><p id="mval">'+m_inval+'</p></div><div class="col-md-2"><h4>Intake Amount</h4><p id="mintake_amount">'+mintake_amount+'</p></div><div class="col-md-2"><h4>Intake Time</h4><p id="mintake_time">'+mintake_time+'</p></div><div class="col-md-2"><h4>Custom Intake Time</h4><p id="custom_timing">'+custom_timing+'</p></div><div class="col-md-1 col-xs-1"><button type="button" class="edit_medicine btn btn-primary">Edit</button></div></div></div></div><div class="col-md-1 col-xs-1"><button type="button" class="del_medicine btn btn-primary">Delete</button></div></div>');
 
             $(wrapper).append($div1);
+
+            $('#rcapp')[0].reset();
+
 
         });
 
         $(wrapper).on("click",".del_medicine",function(e){
           e.preventDefault();
-          $(this).parent().parent().parent().remove();
+          $(this).parent().parent().remove();
 
         });
 
+        // $(wrapper).on("click",".edit_medicine",function(e){
+        //   e.preventDefault();
+        //   // var mname2;
+        //   // var mname2 = $(this).find("#mname").html();
+        //   console.log(mname);
+        //   // var mname=$(this).siblings().find("#mname").html();
+        //
+        //
+        //
+        // });
+
         $('#submit').click(function(e){
           e.preventDefault();
-          var n=0;
+          // var n=0;
 
-          $(".m_initial").each(function(){
-            n++;
+          $(".added_medicine").each(function(){
+            // n++;
             var appointment_id = 1;
-            var medicine_id = $(this).find("select[name=med_name]").val();
-            var medicine_strength = $(this).find("input[name=med_strength]").val();
-            var dosage_form = $(this).find("select[name=m_form]").val();
-            var duration = $(this).find("input[name=duration]").val();
-            var time = $(this).find("select[name=time]").val();
-            var full_dur = duration+time;
-            var medicine_intake = 'med_intake'+n;
-            var intake_timing = $(this).find("input[name="+medicine_intake+"]:checked").val();
-            var morning = $(this).find("input[id=mrngcheck]").is(":checked") ? 1:0;
-            var afternoon = $(this).find("input[id=nooncheck]").is(":checked") ? 1:0;
-            var evening = $(this).find("input[id=eveningcheck]").is(":checked") ? 1:0;
-            var custom_timing = $(this).find("input[id=custom_timing]").val();
-            var description = $(this).find("textarea[name=description]").val();
+            var medicine_name = $(this).find("#mname").html();
+            alert(medicine_name);
+            var medicine_strength = $(this).find("#mstrength").html();
+            var dosage_form = $(this).find("#mform").html();
+            // var duration = $(this).find("#mdur").html();
+            // var time = $(this).find("select[name=time]").val();
+            // var full_dur = duration+time;
+            // var medicine_intake = 'med_intake'+n;
+            var intake_timing = $(this).find("#mval").html();
+            // var morning = $(this).find("input[id=mrngcheck]").is(":checked") ? 1:0;
+            // var afternoon = $(this).find("input[id=nooncheck]").is(":checked") ? 1:0;
+            // var evening = $(this).find("input[id=eveningcheck]").is(":checked") ? 1:0;
+            // var custom_timing = $(this).find("input[id=custom_timing]").val();
+            // var description = $(this).find("textarea[name=description]").val();
 
             $.ajaxSetup({
             headers: {
@@ -611,16 +703,16 @@
               dataType:'json',
               data: {
                 appointment_id:appointment_id,
-                 medicine_id:medicine_id,
+                 medicine_name:medicine_name,
                  medicine_strength:medicine_strength,
                  dosage_form:dosage_form,
-                 full_dur:full_dur,
+                 // full_dur:full_dur,
                  intake_timing:intake_timing,
-                 morning:morning,
-                 afternoon:afternoon,
-                 evening:evening,
-                 custom_timing:custom_timing,
-                 description:description
+                 // morning:morning,
+                 // afternoon:afternoon,
+                 // evening:evening,
+                 // custom_timing:custom_timing,
+                 // description:description
 
               },
               success: function(data){
@@ -628,11 +720,11 @@
               }
             });
 
-
           }
+          });
 
     });
-  });
+
 
     </script>
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "23e084587394eb31b0b45baac6682b1d",
+    "content-hash": "cddc110d55d91c9a3138bb9ead1778af",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2690,56 +2690,6 @@
                 "environment"
             ],
             "time": "2018-07-01T10:25:50+00:00"
-        },
-        {
-            "name": "weidner/goutte",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dweidner/laravel-goutte.git",
-                "reference": "6b10c95f27be8750daecea2717af279a59563295"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dweidner/laravel-goutte/zipball/6b10c95f27be8750daecea2717af279a59563295",
-                "reference": "6b10c95f27be8750daecea2717af279a59563295",
-                "shasum": ""
-            },
-            "require": {
-                "fabpot/goutte": "^3.1",
-                "illuminate/support": "5.*",
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Weidner\\Goutte\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Daniel Weidner",
-                    "email": "hallo@danielweidner.de",
-                    "homepage": "http://danielweidner.de"
-                }
-            ],
-            "description": "Laravel 5 package for Gouette, a simple PHP Web Scraper",
-            "homepage": "https://github.com/dweidner/laravel-goutte",
-            "keywords": [
-                "goutte",
-                "laravel",
-                "weidner"
-            ],
-            "time": "2017-01-22T12:15:51+00:00"
         }
     ],
     "packages-dev": [
