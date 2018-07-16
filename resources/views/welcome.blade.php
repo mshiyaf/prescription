@@ -635,16 +635,16 @@
 
         });
 
-        $(wrapper).on("click",".edit_medicine",function(e){
-          e.preventDefault();
-          $(this).siblings().each(function(){
-            var mname = getElementById("mname").value();
-          });
-          // var mname=$(this).siblings().find("#mname").html();
-          console.log(mname);
-
-
-        });
+        // $(wrapper).on("click",".edit_medicine",function(e){
+        //   e.preventDefault();
+        //   // var mname2;
+        //   // var mname2 = $(this).find("#mname").html();
+        //   console.log(mname);
+        //   // var mname=$(this).siblings().find("#mname").html();
+        //
+        //
+        //
+        // });
 
         $('#submit').click(function(e){
           e.preventDefault();
