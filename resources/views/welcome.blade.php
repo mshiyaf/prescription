@@ -593,15 +593,32 @@
         $(add_button).click(function(e) {
             e.preventDefault();
 
-
             x++;
 
-            var mname = document.getElementById("med_name").value;
-            var mstrength = document.getElementById("med_strength").value;
-            var mform = document.getElementById("m_form").value;
-            var mdur = document.getElementById("duration").value;
-            var mtime = document.getElementById("time").value;
-
+            var mname=document.getElementById("med_name").value;
+            var mbrand=document.getElementById("med_brand").value;
+            var mstrength=document.getElementById("med_strength").value;
+            var mform=document.getElementById("m_form").value;
+            var mdur=document.getElementById("duration").value;
+            var mtime=document.getElementById("time").value;
+            var mintake_amount=document.getElementById("med_amount").value;
+            var mintake_time="";
+            if (document.getElementById("mrngcheck").value==1) {
+              var mrngcheck=1;
+              var str1 ="morning ";
+            mintake_time =  mintake_time.concat(str1);
+            }
+            if (document.getElementById("nooncheck").value==1) {
+              var nooncheck=1;
+              var str2=" noon";
+            mintake_time=  mintake_time.concat(str2);
+            }
+            if (document.getElementById("eveningcheck").value==1) {
+              var eveningcheck=1;
+              var str3=" evening";
+              mintake_time=mintake_time.concat(str3);
+            }
+            var custom_timing=document.getElementById("custom_timing").value;
 
             var $div1 = ('<div id="to_delete"><div class="panel added_medicine col-md-11 col-xs-9"><a class="panel-heading collapsed" role="tab" id="heading'+x+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+x+'" aria-expanded="false" aria-controls="collapse'+x+'"><h5 id="mname">'+mname+'</h5></a><div id="collapse'+x+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+x+'"><div class="panel-body"><div class="col-md-2"><h4>Strength</h4><p id="mstrength">'+mstrength+'</p></div><div class="col-md-2"><h4>Dosage form</h4><p id="mform">'+mform+'</p></div><div class="col-md-2"><h4>Duration</h4><p id="mdur">'+mdur+''+mtime+'</p></div><div class="col-md-2"><h4>Intake</h4><p id="mval">'+m_inval+'</p></div></div></div></div><div class="col-md-1 col-xs-1"><button type="button" class="del_medicine btn btn-primary">Delete</button></div></div>');
 
