@@ -44,7 +44,7 @@ class PrescriptionsController extends Controller
 
       public function show(){
 
-          $prescription =Prescription::all();
+          $prescription = Prescription::all();
           $medicines = Medicine::all();
           $appointments = Appointment::all();
 
@@ -52,12 +52,41 @@ class PrescriptionsController extends Controller
 
       }
 
-  public function getMedicineName(){
+      public function get_history(){
+        $mobile = request('mobile');
+        $id = request('id');
+        $x = 0;
 
-      $medicine = Medicine::all('medicine_name')->toArray();
-      return array_column($medicine, 'medicine_name');
+        $appointment = Appointment::where('mobile',"=",$mobile)->pluck("id")->all();
+        foreach ($appointment as $a) {
+          $prescriptions = Prescription::select("medicine_id","medicine_strength","dosage_form","duration")->where('appointment_id',"=",$a)->get();
+          // $details = collect(['med_name', 'med_strength','dosage_form','duration']);
+          foreach ($prescriptions as $p) {
+            $x++;
 
-  }
+            $medicine = Medicine::find($p->medicine_id);
 
+            if($x==1){
+            $details = collect([$medicine->medicine_name,$p->medicine_strength,$p->dosage_form,$p->duration]);
+            }
+            else
+            $details = $details->concat([$medicine->medicine_name,$p->medicine_strength,$p->dosage_form,$p->duration]);
+
+            $details->all();
+
+          }
+        }
+
+        $data = view('/get_history', ['details'=>$details])->render();
+
+        return response()->json(['details'=>$data]);
+      }
+
+      public function getMedicineName(){
+
+          $medicine = Medicine::all('medicine_name')->toArray();
+          return array_column($medicine, 'medicine_name');
+
+      }
 
 }
