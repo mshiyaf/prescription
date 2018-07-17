@@ -638,7 +638,7 @@
         $(wrapper).on("click",".edit_medicine",function(e){
           e.preventDefault();
           // var mname2;
-          var mname2 = $(this).parent().parent().parent().getElementById("m_brand").html();
+          var mname2 = $(this).parent().parent().parent().parent().html();
           // var mname3 = mname2.getElementById("m_brand").html();
           console.log(mname2);
           // var mname=$(this).siblings().find("#mname").html();
