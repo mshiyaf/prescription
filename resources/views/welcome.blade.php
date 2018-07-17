@@ -307,10 +307,10 @@
                                               </div>
 
                                               <div class="col-md-2 col-xs-8">
-                                                  <select name="time" id="time" class="form-control" placeholder=" ">
-                                                  <option>Days</option>
-                                                  <option>Weeks</option>
-                                                  <option>Months</option>
+                                                  <select name="time" id="time" class="form-control" >
+                                                  <option value="Days">Days</option>
+                                                  <option value="Weeks">Weeks</option>
+                                                  <option value="Months">Months</option>
                                                 </select>
                                               </div>
                                               </div>
@@ -349,21 +349,21 @@
                                               <div class="col-sm-2">
 
                                                     <input type="hidden" name="mrngcheck" id="mrngcheck" value="0">
-                                                    <input type="checkbox" value="1" id="mrngcheck" onchange="document.getElementById('mrngcheck').value = this.checked ? 1 : 0">
+                                                    <input type="checkbox" value="1" id="mrngcheck1" onchange="document.getElementById('mrngcheck').value = this.checked ? 1 : 0">
                                                     <label>Morning</label>
                                               </div>
 
                                               <div class="col-sm-2">
 
                                                     <input type="hidden" name="nooncheck" id="nooncheck" value="0">
-                                                    <input type="checkbox" value="1" id="nooncheck" onchange="document.getElementById('nooncheck').value = this.checked ? 1 : 0">
+                                                    <input type="checkbox" value="1" id="nooncheck1" onchange="document.getElementById('nooncheck').value = this.checked ? 1 : 0">
                                                     <label>Noon</label>
                                               </div>
 
                                               <div class="col-sm-2">
 
                                                     <input type="hidden" name="eveningcheck" id="eveningcheck" value="0">
-                                                    <input type="checkbox" value="1" id="eveningcheck" onchange="document.getElementById('eveningcheck').value = this.checked ? 1 : 0">
+                                                    <input type="checkbox" value="1" id="eveningcheck1" onchange="document.getElementById('eveningcheck').value = this.checked ? 1 : 0">
                                                     <label>Evening</label>
 
                                               </div>
@@ -639,7 +639,7 @@
             }
             var custom_timing=document.getElementById("custom_timing").value;
 
-            var $div1 = ('<div id="to_delete"><div class="panel added_medicine col-md-11 col-xs-9"><a class="added_medicine_head panel-heading collapsed" role="tab" id="heading'+x+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+x+'" aria-expanded="false" aria-controls="collapse'+x+'"><h5 id="mname">'+mname+'</h5></a><div id="collapse'+x+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+x+'"><div class="panel-body row"><div class="col-md-2 card mlist_card"><h4 class="h_med">Brand</h4><p id="mbrand">'+mbrand+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Strength</h4><p id="mstrength">'+mstrength+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Dosage Form</h4><p id="mform">'+mform+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Duration</h4><p id="mdur">'+mdur+' '+mtime+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake</h4><p id="mval">'+m_inval+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake Amount</h4><p id="mintake_amount">'+mintake_amount+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake Time</h4><p id="mintake_time">'+mintake_time+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Other</h4><p id="custom_timing">'+custom_timing+'</p></div></div><div><div class="col-md-1 col-xs-12" style="float:right; margin-right:10px; margin-bottom: 5px;"><button type="button" class="edit_medicine btn btn-primary">Edit</button></div></div></div></div><div class="col-md-1 col-xs-1"><button type="button" class="del_medicine btn btn-primary">Delete</button></div></div>');
+            var $div1 = ('<div id="to_delete"><div class="panel added_medicine col-md-11 col-xs-9"><a class="added_medicine_head panel-heading collapsed" role="tab" id="heading'+x+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+x+'" aria-expanded="false" aria-controls="collapse'+x+'"><h5 id="mname">'+mname+'</h5></a><div id="collapse'+x+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+x+'"><div class="panel-body row"><div class="col-md-2 card mlist_card"><h4 class="h_med">Brand</h4><p id="mbrand">'+mbrand+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Strength</h4><p id="mstrength">'+mstrength+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Dosage Form</h4><p id="mform">'+mform+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Duration</h4><p id="mdur" style="display:inline;">'+mdur+'</p><p id="mtime" style="display:inline;">'+mtime+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake</h4><p id="mval">'+m_inval+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake Amount</h4><p id="mintake_amount">'+mintake_amount+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake Time</h4><p id="mintake_time">'+mintake_time+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Other</h4><p id="custom_timing">'+custom_timing+'</p></div></div><div><div class="col-md-1 col-xs-12" style="float:right; margin-right:10px; margin-bottom: 5px;"><button type="button" class="edit_medicine btn btn-primary">Edit</button></div></div></div></div><div class="col-md-1 col-xs-1"><button type="button" class="del_medicine btn btn-primary">Delete</button></div></div>');
 
             $(wrapper).append($div1);
 
@@ -657,14 +657,72 @@
         $(wrapper).on("click",".edit_medicine",function(e){
           e.preventDefault();
           // var mname2;
-          var mname2 = $(this).parent().parent().parent().parent().html();
-          // var mname3 = mname2.getElementById("m_brand").html();
-          console.log(mname2);
+          // var mname2 = $(this).parent().parent().parent().parent().html();
+          var mname1 = $(this).parent().parent().parent().parent().find("#mname").text();
+          var mbrand1 = $(this).parent().parent().parent().parent().find("#mbrand").text();
+          var mstrength1 = $(this).parent().parent().parent().parent().find("#mstrength").text();
+          var mform1 = $(this).parent().parent().parent().parent().find("#mform").text();
+          var mdur1 = $(this).parent().parent().parent().parent().find("#mdur").text();
+          var mtime1 = $(this).parent().parent().parent().parent().find("#mtime").text();
+          var mval1 = $(this).parent().parent().parent().parent().find("#mval").text();
+          var mintake_amount1 = $(this).parent().parent().parent().parent().find("#mintake_amount").text();
+          var mintake_time1 = $(this).parent().parent().parent().parent().find("#mintake_time").text();
+          var mintake_mrng = mintake_time1.includes("morning");
+          var mintake_noon= mintake_time1.includes("noon");
+          var mintake_evening = mintake_time1.includes("evening");
+          var custom_timing1 = $(this).parent().parent().parent().parent().find("#custom_timing").text();
+
+          $('#pres_modal').animate({scrollTop:0},'slow');
+
+          $("#med_name").val(mname1);
+          $("#med_name").trigger('change');
+          $("#med_brand").val(mbrand1);
+          $("#med_brand").trigger('change');
+          $("#med_strength").val(mstrength1);
+          $("#med_strength").trigger('change');
+          $("#m_form").val(mform1);
+          $("#m_form").trigger('change');
+          $("#duration").val(mdur1);
+          $("#duration").trigger('change');
+          $("#time").val(mtime1);
+          // $("#time").trigger('change');
+          $("#med_amount").val(mintake_amount1);
+          $("#med_amount").trigger('change');
+          $("#custom_timing").val(custom_timing1);
+          $("#custom_timing").trigger('change');
+          if (mintake_mrng==true) {
+            $("#mrngcheck1").attr("checked",1);
+          }
+          if(mintake_noon==true){
+            $("#nooncheck1").attr("checked",1);
+          }
+          if(mintake_evening==true){
+            $("#eveningcheck1").attr("checked",1);
+          }
+          console.log(mintake_mrng);
+          console.log(mname1);
+          console.log(mbrand1);
+          console.log(mstrength1);
+          console.log(mform1);
+          console.log(mval1);
+          console.log(mdur1);
+          console.log(mtime1);
+          $(this).parent().parent().parent().parent().parent().remove();
           // var mname=$(this).siblings().find("#mname").html();
 
 
 
         });
+
+          //
+        //   // var x =$(this).closest('h5').find('#mname').text();
+        //   var x=$(this).parent().parent().parent();
+        //   var p=$('x').filter("#mstrength").text();
+        //   // var x=$("div").find("#mname").text();
+        //   console.log(p);
+        //
+        //   // alert(x);
+        // });
 
         $('#submit').click(function(e){
           e.preventDefault();
