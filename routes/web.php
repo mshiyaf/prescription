@@ -19,4 +19,3 @@ Route::get('/get-medicine-names','PrescriptionsController@getMedicineName');
 
 Route::get('/crawl','Gouttecontroller@crawl');
 Route::post('/get_history','PrescriptionsController@get_history');
-Route::post('/get_prescription_history','PrescriptionsController@get_prescription_history');

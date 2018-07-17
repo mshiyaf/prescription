@@ -57,20 +57,18 @@ class PrescriptionsController extends Controller
         $id = request('id');
         $x = 0;
 
-        $appointment = Appointment::where('mobile',"=",$mobile)->pluck("id")->all();
-        foreach ($appointment as $a) {
-          $prescriptions = Prescription::select("medicine_id","medicine_strength","dosage_form","duration")->where('appointment_id',"=",$a)->get();
+        $appointments = Appointment::where('mobile',"=",$mobile)->pluck("id")->all();
+        foreach ($appointments as $a) {
+          $prescriptions = Prescription::select("medicine_name","medicine_strength","dosage_form","duration","created_at")->where('appointment_id',"=",$a)->get();
           // $details = collect(['med_name', 'med_strength','dosage_form','duration']);
           foreach ($prescriptions as $p) {
             $x++;
-
-            $medicine = Medicine::find($p->medicine_id);
-
+            $date = date('d-m-Y',strtotime($p->created_at));
             if($x==1){
-            $details = collect([$medicine->medicine_name,$p->medicine_strength,$p->dosage_form,$p->duration]);
+            $details = collect([$p->medicine_name,$p->medicine_strength,$p->dosage_form,$p->duration,$date]);
             }
             else
-            $details = $details->concat([$medicine->medicine_name,$p->medicine_strength,$p->dosage_form,$p->duration]);
+            $details = $details->concat([$p->medicine_name,$p->medicine_strength,$p->dosage_form,$p->duration,$date]);
 
             $details->all();
 
