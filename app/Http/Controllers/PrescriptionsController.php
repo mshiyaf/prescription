@@ -52,12 +52,54 @@ class PrescriptionsController extends Controller
 
       }
 
-  public function getMedicineName(){
 
-      $medicine = Medicine::all('medicine_name')->toArray();
-      return array_column($medicine, 'medicine_name');
 
-  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      public function getMedicineName(){
+
+          $medicine = Medicine::all('medicine_name')->toArray();
+          return array_column($medicine, 'medicine_name');
+
+      }
 
 
 }
