@@ -10,7 +10,6 @@
           <div id="m_strength">Strength: {{ $details[$i-3] }}</div>
           <div id="dosage">Dosage Form: {{ $details[$i-2] }}</div>
           <div id="duration">Duration: {{ $details[$i-1] }}</div>
-          {{-- <div id="p_date" style="text-align: right;margin-top: 0rem;">{{ $details[$i] }}</p></div> --}}
         </div>
       </div>
 
