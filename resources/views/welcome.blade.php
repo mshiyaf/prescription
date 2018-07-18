@@ -718,8 +718,8 @@
             var medicine_brand = $(this).find("#mbrand").html();
             var dosage_form = $(this).find("#mform").html();
             var duration = $(this).find("#mdur").html();
-            var time = $(this).find("#mtime").val();
-            var full_dur = duration+time;
+            var time = $(this).find("#mtime").html();
+            var full_dur = duration+' '+time;
             var intake_timing = $(this).find("#mval").html();
             var intake_amount = $(this).find("#mintake_amount").html();
             var mintake_time1 = $(this).find("#mintake_time").html();
