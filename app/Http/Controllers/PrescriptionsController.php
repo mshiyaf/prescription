@@ -24,11 +24,13 @@ class PrescriptionsController extends Controller
 
         $prescription = new Prescription;
         $prescription->medicine_name = request('medicine_name');
+        $prescription->medicine_brand = request('medicine_brand');
         $prescription->medicine_strength = request('medicine_strength');
         $prescription->appointment_id = request('appointment_id');
         $prescription->dosage_form = request('dosage_form');
         $prescription->duration = request('full_dur');
         $prescription->intake_timing = request('intake_timing');
+        $prescription->intake_amount = request('intake_amount');
         $prescription->morning = request('morning');
         $prescription->afternoon = request('afternoon');
         $prescription->evening = request('evening');

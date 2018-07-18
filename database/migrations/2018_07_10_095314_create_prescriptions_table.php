@@ -17,13 +17,15 @@ class CreatePrescriptionsTable extends Migration
             $table->increments('id');
             $table->integer('appointment_id')->unsigned();
             $table->string('medicine_name');
+            $table->string('medicine_brand');
             $table->string('medicine_strength');
             $table->string('dosage_form');
             $table->string('duration');
             $table->string('intake_timing');
-            $table->integer('morning');
-            $table->integer('afternoon');
-            $table->integer('evening');
+            $table->integer('intake_amount');
+            $table->boolean('morning');
+            $table->boolean('afternoon');
+            $table->boolean('evening');
             $table->string('custom_timing');
             $table->string('description');
             $table->timestamps();
