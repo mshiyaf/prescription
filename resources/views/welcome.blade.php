@@ -484,7 +484,6 @@
         var m_inval = null;
         var add_button = $(".add_field_button");
         var wrapper = $("#input_pres");
-        var wrapper2 = $('#p_history');
         $(document).ready(function() {
             setDataTable();
 
@@ -545,22 +544,22 @@
                         data: 'staff',
                         name: 'bm_company_staff.staff_name'
                     },
-                    // {
-                    //     data: 'service',
-                    //     name: 'bm_services.service_name'
-                    // },
-                    // {
-                    //     data: 'time',
-                    //     name: 'appointment_time'
-                    // },
-                    // {
-                    //     data: 'status',
-                    //     name: 'appointment_status'
-                    // },
-                    // {
-                    //     data: 'name',
-                    //     name: 'bm_users.name'
-                    // },
+                    {
+                        data: 'service',
+                        name: 'bm_services.service_name'
+                    },
+                    {
+                        data: 'time',
+                        name: 'appointment_time'
+                    },
+                    {
+                        data: 'status',
+                        name: 'appointment_status'
+                    },
+                    {
+                        data: 'name',
+                        name: 'bm_users.name'
+                    },
                     {
                         data: 'mobile',
                         name: 'bm_users.mobile_number'
@@ -588,7 +587,7 @@
         };
 
         function get_history(){
-          var mobile = "esrtdgh";
+          var mobile = "8921625606";
           $.ajaxSetup({
           headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -625,22 +624,22 @@
             var mintake_time="";
             if (document.getElementById("mrngcheck").value==1) {
               var mrngcheck=1;
-              var str1 ="morning ";
+              var str1 ="Morning ";
             mintake_time =  mintake_time.concat(str1);
             }
             if (document.getElementById("nooncheck").value==1) {
               var nooncheck=1;
-              var str2=" noon";
+              var str2=" Noon";
             mintake_time=  mintake_time.concat(str2);
             }
             if (document.getElementById("eveningcheck").value==1) {
               var eveningcheck=1;
-              var str3=" evening";
+              var str3=" Evening";
               mintake_time=mintake_time.concat(str3);
             }
             var custom_timing=document.getElementById("custom_timing").value;
 
-            var $div1 = ('<div id="to_delete"><div class="panel added_medicine col-md-11 col-xs-9"><a class="added_medicine_head panel-heading collapsed" role="tab" id="heading'+x+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+x+'" aria-expanded="false" aria-controls="collapse'+x+'"><h5 id="mname">'+mname+'</h5></a><div id="collapse'+x+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+x+'"><div class="panel-body row"><div class="col-md-2 card mlist_card"><h4 class="h_med">Brand</h4><p id="mbrand">'+mbrand+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Strength</h4><p id="mstrength">'+mstrength+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Dosage Form</h4><p id="mform">'+mform+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Duration</h4><p id="mdur" style="display:inline;">'+mdur+'</p><p id="mtime" style="display:inline;">'+mtime+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake</h4><p id="mval">'+m_inval+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake Amount</h4><p id="mintake_amount">'+mintake_amount+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake Time</h4><p id="mintake_time">'+mintake_time+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Other</h4><p id="custom_timing">'+custom_timing+'</p></div></div><div><div class="col-md-1 col-xs-1" style="float:right; margin-right:10px; margin-bottom: 5px;"><button type="button" class="edit_medicine btn btn-primary">Edit</button></div></div></div></div><div class="col-md-1 col-xs-1"><button type="button" class="del_medicine btn btn-primary">Delete</button></div></div>');
+            var $div1 = ('<div id="to_delete"><div class="panel added_medicine col-md-11 col-xs-9"><a class="added_medicine_head panel-heading collapsed" role="tab" id="heading'+x+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+x+'" aria-expanded="false" aria-controls="collapse'+x+'"><h5 id="mname">'+mname+'</h5></a><div id="collapse'+x+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+x+'"><div class="panel-body row"><div class="col-md-2 card mlist_card"><h4 class="h_med">Brand</h4><p id="mbrand">'+mbrand+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Strength</h4><p id="mstrength">'+mstrength+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Dosage Form</h4><p id="mform">'+mform+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Duration</h4><p id="mdur" style="display:inline;">'+mdur+'</p><p style="display:inline;"> </p><p id="mtime" style="display:inline;">'+mtime+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake</h4><p id="mval">'+m_inval+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake Amount</h4><p id="mintake_amount">'+mintake_amount+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake Time</h4><p id="mintake_time">'+mintake_time+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Other</h4><p id="custom_timing">'+custom_timing+'</p></div></div><div><div class="col-md-1 col-xs-12" style="float:right; margin-right:10px; margin-bottom: 5px;"><button type="button" class="edit_medicine btn btn-primary">Edit</button></div></div></div></div><div class="col-md-1 col-xs-1"><button type="button" class="del_medicine btn btn-primary">Delete</button></div></div>');
 
             $(wrapper).append($div1);
 
@@ -668,12 +667,11 @@
           var mval1 = $(this).parent().parent().parent().parent().find("#mval").text();
           var mintake_amount1 = $(this).parent().parent().parent().parent().find("#mintake_amount").text();
           var mintake_time1 = $(this).parent().parent().parent().parent().find("#mintake_time").text();
-          var mintake_mrng = mintake_time1.includes("morning");
-          var mintake_noon= mintake_time1.includes("noon");
-          var mintake_evening = mintake_time1.includes("evening");
+          var mintake_mrng = mintake_time1.includes("Morning");
+          var mintake_noon= mintake_time1.includes("Noon");
+          var mintake_evening = mintake_time1.includes("Evening");
           var custom_timing1 = $(this).parent().parent().parent().parent().find("#custom_timing").text();
 
-          $('#pres_modal').animate({scrollTop:0},'slow');
 
           $("#med_name").val(mname1);
           $("#med_name").trigger('change');
@@ -700,30 +698,13 @@
           if(mintake_evening==true){
             $("#eveningcheck1").attr("checked",1);
           }
-          console.log(mintake_mrng);
-          console.log(mname1);
-          console.log(mbrand1);
-          console.log(mstrength1);
-          console.log(mform1);
-          console.log(mval1);
-          console.log(mdur1);
-          console.log(mtime1);
+
           $(this).parent().parent().parent().parent().parent().remove();
-          // var mname=$(this).siblings().find("#mname").html();
 
-
+          $('#pres_modal').animate({scrollTop:0},'slow(100)');
 
         });
 
-          //
-        //   // var x =$(this).closest('h5').find('#mname').text();
-        //   var x=$(this).parent().parent().parent();
-        //   var p=$('x').filter("#mstrength").text();
-        //   // var x=$("div").find("#mname").text();
-        //   console.log(p);
-        //
-        //   // alert(x);
-        // });
 
         $('#submit').click(function(e){
           e.preventDefault();
@@ -733,18 +714,41 @@
             // n++;
             var appointment_id = 1;
             var medicine_name = $(this).find("#mname").html();
-            alert(medicine_name);
             var medicine_strength = $(this).find("#mstrength").html();
+            var medicine_brand = $(this).find("#mbrand").html();
             var dosage_form = $(this).find("#mform").html();
-            // var duration = $(this).find("#mdur").html();
-            // var time = $(this).find("select[name=time]").val();
-            // var full_dur = duration+time;
-            // var medicine_intake = 'med_intake'+n;
+            var duration = $(this).find("#mdur").html();
+            var time = $(this).find("#mtime").val();
+            var full_dur = duration+time;
             var intake_timing = $(this).find("#mval").html();
+            var intake_amount = $(this).find("#mintake_amount").html();
+            var mintake_time1 = $(this).find("#mintake_time").html();
+            var mrng= mintake_time1.includes("Morning");
+            if (mrng==true) {
+              var morning = 1;
+            }
+            else {
+              var morning = 0;
+            }
+            var aftn= mintake_time1.includes("Noon");
+            if (aftn==true) {
+              var afternoon = 1;
+            }
+            else {
+              var afternoon = 0;
+            }
+            var evng = mintake_time1.includes("Evening");
+            if (evng==true) {
+              var evening = 1;
+            }
+            else {
+              var evening = 0;
+            }
+            var custom_timing = $(this).find("#custom_timing").val();
             // var morning = $(this).find("input[id=mrngcheck]").is(":checked") ? 1:0;
             // var afternoon = $(this).find("input[id=nooncheck]").is(":checked") ? 1:0;
             // var evening = $(this).find("input[id=eveningcheck]").is(":checked") ? 1:0;
-            // var custom_timing = $(this).find("input[id=custom_timing]").val();
+
             // var description = $(this).find("textarea[name=description]").val();
 
             $.ajaxSetup({
@@ -763,14 +767,16 @@
               data: {
                 appointment_id:appointment_id,
                  medicine_name:medicine_name,
+                 medicine_brand:medicine_brand,
                  medicine_strength:medicine_strength,
                  dosage_form:dosage_form,
-                 // full_dur:full_dur,
+                 full_dur:full_dur,
                  intake_timing:intake_timing,
-                 // morning:morning,
-                 // afternoon:afternoon,
-                 // evening:evening,
-                 // custom_timing:custom_timing,
+                 intake_amount:intake_amount,
+                 morning:morning,
+                 afternoon:afternoon,
+                 evening:evening,
+                 custom_timing:custom_timing
                  // description:description
 
               },
