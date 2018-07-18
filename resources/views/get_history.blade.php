@@ -5,11 +5,13 @@
 
       <div class="card" style="border-radius: 5px; border: 1px solid rgb(26, 187, 156);">
         <div class="card-body" style="padding: 15px 0px 6px 15px;">
-          <div style="text-align: right;margin-right: 15px;">{{ $details[$i] }}</div>
-          <div style="padding-top: -15px" id="m_name">Name: <b>{{ $details[$i-4] }}</b></div>
-          <div id="m_strength">Strength: {{ $details[$i-3] }}</div>
-          <div id="dosage">Dosage Form: {{ $details[$i-2] }}</div>
-          <div id="duration">Duration: {{ $details[$i-1] }}</div>
+          <div class="row">
+            <div class="col-md-9 col-xs-12" id="m_name"><b style="font-size:15px;">{{ $details[$i-4] }}</b></div>
+            <div class="col-md-3 col-xs-12" style="float: right;">Prescribed On : {{ $details[$i] }}</div>
+            <div class="col-md-8 col-xs-12" id="m_strength">Strength: {{ $details[$i-3] }}</div>
+            <div class="col-md-8 col-xs-12" id="dosage">Dosage Form: {{ $details[$i-2] }}</div>
+            <div class="col-md-8 col-xs-12" id="duration">Duration: {{ $details[$i-1] }}</div>
+          </div>
           {{-- <div id="p_date" style="text-align: right;margin-top: 0rem;">{{ $details[$i] }}</p></div> --}}
         </div>
       </div>
