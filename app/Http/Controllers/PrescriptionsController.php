@@ -60,7 +60,7 @@ class PrescriptionsController extends Controller
         $appointments = Appointment::where('mobile',"=",$mobile)->pluck("id")->all();
         foreach ($appointments as $a) {
           $prescriptions = Prescription::select("medicine_name","medicine_strength","dosage_form","duration","created_at")->where('appointment_id',"=",$a)->get();
-          // $details = collect(['med_name', 'med_strength','dosage_form','duration']);
+
           foreach ($prescriptions as $p) {
             $x++;
             $date = date('d-m-Y',strtotime($p->created_at));
