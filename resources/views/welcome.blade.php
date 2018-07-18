@@ -302,20 +302,27 @@
                                                   <div class="col-md-2 col-xs-12">
                                                       <label for="duration">Duration *</label>
                                                   </div>
-                                              <div class="col-md-1 col-xs-4">
-                                                  <input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" " required>
+                                                  <div class="col-md-1 col-xs-4">
+                                                      <input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" " required data-parsley-errors-container="#msg-holder" >
+                                                  </div>
+
+                                                  <div class="col-md-2 col-xs-8">
+                                                      <select name="time" id="time" class="form-control" >
+                                                      <option value="Days">Days</option>
+                                                      <option value="Weeks">Weeks</option>
+                                                      <option value="Months">Months</option>
+                                                    </select>
+                                                  </div>
+
                                               </div>
 
-                                              <div class="col-md-2 col-xs-8">
-                                                  <select name="time" id="time" class="form-control" >
-                                                  <option value="Days">Days</option>
-                                                  <option value="Weeks">Weeks</option>
-                                                  <option value="Months">Months</option>
-                                                </select>
-                                              </div>
-                                              </div>
                                           </div>
+                                          <div class="col-md-2">
+
+                                          </div>
+                                          <div class="col-md-3 col-xs-12" id="msg-holder"  ></div><br>
                                           <br>
+
 
 
                                           <div class="row" id="intake">
@@ -324,20 +331,21 @@
                                                       <label for="med_intake">Intake *</label>
                                                   </div>
                                                   <div class="col-md-3 col-xs-12">
-                                                      <div id="med_intake" class="btn-group" data-toggle="buttons">
-                                                          <label class="btn btn-default" id="med_intake_but" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                            <input type="radio"  name="med_intake"  value="Before Food">Before food</input>
-                                                          </label>
+                                                      <div id="med_intake"  class="btn-group" data-toggle="buttons" >
+                                                          <label class="btn btn-default" id="med_intake_but" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default" >
+                                                            <input type="radio"  name="med_intake"  value="Before Food" data-parsley-errors-container="#checkbox-errors" required >Before food</label>
                                                           <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                            <input type="radio" name="med_intake"  value="After Food">After food</input>
-                                                          </label>
+                                                            <input type="radio" name="med_intake"  value="After Food">After food</label>
+
                                                       </div>
+                                                      <div id="checkbox-errors" style="padding-left: 8px;"></div>
+
                                                   </div>
                                                   <div class="col-md-3 col-xs-12" id="m_form_label">
                                                       <label for="m_amount">Intake Amount</label>
                                                   </div>
                                                   <div class="col-md-3 col-xs-12">
-                                                      <input type="text" class="form-control" id="med_amount" name="med_amount">
+                                                      <input type="text" class="form-control" id="med_amount" name="med_amount" required>
                                                   </div>
                                               </div>
                                           </div>
@@ -345,29 +353,30 @@
 
 
                                           <div class="row" id="timing">
-                                            <div class="form-group">
+                                            <div class="form-group" >
                                               <div class="col-sm-2">
 
                                                     <input type="hidden" name="mrngcheck" id="mrngcheck" value="0">
-                                                    <input type="checkbox" value="1" id="mrngcheck1" onchange="document.getElementById('mrngcheck').value = this.checked ? 1 : 0">
+                                                    <input type="checkbox" value="1" id="mrngcheck1"   onchange="document.getElementById('mrngcheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" required data-parsley-errors-container="#message-holder" >
                                                     <label>Morning</label>
                                               </div>
 
                                               <div class="col-sm-2">
 
                                                     <input type="hidden" name="nooncheck" id="nooncheck" value="0">
-                                                    <input type="checkbox" value="1" id="nooncheck1" onchange="document.getElementById('nooncheck').value = this.checked ? 1 : 0">
+                                                    <input type="checkbox" value="1" id="nooncheck1" onchange="document.getElementById('nooncheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" >
                                                     <label>Noon</label>
                                               </div>
 
                                               <div class="col-sm-2">
 
                                                     <input type="hidden" name="eveningcheck" id="eveningcheck" value="0">
-                                                    <input type="checkbox" value="1" id="eveningcheck1" onchange="document.getElementById('eveningcheck').value = this.checked ? 1 : 0">
+                                                    <input type="checkbox" value="1" id="eveningcheck1" onchange="document.getElementById('eveningcheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" >
                                                     <label>Evening</label>
 
                                               </div>
-
+                                              {{-- <div id="message-holder"></div> --}}
+                                              <p id="message-holder" ></p>
                                               <div class="col-sm-6">
                                                 <div class="col-sm-3">
                                                     <label for="custom_timing">Other</label>
@@ -497,6 +506,7 @@
                 $(this).parents(".modal").hide();
             });
 
+
             // Constructing the suggestion engine
             var medicines = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.whitespace,
@@ -613,7 +623,9 @@
             e.preventDefault();
 
             x++;
-
+            $("#rcapp").parsley().validate();
+            if($("#rcapp").parsley().isValid())
+            {
             var mname=document.getElementById("med_name").value;
             var mbrand=document.getElementById("med_brand").value;
             var mstrength=document.getElementById("med_strength").value;
@@ -639,12 +651,12 @@
             }
             var custom_timing=document.getElementById("custom_timing").value;
 
-            var $div1 = ('<div id="to_delete"><div class="panel added_medicine col-md-11 col-xs-9"><a class="added_medicine_head panel-heading collapsed" role="tab" id="heading'+x+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+x+'" aria-expanded="false" aria-controls="collapse'+x+'"><h5 id="mname">'+mname+'</h5></a><div id="collapse'+x+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+x+'"><div class="panel-body row"><div class="col-md-2 card mlist_card"><h4 class="h_med">Brand</h4><p id="mbrand">'+mbrand+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Strength</h4><p id="mstrength">'+mstrength+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Dosage Form</h4><p id="mform">'+mform+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Duration</h4><p id="mdur" style="display:inline;">'+mdur+'</p><p style="display:inline;"> </p><p id="mtime" style="display:inline;">'+mtime+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake</h4><p id="mval">'+m_inval+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake Amount</h4><p id="mintake_amount">'+mintake_amount+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake Time</h4><p id="mintake_time">'+mintake_time+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Other</h4><p id="custom_timing">'+custom_timing+'</p></div></div><div><div class="col-md-1 col-xs-12" style="float:right; margin-right:10px; margin-bottom: 5px;"><button type="button" class="edit_medicine btn btn-primary">Edit</button></div></div></div></div><div class="col-md-1 col-xs-1"><button type="button" class="del_medicine btn btn-primary">Delete</button></div></div>');
+            var $div1 = ('<div id="to_delete"><div class="panel added_medicine col-md-11 col-xs-9"><a class="added_medicine_head panel-heading collapsed" role="tab" id="heading'+x+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+x+'" aria-expanded="false" aria-controls="collapse'+x+'"><h5 id="mname">'+mname+'</h5></a><div id="collapse'+x+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+x+'"><div class="panel-body row"><div class="col-md-2 card mlist_card"><h4 class="h_med">Brand</h4><p id="mbrand">'+mbrand+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Strength</h4><p id="mstrength">'+mstrength+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Dosage Form</h4><p id="mform">'+mform+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Duration</h4><p id="mdur" style="display:inline;">'+mdur+'</p><p style="display:inline;"> </p><p id="mtime" style="display:inline;">'+mtime+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake</h4><p id="mval">'+m_inval+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake Amount</h4><p id="mintake_amount">'+mintake_amount+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake Time</h4><p id="mintake_time">'+mintake_time+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Other</h4><p id="customtiming">'+custom_timing+'</p></div></div><div><div class="col-md-1 col-xs-12" style="float:right; margin-right:10px; margin-bottom: 5px;"><button type="button" class="edit_medicine btn btn-primary">Edit</button></div></div></div></div><div class="col-md-1 col-xs-1"><button type="button" class="del_medicine btn btn-primary">Delete</button></div></div>');
 
             $(wrapper).append($div1);
 
             $('#rcapp')[0].reset();
-
+          }
 
         });
 
@@ -670,7 +682,7 @@
           var mintake_mrng = mintake_time1.includes("Morning");
           var mintake_noon= mintake_time1.includes("Noon");
           var mintake_evening = mintake_time1.includes("Evening");
-          var custom_timing1 = $(this).parent().parent().parent().parent().find("#custom_timing").text();
+          var custom_timing1 = $(this).parent().parent().parent().parent().find("#customtiming").text();
 
 
           $("#med_name").val(mname1);
@@ -744,7 +756,8 @@
             else {
               var evening = 0;
             }
-            var custom_timing = $(this).find("#custom_timing").val();
+            var custom_timing = $(this).find("#customtiming").html();
+            alert(custom_timing);
             // var morning = $(this).find("input[id=mrngcheck]").is(":checked") ? 1:0;
             // var afternoon = $(this).find("input[id=nooncheck]").is(":checked") ? 1:0;
             // var evening = $(this).find("input[id=eveningcheck]").is(":checked") ? 1:0;
@@ -782,6 +795,8 @@
               },
               success: function(data){
                 alert('success');
+                $(".modal").hide();
+
               }
             });
 
