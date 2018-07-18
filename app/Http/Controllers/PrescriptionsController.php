@@ -61,16 +61,16 @@ class PrescriptionsController extends Controller
 
         $appointments = Appointment::where('mobile',"=",$mobile)->pluck("id")->all();
         foreach ($appointments as $a) {
-          $prescriptions = Prescription::select("medicine_name","medicine_strength","dosage_form","duration","created_at")->where('appointment_id',"=",$a)->get();
+          $prescriptions = Prescription::select("intake_amount","medicine_brand","medicine_name","medicine_strength","dosage_form","duration","created_at")->where('appointment_id',"=",$a)->get();
           // $details = collect(['med_name', 'med_strength','dosage_form','duration']);
           foreach ($prescriptions as $p) {
             $x++;
             $date = date('d-m-Y',strtotime($p->created_at));
             if($x==1){
-            $details = collect([$p->medicine_name,$p->medicine_strength,$p->dosage_form,$p->duration,$date]);
+            $details = collect([$p->intake_amount,$p->medicine_brand,$p->medicine_name,$p->medicine_strength,$p->dosage_form,$p->duration,$date]);
             }
             else
-            $details = $details->concat([$p->medicine_name,$p->medicine_strength,$p->dosage_form,$p->duration,$date]);
+            $details = $details->concat([$p->intake_amount,$p->medicine_brand,$p->medicine_name,$p->medicine_strength,$p->dosage_form,$p->duration,$date]);
 
             $details->all();
 
