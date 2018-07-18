@@ -320,7 +320,7 @@
                                           <div class="col-md-2">
 
                                           </div>
-                                          <div class="col-md-3 col-xs-12" id="msg-holder"  ></div><br>
+                                          <div class="col-md-3 col-xs-12" id="msg-holder" style="padding-left: 4px;"></div><br>
                                           <br>
 
 
@@ -338,7 +338,7 @@
                                                             <input type="radio" name="med_intake"  value="After Food">After food</label>
 
                                                       </div>
-                                                      <div id="checkbox-errors" style="padding-left: 8px;"></div>
+                                                      <div id="checkbox-errors"></div>
 
                                                   </div>
                                                   <div class="col-md-3 col-xs-12" id="m_form_label">
@@ -375,8 +375,6 @@
                                                     <label>Evening</label>
 
                                               </div>
-                                              {{-- <div id="message-holder"></div> --}}
-                                              <p id="message-holder" ></p>
                                               <div class="col-sm-6">
                                                 <div class="col-sm-3">
                                                     <label for="custom_timing">Other</label>
@@ -385,6 +383,10 @@
                                               </div>
                                             </div>
                                           </div>
+                                          <div class="col-md-0">
+
+                                          </div>
+                                          <p id="message-holder" ></p>
                                           <br>
 
                                           <div class="row" id="add_medicine">
