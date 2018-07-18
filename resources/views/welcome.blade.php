@@ -757,12 +757,7 @@
               var evening = 0;
             }
             var custom_timing = $(this).find("#customtiming").html();
-            alert(custom_timing);
-            // var morning = $(this).find("input[id=mrngcheck]").is(":checked") ? 1:0;
-            // var afternoon = $(this).find("input[id=nooncheck]").is(":checked") ? 1:0;
-            // var evening = $(this).find("input[id=eveningcheck]").is(":checked") ? 1:0;
-
-            // var description = $(this).find("textarea[name=description]").val();
+            // var description = $(this).find("textarea[name=description]").html();
 
             $.ajaxSetup({
             headers: {
