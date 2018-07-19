@@ -47,7 +47,7 @@
     <link href="https://www.booknmeet.com/assets/dropdownstyle/css/cs-select.css" rel="stylesheet">
     <link href="https://www.booknmeet.com/assets/dropdownstyle/css/cs-skin-border.css" rel="stylesheet">
 
-    <link href="/css/app.css?v=7" rel="stylesheet">
+    <link href="/css/app.css?v=8" rel="stylesheet">
 
 </head>
 
@@ -346,14 +346,17 @@
                                               <div class="row" id="timing">
                                                 <div class="form-group" >
 
-                                                  <div class="col-sm-2">
-                                                        <input type="hidden" name="mrngcheck" id="mrngcheck" value="0">
-                                                        <input type="checkbox" value="1" id="mrngcheck1"   onchange="document.getElementById('mrngcheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" required data-parsley-errors-container="#message-holder" >
-                                                        <label>Morning</label>
+                                                  <div class="col-sm-3">
+
+                                                        <label class="control control--checkbox">Morning
+                                                          <input type="hidden" name="mrngcheck" id="mrngcheck" value="0">
+                                                          <input type="checkbox" value="1" id="mrngcheck1"  onchange="document.getElementById('mrngcheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" required data-parsley-errors-container="#message-holder" >
+                                                          <div class="control__indicator"></div>
+                                                        </label>
                                                         <input type="text" id="mrng_qty" disabled="disabled" placeholder="Qty" >
                                                   </div>
 
-                                                  <div class="col-sm-2">
+                                                  <div class="col-sm-3">
 
                                                         <input type="hidden" name="nooncheck" id="nooncheck" value="0">
                                                         <input type="checkbox" value="1" id="nooncheck1" onchange="document.getElementById('nooncheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" >
@@ -361,7 +364,7 @@
                                                         <input type="text" id="noon_qty" disabled="disabled" placeholder="Qty">
                                                   </div>
 
-                                                  <div class="col-sm-2">
+                                                  <div class="col-sm-3">
 
                                                         <input type="hidden" name="eveningcheck" id="eveningcheck" value="0">
                                                         <input type="checkbox" value="1" id="eveningcheck1" onchange="document.getElementById('eveningcheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" >
@@ -369,11 +372,10 @@
                                                         <input type="text" id="evening_qty" disabled="disabled" placeholder="Qty">
 
                                                   </div>
-                                                  <div class="col-sm-6 c_t">
-                                                    <div class="col-sm-3">
+                                                  <div class="col-sm-3">
+
                                                         <input type="checkbox" value="1" id="other_check" data-parsley-multiple="d-s-c" >
                                                         <label for="custom_timing">Other</label>
-                                                    </div>
                                                         <input type="text" id="custom_timing" disabled="disabled" >
                                                   </div>
                                                 </div>
