@@ -47,7 +47,7 @@
     <link href="https://www.booknmeet.com/assets/dropdownstyle/css/cs-select.css" rel="stylesheet">
     <link href="https://www.booknmeet.com/assets/dropdownstyle/css/cs-skin-border.css" rel="stylesheet">
 
-    <link href="/css/app.css?v=8" rel="stylesheet">
+    <link href="/css/app.css?v=13" rel="stylesheet">
 
 </head>
 
@@ -343,44 +343,55 @@
                                               </div>
                                               <br>
 
-                                              <div class="row" id="timing">
+                                              <div class="row" style="padding: 5px 0px 0px 0px;" id="timing">
                                                 <div class="form-group" >
 
-                                                  <div class="col-sm-3">
+                                                  <div class="col-md-2 col-xs-12">
+                                                      <label for="strength">Intake Time *</label>
+                                                  </div>
+
+                                                  <div class="col-sm-2">
 
                                                         <label class="control control--checkbox">Morning
                                                           <input type="hidden" name="mrngcheck" id="mrngcheck" value="0">
                                                           <input type="checkbox" value="1" id="mrngcheck1"  onchange="document.getElementById('mrngcheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" required data-parsley-errors-container="#message-holder" >
                                                           <div class="control__indicator"></div>
                                                         </label>
-                                                        <input type="text" id="mrng_qty" disabled="disabled" placeholder="Qty" >
+                                                        <input class="m_input_dis form-control" type="text" id="mrng_qty" disabled="disabled" placeholder="Qty" >
                                                   </div>
 
-                                                  <div class="col-sm-3">
+                                                  <div class="col-sm-2">
 
-                                                        <input type="hidden" name="nooncheck" id="nooncheck" value="0">
-                                                        <input type="checkbox" value="1" id="nooncheck1" onchange="document.getElementById('nooncheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" >
-                                                        <label>Noon</label>
-                                                        <input type="text" id="noon_qty" disabled="disabled" placeholder="Qty">
+                                                        <label class="control control--checkbox">Noon
+                                                          <input type="hidden" name="nooncheck" id="nooncheck" value="0">
+                                                          <input type="checkbox" value="1" id="nooncheck1" onchange="document.getElementById('nooncheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" >
+                                                          <div class="control__indicator"></div>
+                                                        </label>
+                                                        <input class="m_input_dis form-control" type="text" id="noon_qty" disabled="disabled" placeholder="Qty">
                                                   </div>
 
-                                                  <div class="col-sm-3">
+                                                  <div class="col-sm-2">
 
-                                                        <input type="hidden" name="eveningcheck" id="eveningcheck" value="0">
-                                                        <input type="checkbox" value="1" id="eveningcheck1" onchange="document.getElementById('eveningcheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" >
-                                                        <label>Evening</label>
-                                                        <input type="text" id="evening_qty" disabled="disabled" placeholder="Qty">
+                                                        <label class="control control--checkbox">Evening
+                                                          <input type="hidden" name="eveningcheck" id="eveningcheck" value="0">
+                                                          <input type="checkbox" value="1" id="eveningcheck1" onchange="document.getElementById('nooncheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" >
+                                                          <div class="control__indicator"></div>
+                                                        </label>
+                                                        <input class="m_input_dis form-control" type="text" id="evening_qty" disabled="disabled" placeholder="Qty">
 
                                                   </div>
-                                                  <div class="col-sm-3">
+                                                  <div class="col-sm-2">
 
+
+                                                      <label class="control control--checkbox">Other
                                                         <input type="checkbox" value="1" id="other_check" data-parsley-multiple="d-s-c" >
-                                                        <label for="custom_timing">Other</label>
-                                                        <input type="text" id="custom_timing" disabled="disabled" >
+                                                        <div class="control__indicator"></div>
+                                                      </label>
+                                                        <input class="m_input_dis form-control" type="text" id="custom_timing" disabled="disabled" >
                                                   </div>
                                                 </div>
                                               </div>
-                                              <div class="col-md-0"></div>
+                                              <div class="col-md-2"></div>
                                               <p id="message-holder" ></p>
                                               <br>
 
@@ -504,19 +515,23 @@
 
             $( "#other_check" ).on( "click", function() {
              $("#custom_timing").prop('disabled',!this.checked);
-           });
+            });
 
-             $( "#mrngcheck1" ).on( "click", function() {
+            $( "#mrngcheck1" ).on( "click", function() {
               $("#mrng_qty").prop('disabled',!this.checked);
             });
 
             $( "#nooncheck1" ).on( "click", function() {
-             $("#noon_qty").prop('disabled',!this.checked);
-           });
+               $("#noon_qty").prop('disabled',!this.checked);
+            });
 
-           $( "#eveningcheck1" ).on( "click", function() {
-            $("#evening_qty").prop('disabled',!this.checked);
-          });
+            $( "#eveningcheck1" ).on( "click", function() {
+              $("#evening_qty").prop('disabled',!this.checked);
+            });
+
+            $( "#other_check" ).on( "click", function() {
+             $("#custom_timing").prop('disabled',!this.checked);
+            });
 
             $("body").on('click', ".prescription", function() {
                 $(".bs-recurring-modal-lg").show();

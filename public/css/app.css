@@ -125,10 +125,12 @@
 .control {
   display: block;
   position: relative;
-  padding-left: 30px;
-  margin-bottom: 15px;
+  padding-left: 26px;
+  margin-bottom: 9px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 15px;
+  font-weight: 200;
+  width: 42%;
 }
 
 .control input {
@@ -156,12 +158,12 @@
 }
 
 .control input:checked ~ .control__indicator {
-  background: #2aa1c0;
+  background: #1abb9c;
 }
 
 .control:hover input:not([disabled]):checked ~ .control__indicator,
 .control input:checked:focus ~ .control__indicator {
-  background: #0e647d;
+  background: #1abb9c;
 }
 
 .control input:disabled ~ .control__indicator {
@@ -182,9 +184,9 @@
 
 .control--checkbox .control__indicator:after {
   left: 8px;
-  top: 4px;
-  width: 3px;
-  height: 8px;
+  top: 3px;
+  width: 5px;
+  height: 12px;
   border: solid #fff;
   border-width: 0 2px 2px 0;
   -webkit-transform: rotate(45deg);
@@ -208,61 +210,7 @@
   background: #7b7b7b;
 }
 
-.select {
-  position: relative;
-  display: inline-block;
-  margin-bottom: 15px;
-  width: 100%;
-}
-
-.select select {
-  display: inline-block;
-  width: 100%;
-  cursor: pointer;
-  padding: 10px 15px;
-  outline: 0;
-  border: 0;
-  border-radius: 0;
-  background: #e6e6e6;
-  color: #7b7b7b;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-.select select::-ms-expand {
-  display: none;
-}
-
-.select select:hover,
-.select select:focus {
-  color: #000;
-  background: #ccc;
-}
-
-.select select:disabled {
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.select__arrow {
-  position: absolute;
-  top: 16px;
-  right: 15px;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-  border-style: solid;
-  border-width: 8px 5px 0 5px;
-  border-color: #7b7b7b transparent transparent transparent;
-}
-
-.select select:hover ~ .select__arrow,
-.select select:focus ~ .select__arrow {
-  border-top-color: #000;
-}
-
-.select select:disabled ~ .select__arrow {
-  border-top-color: #ccc;
+.m_input_dis:disabled {
+  background-color: #e6e6e6;
 }
 
