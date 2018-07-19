@@ -338,12 +338,7 @@
                                                           <div id="checkbox-errors"></div>
 
                                                       </div>
-                                                      <div class="col-md-3 col-xs-12" id="m_form_label">
-                                                          <label for="m_amount">Intake Amount</label>
-                                                      </div>
-                                                      <div class="col-md-3 col-xs-12">
-                                                          <input type="text" class="form-control" id="med_amount" name="med_amount" required>
-                                                      </div>
+
                                                   </div>
                                               </div>
                                               <br>
@@ -355,6 +350,7 @@
                                                         <input type="hidden" name="mrngcheck" id="mrngcheck" value="0">
                                                         <input type="checkbox" value="1" id="mrngcheck1"   onchange="document.getElementById('mrngcheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" required data-parsley-errors-container="#message-holder" >
                                                         <label>Morning</label>
+                                                        <input type="text" id="mrng_qty" disabled="disabled" placeholder="Qty" >
                                                   </div>
 
                                                   <div class="col-sm-2">
@@ -362,6 +358,7 @@
                                                         <input type="hidden" name="nooncheck" id="nooncheck" value="0">
                                                         <input type="checkbox" value="1" id="nooncheck1" onchange="document.getElementById('nooncheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" >
                                                         <label>Noon</label>
+                                                        <input type="text" id="noon_qty" disabled="disabled" placeholder="Qty">
                                                   </div>
 
                                                   <div class="col-sm-2">
@@ -369,6 +366,7 @@
                                                         <input type="hidden" name="eveningcheck" id="eveningcheck" value="0">
                                                         <input type="checkbox" value="1" id="eveningcheck1" onchange="document.getElementById('eveningcheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" >
                                                         <label>Evening</label>
+                                                        <input type="text" id="evening_qty" disabled="disabled" placeholder="Qty">
 
                                                   </div>
                                                   <div class="col-sm-6 c_t">
@@ -506,6 +504,18 @@
              $("#custom_timing").prop('disabled',!this.checked);
            });
 
+             $( "#mrngcheck1" ).on( "click", function() {
+              $("#mrng_qty").prop('disabled',!this.checked);
+            });
+
+            $( "#nooncheck1" ).on( "click", function() {
+             $("#noon_qty").prop('disabled',!this.checked);
+           });
+
+           $( "#eveningcheck1" ).on( "click", function() {
+            $("#evening_qty").prop('disabled',!this.checked);
+          });
+
             $("body").on('click', ".prescription", function() {
                 $(".bs-recurring-modal-lg").show();
                 app_id = $(this).attr('id');
@@ -636,12 +646,6 @@
 
             x++;
 
-            // if()
-            // $('#rcapp').parsley({
-            //   data-parsley-excluded: '#custom_timing'
-            // });
-
-
             $("#rcapp").parsley().validate();
             if($("#rcapp").parsley().isValid())
             {
@@ -651,26 +655,38 @@
             var mform=document.getElementById("m_form").value;
             var mdur=document.getElementById("duration").value;
             var mtime=document.getElementById("time").value;
-            var mintake_amount=document.getElementById("med_amount").value;
-            var mintake_time="";
             if (document.getElementById("mrngcheck").value==1) {
               var mrngcheck=1;
-              var str1 ="Morning ";
-            mintake_time =  mintake_time.concat(str1);
+              var mrng ="Morning ";
+            var mrng_qty=document.getElementById("mrng_qty").value;
+            }
+            else {
+              var mrng="";
+              var mrng_qty="";
             }
             if (document.getElementById("nooncheck").value==1) {
               var nooncheck=1;
-              var str2=" Noon";
-            mintake_time=  mintake_time.concat(str2);
+              var noon=" Noon";
+            var noon_qty=document.getElementById("noon_qty").value;
+
+            }
+            else {
+              var noon="";
+              var noon_qty="";
             }
             if (document.getElementById("eveningcheck").value==1) {
               var eveningcheck=1;
-              var str3=" Evening";
-              mintake_time=mintake_time.concat(str3);
+              var evening=" Evening";
+              var evening_qty=document.getElementById("evening_qty").value;
+
+            }
+            else {
+              var evening="";
+              var evening_qty="";
             }
             var custom_timing=document.getElementById("custom_timing").value;
 
-            var $div1 = ('<div id="to_delete"><div class="panel added_medicine col-md-11 col-xs-9"><a class="added_medicine_head panel-heading collapsed" role="tab" id="heading'+x+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+x+'" aria-expanded="false" aria-controls="collapse'+x+'"><h5 id="mname">'+mname+'</h5></a><div id="collapse'+x+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+x+'"><div class="panel-body row"><div class="col-md-2 card mlist_card"><h4 class="h_med">Brand</h4><p id="mbrand">'+mbrand+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Strength</h4><p id="mstrength">'+mstrength+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Dosage Form</h4><p id="mform">'+mform+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Duration</h4><p id="mdur" style="display:inline;">'+mdur+'</p><p style="display:inline;"> </p><p id="mtime" style="display:inline;">'+mtime+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake</h4><p id="mval">'+m_inval+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake Amount</h4><p id="mintake_amount">'+mintake_amount+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake Time</h4><p id="mintake_time">'+mintake_time+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Other</h4><p id="customtiming">'+custom_timing+'</p></div></div><div><div class="col-md-1 col-xs-12" style="float:right; margin-right:10px; margin-bottom: 5px;"><button type="button" class="edit_medicine btn btn-primary">Edit</button></div></div></div></div><div class="col-md-1 col-xs-1"><button type="button" class="del_medicine btn btn-primary">Delete</button></div></div>');
+            var $div1 = ('<div id="to_delete"><div class="panel added_medicine col-md-11 col-xs-9"><a class="added_medicine_head panel-heading collapsed" role="tab" id="heading'+x+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+x+'" aria-expanded="false" aria-controls="collapse'+x+'"><h5 id="mname">'+mname+'</h5></a><div id="collapse'+x+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+x+'"><div class="panel-body row"><div class="col-md-2 card mlist_card"><h4 class="h_med">Brand</h4><p id="mbrand">'+mbrand+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Strength</h4><p id="mstrength">'+mstrength+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Dosage Form</h4><p id="mform">'+mform+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Duration</h4><p id="mdur" style="display:inline;">'+mdur+'</p><p style="display:inline;"> </p><p id="mtime" style="display:inline;">'+mtime+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake</h4><p id="mval">'+m_inval+'</p></div><div class="col-md-2 card mlist_card"></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake Time</h4><p id="mrng">'+mrng+'</p><p id="mrngqty">'+mrng_qty+'</p><p id="noon">'+noon+'</p><p id="noonqty">'+noon_qty+'</p><p id="evening">'+evening+'</p><p id="eveningqty">'+evening_qty+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Other</h4><p id="customtiming">'+custom_timing+'</p></div></div><div><div class="col-md-1 col-xs-12" style="float:right; margin-right:10px; margin-bottom: 5px;"><button type="button" class="edit_medicine btn btn-primary">Edit</button></div></div></div></div><div class="col-md-1 col-xs-1"><button type="button" class="del_medicine btn btn-primary">Delete</button></div></div>');
 
             $(wrapper).append($div1);
 
@@ -696,11 +712,17 @@
           var mdur1 = $(this).parent().parent().parent().parent().find("#mdur").text();
           var mtime1 = $(this).parent().parent().parent().parent().find("#mtime").text();
           var mval1 = $(this).parent().parent().parent().parent().find("#mval").text();
-          var mintake_amount1 = $(this).parent().parent().parent().parent().find("#mintake_amount").text();
-          var mintake_time1 = $(this).parent().parent().parent().parent().find("#mintake_time").text();
-          var mintake_mrng = mintake_time1.includes("Morning");
-          var mintake_noon= mintake_time1.includes("Noon");
-          var mintake_evening = mintake_time1.includes("Evening");
+          var mrng1 = $(this).parent().parent().parent().parent().find("#mrng").text();
+          var mintake_mrng = mrng1.includes("Morning");
+          var noon1 = $(this).parent().parent().parent().parent().find("#noon").text();
+          var mintake_noon= noon1.includes("Noon");
+          var evening1 = $(this).parent().parent().parent().parent().find("#evening").text();
+          var mintake_evening = evening1.includes("Evening");
+          var mrngqty1 = $(this).parent().parent().parent().parent().find("#mrngqty").text();
+          var noonqty1 = $(this).parent().parent().parent().parent().find("#noonqty").text();
+          var eveningqty1 = $(this).parent().parent().parent().parent().find("#eveningqty").text();
+
+
           var custom_timing1 = $(this).parent().parent().parent().parent().find("#customtiming").text();
 
 
@@ -716,18 +738,22 @@
           $("#duration").trigger('change');
           $("#time").val(mtime1);
           // $("#time").trigger('change');
-          $("#med_amount").val(mintake_amount1);
-          $("#med_amount").trigger('change');
           $("#custom_timing").val(custom_timing1);
           $("#custom_timing").trigger('change');
           if (mintake_mrng==true) {
             $("#mrngcheck1").attr("checked",1);
+            $("#mrng_qty").val(mrngqty1);
+            $("#mrng_qty").trigger('change');
           }
           if(mintake_noon==true){
             $("#nooncheck1").attr("checked",1);
+            $("#noon_qty").val(noonqty1);
+            $("#noon_qty").trigger('change');
           }
           if(mintake_evening==true){
             $("#eveningcheck1").attr("checked",1);
+            $("#evening_qty").val(eveningqty1);
+            $("#evening_qty").trigger('change');
           }
 
           $(this).parent().parent().parent().parent().parent().remove();
@@ -741,7 +767,6 @@
           e.preventDefault();
           // var n=0;
           var description = $("#med_description").val();
-          alert(description);
 
           $(".added_medicine").each(function(){
             // n++;
@@ -754,28 +779,39 @@
             var time = $(this).find("#mtime").html();
             var full_dur = duration+' '+time;
             var intake_timing = $(this).find("#mval").html();
-            var intake_amount = $(this).find("#mintake_amount").html();
-            var mintake_time1 = $(this).find("#mintake_time").html();
-            var mrng= mintake_time1.includes("Morning");
+            var mrng1 = $(this).find("#mrng").html();
+            var mrng= mrng1.includes("Morning");
             if (mrng==true) {
               var morning = 1;
+              var morning_qty=$(this).find("#mrngqty").html();
             }
             else {
               var morning = 0;
+              var morning_qty=0;
             }
-            var aftn= mintake_time1.includes("Noon");
+            var noon1 = $(this).find("#noon").html();
+
+            var aftn= noon1.includes("Noon");
             if (aftn==true) {
               var afternoon = 1;
+              var afternoon_qty=$(this).find("#noonqty").html();
+
             }
             else {
               var afternoon = 0;
+              var afternoon_qty=0;
             }
-            var evng = mintake_time1.includes("Evening");
+            var evening1 = $(this).find("#evening").html();
+
+            var evng = evening1.includes("Evening");
             if (evng==true) {
               var evening = 1;
+              var evening_qty=$(this).find("#eveningqty").html();
+
             }
             else {
               var evening = 0;
+              var evening_qty=0;
             }
             var custom_timing = $(this).find("#customtiming").html();
 
@@ -801,10 +837,12 @@
                  dosage_form:dosage_form,
                  full_dur:full_dur,
                  intake_timing:intake_timing,
-                 intake_amount:intake_amount,
                  morning:morning,
+                 morning_qty:morning_qty,
                  afternoon:afternoon,
+                 afternoon_qty:afternoon_qty,
                  evening:evening,
+                 evening_qty:evening_qty,
                  custom_timing:custom_timing,
                  description:description
 
