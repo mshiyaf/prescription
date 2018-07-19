@@ -30,10 +30,12 @@ class PrescriptionsController extends Controller
         $prescription->dosage_form = request('dosage_form');
         $prescription->duration = request('full_dur');
         $prescription->intake_timing = request('intake_timing');
-        $prescription->intake_amount = request('intake_amount');
         $prescription->morning = request('morning');
+        $prescription->morning_qty = request('morning_qty');
         $prescription->afternoon = request('afternoon');
+        $prescription->afternoon_qty = request('afternoon_qty');
         $prescription->evening = request('evening');
+        $prescription->evening_qty = request('evening_qty');
         $prescription->custom_timing = request('custom_timing');
         $prescription->description = request('description');
         $prescription->save();
