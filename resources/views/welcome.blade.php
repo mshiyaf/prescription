@@ -374,7 +374,7 @@
 
                                                         <label class="control control--checkbox">Evening
                                                           <input type="hidden" name="eveningcheck" id="eveningcheck" value="0">
-                                                          <input type="checkbox" value="1" id="eveningcheck1" onchange="document.getElementById('nooncheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" >
+                                                          <input type="checkbox" value="1" id="eveningcheck1" onchange="document.getElementById('eveningcheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" >
                                                           <div class="control__indicator"></div>
                                                         </label>
                                                         <input class="m_input_dis form-control" type="text" id="evening_qty" disabled="disabled" placeholder="Qty">
@@ -683,7 +683,7 @@
             }
             if (document.getElementById("nooncheck").value==1) {
               var nooncheck=1;
-              var noon=" Noon";
+              var noon=" Noon ";
             var noon_qty=document.getElementById("noon_qty").value;
 
             }
@@ -693,7 +693,7 @@
             }
             if (document.getElementById("eveningcheck").value==1) {
               var eveningcheck=1;
-              var evening=" Evening";
+              var evening=" Evening ";
               var evening_qty=document.getElementById("evening_qty").value;
 
             }
@@ -703,7 +703,7 @@
             }
             var custom_timing=document.getElementById("custom_timing").value;
 
-            var $div1 = ('<div id="to_delete"><div class="panel added_medicine col-md-11 col-xs-9"><a class="added_medicine_head panel-heading collapsed" role="tab" id="heading'+x+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+x+'" aria-expanded="false" aria-controls="collapse'+x+'"><h5 id="mname">'+mname+'</h5></a><div id="collapse'+x+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+x+'"><div class="panel-body row"><div class="col-md-2 card mlist_card"><h4 class="h_med">Brand</h4><p id="mbrand">'+mbrand+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Strength</h4><p id="mstrength">'+mstrength+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Dosage Form</h4><p id="mform">'+mform+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Duration</h4><p id="mdur" style="display:inline;">'+mdur+'</p><p style="display:inline;"> </p><p id="mtime" style="display:inline;">'+mtime+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake</h4><p id="mval">'+m_inval+'</p></div><div class="col-md-2 card mlist_card"></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake Time</h4><p id="mrng">'+mrng+'</p><p id="mrngqty">'+mrng_qty+'</p><p id="noon">'+noon+'</p><p id="noonqty">'+noon_qty+'</p><p id="evening">'+evening+'</p><p id="eveningqty">'+evening_qty+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Other</h4><p id="customtiming">'+custom_timing+'</p></div></div><div><div class="col-md-1 col-xs-12" style="float:right; margin-right:10px; margin-bottom: 5px;"><button type="button" class="edit_medicine btn btn-primary">Edit</button></div></div></div></div><div class="col-md-1 col-xs-1"><button type="button" class="del_medicine btn btn-primary">Delete</button></div></div>');
+            var $div1 = ('<div id="to_delete"><div class="panel added_medicine col-md-11 col-xs-9"><a class="added_medicine_head panel-heading collapsed" role="tab" id="heading'+x+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+x+'" aria-expanded="false" aria-controls="collapse'+x+'"><h5 id="mname">'+mname+'</h5></a><div id="collapse'+x+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+x+'"><div class="panel-body row"><div class="col-md-2 card mlist_card"><h4 class="h_med">Brand</h4><p id="mbrand">'+mbrand+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Strength</h4><p id="mstrength">'+mstrength+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Dosage Form</h4><p id="mform">'+mform+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Duration</h4><p id="mdur" style="display:inline;">'+mdur+'</p><p style="display:inline;"> </p><p id="mtime" style="display:inline;">'+mtime+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake</h4><p id="mval">'+m_inval+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Time and Quantity</h4><span id="mrng">'+mrng+'</span><span id="mrngqty">'+mrng_qty+'</span><br><span id="noon">'+noon+'</span><span id="noonqty">'+noon_qty+'</span><br><span id="evening">'+evening+'</span><span id="eveningqty">'+evening_qty+'</span></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Other</h4><p id="customtiming">'+custom_timing+'</p></div></div><div><div class="col-md-1 col-xs-12" style="float:right; margin-right:10px; margin-bottom: 5px;"><button type="button" class="edit_medicine btn btn-primary">Edit</button></div></div></div></div><div class="col-md-1 col-xs-1"><button type="button" class="del_medicine btn btn-primary">Delete</button></div></div>');
 
             $(wrapper).append($div1);
 
