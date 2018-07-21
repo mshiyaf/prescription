@@ -423,9 +423,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
 
-                                    <div class="card col-md-12 col-xs-12" style="border: 1px solid rgb(26, 187, 156);">
+
+                                    <div class="card col-md-12 col-xs-12" id="m_desc" style="border: 1px solid rgb(26, 187, 156);">
                                       <div class="col-md-3 col-xs-12" style="padding:  10px 10px 10px 10px;">
                                         <label for="med_description">Description (Max Length:200) Optional </label>
                                       </div>
@@ -433,6 +433,7 @@
                                         <textarea class="form-control" data-parsley-trigger="keyup" data-parsley-maxlength="200" data-parsley-validation-threshold="10" name="med_description" cols="50" rows="5" id="med_description" data-gramm="true"  spellcheck="false"  style="z-index: auto; position: relative; line-height: 20px; font-size: 14px; transition: none; background: transparent !important;"></textarea>
                                       </div>
                                     </div>
+                                    </form>
 
                                     <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-5">
                                       <button type="button" class="cancel btn btn-primary">Cancel</button>
@@ -738,8 +739,6 @@
           var mrngqty1 = $(this).parent().parent().parent().parent().find("#mrngqty").text();
           var noonqty1 = $(this).parent().parent().parent().parent().find("#noonqty").text();
           var eveningqty1 = $(this).parent().parent().parent().parent().find("#eveningqty").text();
-
-
           var custom_timing1 = $(this).parent().parent().parent().parent().find("#customtiming").text();
 
 
@@ -782,11 +781,11 @@
 
         $('#submit').click(function(e){
           e.preventDefault();
-          // var n=0;
+
           var description = $("#med_description").val();
 
           $(".added_medicine").each(function(){
-            // n++;
+
             var appointment_id = 1;
             var medicine_name = $(this).find("#mname").html();
             var medicine_strength = $(this).find("#mstrength").html();
@@ -867,7 +866,8 @@
               success: function(data){
                 alert('success');
                 $(".modal").hide();
-
+                $('#rcapp')[0].reset();
+                $("div[id='to_delete']").remove();
               }
             });
 
