@@ -399,7 +399,7 @@
                                                   <div class="form-group">
                                                       <div class="col-md-8 col-xs-12">
                                                         <button type="button" id="add_medicine" class="add_field_button btn btn-primary">Add Medicine</button>
-                                                        <button class="btn btn-primary" type="reset">Reset</button>
+                                                        <button class="btn btn-primary" id="m_reset" type="reset">Reset</button>
                                                       </div>
                                                   </div>
                                               </div>
@@ -542,8 +542,20 @@
 
             $("body").on('click', ".cancel,.close", function() {
                 $(this).parents(".modal").hide();
+                $("#rcapp").parsley().reset();
+                $("#custom_timing").prop('disabled','disabled');
+                $("#evening_qty").prop('disabled','disabled');
+                $("#noon_qty").prop('disabled','disabled');
+                $("#mrng_qty").prop('disabled','disabled');
             });
 
+            $("body").on('click', "#m_reset", function() {
+                $("#rcapp").parsley().reset();
+                $("#custom_timing").prop('disabled','disabled');
+                $("#evening_qty").prop('disabled','disabled');
+                $("#noon_qty").prop('disabled','disabled');
+                $("#mrng_qty").prop('disabled','disabled');
+            });
 
             // Constructing the suggestion engine
             var medicines = new Bloodhound({
@@ -709,6 +721,10 @@
             $(wrapper).append($div1);
 
             $('#rcapp')[0].reset();
+            $("#custom_timing").prop('disabled','disabled');
+            $("#evening_qty").prop('disabled','disabled');
+            $("#noon_qty").prop('disabled','disabled');
+            $("#mrng_qty").prop('disabled','disabled');
           }
 
         });
@@ -758,8 +774,10 @@
           $("#custom_timing").trigger('change');
           if (mintake_mrng==true) {
             $("#mrngcheck1").attr("checked",1);
+
             $("#mrng_qty").val(mrngqty1);
             $("#mrng_qty").trigger('change');
+            $("#mrng_qty").prop('disabled',false);
           }
           if(mintake_noon==true){
             $("#nooncheck1").attr("checked",1);
@@ -865,9 +883,13 @@
               },
               success: function(data){
                 alert('success');
-                $(".modal").hide();
                 $('#rcapp')[0].reset();
                 $("div[id='to_delete']").remove();
+                $("#custom_timing").prop('disabled','disabled');
+                $("#evening_qty").prop('disabled','disabled');
+                $("#noon_qty").prop('disabled','disabled');
+                $("#mrng_qty").prop('disabled','disabled');
+                $(".modal").hide();
               }
             });
 
