@@ -543,6 +543,7 @@
             $("body").on('click', ".cancel,.close", function() {
                 $(this).parents(".modal").hide();
                 $("#rcapp").parsley().reset();
+                $("div[id='to_delete']").remove();
                 $("#custom_timing").prop('disabled','disabled');
                 $("#evening_qty").prop('disabled','disabled');
                 $("#noon_qty").prop('disabled','disabled');
