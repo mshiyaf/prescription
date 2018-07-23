@@ -47,7 +47,7 @@
     <link href="https://www.booknmeet.com/assets/dropdownstyle/css/cs-select.css" rel="stylesheet">
     <link href="https://www.booknmeet.com/assets/dropdownstyle/css/cs-skin-border.css" rel="stylesheet">
 
-    <link href="/css/app.css?v=7" rel="stylesheet">
+    <link href="/css/app.css?v=13" rel="stylesheet">
 
 </head>
 
@@ -343,42 +343,55 @@
                                               </div>
                                               <br>
 
-                                              <div class="row" id="timing">
+                                              <div class="row" style="padding: 5px 0px 0px 0px;" id="timing">
                                                 <div class="form-group" >
 
-                                                  <div class="col-sm-2">
-                                                        <input type="hidden" name="mrngcheck" id="mrngcheck" value="0">
-                                                        <input type="checkbox" value="1" id="mrngcheck1"   onchange="document.getElementById('mrngcheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" required data-parsley-errors-container="#message-holder" >
-                                                        <label>Morning</label>
-                                                        <input type="text" id="mrng_qty" disabled="disabled" placeholder="Qty" >
+                                                  <div class="col-md-2 col-xs-12">
+                                                      <label for="strength">Intake Time *</label>
                                                   </div>
 
                                                   <div class="col-sm-2">
 
-                                                        <input type="hidden" name="nooncheck" id="nooncheck" value="0">
-                                                        <input type="checkbox" value="1" id="nooncheck1" onchange="document.getElementById('nooncheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" >
-                                                        <label>Noon</label>
-                                                        <input type="text" id="noon_qty" disabled="disabled" placeholder="Qty">
+                                                        <label class="control control--checkbox">Morning
+                                                          <input type="hidden" name="mrngcheck" id="mrngcheck" value="0">
+                                                          <input type="checkbox" value="1" id="mrngcheck1"  onchange="document.getElementById('mrngcheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" required data-parsley-errors-container="#message-holder" >
+                                                          <div class="control__indicator"></div>
+                                                        </label>
+                                                        <input class="m_input_dis form-control" type="text" id="mrng_qty" disabled="disabled" placeholder="Qty" >
                                                   </div>
 
                                                   <div class="col-sm-2">
 
-                                                        <input type="hidden" name="eveningcheck" id="eveningcheck" value="0">
-                                                        <input type="checkbox" value="1" id="eveningcheck1" onchange="document.getElementById('eveningcheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" >
-                                                        <label>Evening</label>
-                                                        <input type="text" id="evening_qty" disabled="disabled" placeholder="Qty">
+                                                        <label class="control control--checkbox">Noon
+                                                          <input type="hidden" name="nooncheck" id="nooncheck" value="0">
+                                                          <input type="checkbox" value="1" id="nooncheck1" onchange="document.getElementById('nooncheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" >
+                                                          <div class="control__indicator"></div>
+                                                        </label>
+                                                        <input class="m_input_dis form-control" type="text" id="noon_qty" disabled="disabled" placeholder="Qty">
+                                                  </div>
+
+                                                  <div class="col-sm-2">
+
+                                                        <label class="control control--checkbox">Evening
+                                                          <input type="hidden" name="eveningcheck" id="eveningcheck" value="0">
+                                                          <input type="checkbox" value="1" id="eveningcheck1" onchange="document.getElementById('eveningcheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" >
+                                                          <div class="control__indicator"></div>
+                                                        </label>
+                                                        <input class="m_input_dis form-control" type="text" id="evening_qty" disabled="disabled" placeholder="Qty">
 
                                                   </div>
-                                                  <div class="col-sm-6 c_t">
-                                                    <div class="col-sm-3">
+                                                  <div class="col-sm-2">
+
+
+                                                      <label class="control control--checkbox">Other
                                                         <input type="checkbox" value="1" id="other_check" data-parsley-multiple="d-s-c" >
-                                                        <label for="custom_timing">Other</label>
-                                                    </div>
-                                                        <input type="text" id="custom_timing" disabled="disabled" >
+                                                        <div class="control__indicator"></div>
+                                                      </label>
+                                                        <input class="m_input_dis form-control" type="text" id="custom_timing" disabled="disabled" >
                                                   </div>
                                                 </div>
                                               </div>
-                                              <div class="col-md-0"></div>
+                                              <div class="col-md-2"></div>
                                               <p id="message-holder" ></p>
                                               <br>
 
@@ -386,7 +399,7 @@
                                                   <div class="form-group">
                                                       <div class="col-md-8 col-xs-12">
                                                         <button type="button" id="add_medicine" class="add_field_button btn btn-primary">Add Medicine</button>
-                                                        <button class="btn btn-primary" type="reset">Reset</button>
+                                                        <button class="btn btn-primary" id="m_reset" type="reset">Reset</button>
                                                       </div>
                                                   </div>
                                               </div>
@@ -410,9 +423,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
 
-                                    <div class="card col-md-12 col-xs-12" style="border: 1px solid rgb(26, 187, 156);">
+
+                                    <div class="card col-md-12 col-xs-12" id="m_desc" style="border: 1px solid rgb(26, 187, 156);">
                                       <div class="col-md-3 col-xs-12" style="padding:  10px 10px 10px 10px;">
                                         <label for="med_description">Description (Max Length:200) Optional </label>
                                       </div>
@@ -420,6 +433,7 @@
                                         <textarea class="form-control" data-parsley-trigger="keyup" data-parsley-maxlength="200" data-parsley-validation-threshold="10" name="med_description" cols="50" rows="5" id="med_description" data-gramm="true"  spellcheck="false"  style="z-index: auto; position: relative; line-height: 20px; font-size: 14px; transition: none; background: transparent !important;"></textarea>
                                       </div>
                                     </div>
+                                    </form>
 
                                     <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-5">
                                       <button type="button" class="cancel btn btn-primary">Cancel</button>
@@ -502,19 +516,23 @@
 
             $( "#other_check" ).on( "click", function() {
              $("#custom_timing").prop('disabled',!this.checked);
-           });
+            });
 
-             $( "#mrngcheck1" ).on( "click", function() {
+            $( "#mrngcheck1" ).on( "click", function() {
               $("#mrng_qty").prop('disabled',!this.checked);
             });
 
             $( "#nooncheck1" ).on( "click", function() {
-             $("#noon_qty").prop('disabled',!this.checked);
-           });
+               $("#noon_qty").prop('disabled',!this.checked);
+            });
 
-           $( "#eveningcheck1" ).on( "click", function() {
-            $("#evening_qty").prop('disabled',!this.checked);
-          });
+            $( "#eveningcheck1" ).on( "click", function() {
+              $("#evening_qty").prop('disabled',!this.checked);
+            });
+
+            $( "#other_check" ).on( "click", function() {
+             $("#custom_timing").prop('disabled',!this.checked);
+            });
 
             $("body").on('click', ".prescription", function() {
                 $(".bs-recurring-modal-lg").show();
@@ -524,8 +542,20 @@
 
             $("body").on('click', ".cancel,.close", function() {
                 $(this).parents(".modal").hide();
+                $("#rcapp").parsley().reset();
+                $("#custom_timing").prop('disabled','disabled');
+                $("#evening_qty").prop('disabled','disabled');
+                $("#noon_qty").prop('disabled','disabled');
+                $("#mrng_qty").prop('disabled','disabled');
             });
 
+            $("body").on('click', "#m_reset", function() {
+                $("#rcapp").parsley().reset();
+                $("#custom_timing").prop('disabled','disabled');
+                $("#evening_qty").prop('disabled','disabled');
+                $("#noon_qty").prop('disabled','disabled');
+                $("#mrng_qty").prop('disabled','disabled');
+            });
 
             // Constructing the suggestion engine
             var medicines = new Bloodhound({
@@ -666,7 +696,7 @@
             }
             if (document.getElementById("nooncheck").value==1) {
               var nooncheck=1;
-              var noon=" Noon";
+              var noon=" Noon ";
             var noon_qty=document.getElementById("noon_qty").value;
 
             }
@@ -676,7 +706,7 @@
             }
             if (document.getElementById("eveningcheck").value==1) {
               var eveningcheck=1;
-              var evening=" Evening";
+              var evening=" Evening ";
               var evening_qty=document.getElementById("evening_qty").value;
 
             }
@@ -686,11 +716,15 @@
             }
             var custom_timing=document.getElementById("custom_timing").value;
 
-            var $div1 = ('<div id="to_delete"><div class="panel added_medicine col-md-11 col-xs-9"><a class="added_medicine_head panel-heading collapsed" role="tab" id="heading'+x+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+x+'" aria-expanded="false" aria-controls="collapse'+x+'"><h5 id="mname">'+mname+'</h5></a><div id="collapse'+x+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+x+'"><div class="panel-body row"><div class="col-md-2 card mlist_card"><h4 class="h_med">Brand</h4><p id="mbrand">'+mbrand+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Strength</h4><p id="mstrength">'+mstrength+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Dosage Form</h4><p id="mform">'+mform+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Duration</h4><p id="mdur" style="display:inline;">'+mdur+'</p><p style="display:inline;"> </p><p id="mtime" style="display:inline;">'+mtime+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake</h4><p id="mval">'+m_inval+'</p></div><div class="col-md-2 card mlist_card"></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake Time</h4><p id="mrng">'+mrng+'</p><p id="mrngqty">'+mrng_qty+'</p><p id="noon">'+noon+'</p><p id="noonqty">'+noon_qty+'</p><p id="evening">'+evening+'</p><p id="eveningqty">'+evening_qty+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Other</h4><p id="customtiming">'+custom_timing+'</p></div></div><div><div class="col-md-1 col-xs-12" style="float:right; margin-right:10px; margin-bottom: 5px;"><button type="button" class="edit_medicine btn btn-primary">Edit</button></div></div></div></div><div class="col-md-1 col-xs-1"><button type="button" class="del_medicine btn btn-primary">Delete</button></div></div>');
+            var $div1 = ('<div id="to_delete"><div class="panel added_medicine col-md-11 col-xs-9"><a class="added_medicine_head panel-heading collapsed" role="tab" id="heading'+x+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+x+'" aria-expanded="false" aria-controls="collapse'+x+'"><h5 id="mname">'+mname+'</h5></a><div id="collapse'+x+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+x+'"><div class="panel-body row"><div class="col-md-2 card mlist_card"><h4 class="h_med">Brand</h4><p id="mbrand">'+mbrand+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Strength</h4><p id="mstrength">'+mstrength+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Dosage Form</h4><p id="mform">'+mform+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Duration</h4><p id="mdur" style="display:inline;">'+mdur+'</p><p style="display:inline;"> </p><p id="mtime" style="display:inline;">'+mtime+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake</h4><p id="mval">'+m_inval+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Time and Quantity</h4><span id="mrng">'+mrng+'</span><span id="mrngqty">'+mrng_qty+'</span><br><span id="noon">'+noon+'</span><span id="noonqty">'+noon_qty+'</span><br><span id="evening">'+evening+'</span><span id="eveningqty">'+evening_qty+'</span></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Other</h4><p id="customtiming">'+custom_timing+'</p></div></div><div><div class="col-md-1 col-xs-12" style="float:right; margin-right:10px; margin-bottom: 5px;"><button type="button" class="edit_medicine btn btn-primary">Edit</button></div></div></div></div><div class="col-md-1 col-xs-1"><button type="button" class="del_medicine btn btn-primary">Delete</button></div></div>');
 
             $(wrapper).append($div1);
 
             $('#rcapp')[0].reset();
+            $("#custom_timing").prop('disabled','disabled');
+            $("#evening_qty").prop('disabled','disabled');
+            $("#noon_qty").prop('disabled','disabled');
+            $("#mrng_qty").prop('disabled','disabled');
           }
 
         });
@@ -721,8 +755,6 @@
           var mrngqty1 = $(this).parent().parent().parent().parent().find("#mrngqty").text();
           var noonqty1 = $(this).parent().parent().parent().parent().find("#noonqty").text();
           var eveningqty1 = $(this).parent().parent().parent().parent().find("#eveningqty").text();
-
-
           var custom_timing1 = $(this).parent().parent().parent().parent().find("#customtiming").text();
 
 
@@ -742,8 +774,10 @@
           $("#custom_timing").trigger('change');
           if (mintake_mrng==true) {
             $("#mrngcheck1").attr("checked",1);
+
             $("#mrng_qty").val(mrngqty1);
             $("#mrng_qty").trigger('change');
+            $("#mrng_qty").prop('disabled',false);
           }
           if(mintake_noon==true){
             $("#nooncheck1").attr("checked",1);
@@ -765,11 +799,11 @@
 
         $('#submit').click(function(e){
           e.preventDefault();
-          // var n=0;
+
           var description = $("#med_description").val();
 
           $(".added_medicine").each(function(){
-            // n++;
+
             var appointment_id = 1;
             var medicine_name = $(this).find("#mname").html();
             var medicine_strength = $(this).find("#mstrength").html();
@@ -849,8 +883,13 @@
               },
               success: function(data){
                 alert('success');
+                $('#rcapp')[0].reset();
+                $("div[id='to_delete']").remove();
+                $("#custom_timing").prop('disabled','disabled');
+                $("#evening_qty").prop('disabled','disabled');
+                $("#noon_qty").prop('disabled','disabled');
+                $("#mrng_qty").prop('disabled','disabled');
                 $(".modal").hide();
-
               }
             });
 

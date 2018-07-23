@@ -29,7 +29,6 @@ class CreatePrescriptionsTable extends Migration
             $table->boolean('evening');
             $table->integer('evening_qty');
             $table->string('custom_timing');
-            $table->string('description');
             $table->timestamps();
         });
 
