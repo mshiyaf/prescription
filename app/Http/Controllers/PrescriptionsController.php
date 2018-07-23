@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Prescription;
 use App\Medicine;
+use App\Prescriptiondescription;
 
 use App\Appointment;
 
@@ -30,13 +31,19 @@ class PrescriptionsController extends Controller
         $prescription->dosage_form = request('dosage_form');
         $prescription->duration = request('full_dur');
         $prescription->intake_timing = request('intake_timing');
-        $prescription->intake_amount = request('intake_amount');
         $prescription->morning = request('morning');
+        $prescription->morning_qty = request('morning_qty');
         $prescription->afternoon = request('afternoon');
+        $prescription->afternoon_qty = request('afternoon_qty');
         $prescription->evening = request('evening');
+        $prescription->evening_qty = request('evening_qty');
         $prescription->custom_timing = request('custom_timing');
-        $prescription->description = request('description');
         $prescription->save();
+        $prescdesc= new Prescriptiondescription;
+        $prescdesc->appointment_id=request('appointment_id');
+        $prescdesc->description = request('description');
+        $prescdesc->save();
+
 
 
     return response()->json(['success' => true]);
@@ -61,16 +68,16 @@ class PrescriptionsController extends Controller
 
         $appointments = Appointment::where('mobile',"=",$mobile)->pluck("id")->all();
         foreach ($appointments as $a) {
-          $prescriptions = Prescription::select("medicine_name","medicine_strength","dosage_form","duration","created_at")->where('appointment_id',"=",$a)->get();
-
+          $prescriptions = Prescription::select("evening_qty","afternoon_qty","morning_qty","medicine_brand","medicine_name","medicine_strength","dosage_form","duration","created_at")->where('appointment_id',"=",$a)->get();
+          // $details = collect(['med_name', 'med_strength','dosage_form','duration']);
           foreach ($prescriptions as $p) {
             $x++;
             $date = date('d-m-Y',strtotime($p->created_at));
             if($x==1){
-            $details = collect([$p->medicine_name,$p->medicine_strength,$p->dosage_form,$p->duration,$date]);
+            $details = collect([$p->evening_qty,$p->afternoon_qty,$p->morning_qty,$p->medicine_brand,$p->medicine_name,$p->medicine_strength,$p->dosage_form,$p->duration,$date]);
             }
             else
-            $details = $details->concat([$p->medicine_name,$p->medicine_strength,$p->dosage_form,$p->duration,$date]);
+            $details = $details->concat([$p->evening_qty,$p->afternoon_qty,$p->morning_qty,$p->intake_amount,$p->medicine_brand,$p->medicine_name,$p->medicine_strength,$p->dosage_form,$p->duration,$date]);
 
             $details->all();
 

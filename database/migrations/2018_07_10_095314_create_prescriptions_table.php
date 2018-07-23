@@ -22,12 +22,13 @@ class CreatePrescriptionsTable extends Migration
             $table->string('dosage_form');
             $table->string('duration');
             $table->string('intake_timing');
-            $table->integer('intake_amount');
             $table->boolean('morning');
+            $table->integer('morning_qty');
             $table->boolean('afternoon');
+            $table->integer('afternoon_qty');
             $table->boolean('evening');
+            $table->integer('evening_qty');
             $table->string('custom_timing');
-            $table->string('description');
             $table->timestamps();
         });
 
