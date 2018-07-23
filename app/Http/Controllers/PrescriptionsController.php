@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Prescription;
-use App\Medicine;
-use App\Prescriptiondescription;
+use App\MedicineGeneric;
+use App\MedicineBrand;
+use App\PrescriptionDescription;
 
 use App\Appointment;
 
@@ -39,7 +40,7 @@ class PrescriptionsController extends Controller
         $prescription->evening_qty = request('evening_qty');
         $prescription->custom_timing = request('custom_timing');
         $prescription->save();
-        $prescdesc= new Prescriptiondescription;
+        $prescdesc= new PrescriptionDescription;
         $prescdesc->appointment_id=request('appointment_id');
         $prescdesc->description = request('description');
         $prescdesc->save();
@@ -54,10 +55,9 @@ class PrescriptionsController extends Controller
       public function show(){
 
           $prescription = Prescription::all();
-          $medicines = Medicine::all();
           $appointments = Appointment::all();
 
-          return view('welcome', compact('prescription','medicines','appointments'));
+          return view('welcome', compact('prescription','appointments'));
 
       }
 
@@ -91,8 +91,15 @@ class PrescriptionsController extends Controller
 
       public function getMedicineName(){
 
-          $medicine = Medicine::all('medicine_name')->toArray();
+          $medicine = MedicineGeneric::all('medicine_name')->toArray();
           return array_column($medicine, 'medicine_name');
+
+      }
+
+      public function getMedicineBrand(){
+
+          $medicine = MedicineBrand::all('brand_name')->toArray();
+          return array_column($medicine, 'brand_name');
 
       }
 
