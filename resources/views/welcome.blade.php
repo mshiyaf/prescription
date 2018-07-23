@@ -558,13 +558,6 @@
                 $("#mrng_qty").prop('disabled','disabled');
             });
 
-            // Constructing the suggestion engine
-            var medicines = new Bloodhound({
-                datumTokenizer: Bloodhound.tokenizers.whitespace,
-                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                prefetch: {url:'/get-medicine-names',cache:false}
-            });
-
 
             $("#med_intake > label.btn").on("click", function(){
                 // num = +this.value;
@@ -572,15 +565,43 @@
             });
 
 
+            // Constructing the suggestion engine
+            var medicine_names = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.whitespace,
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                prefetch: {url:'/get-medicine-names',cache:false}
+            });
+            
+
             // Initializing the typeahead
-            $('.typeahead').typeahead({
+            $('#med_name').typeahead({
                 hint: true,
                 highlight: true, /* Enable substring highlighting */
                 minLength: 1 /* Specify minimum characters required for showing result */
             },
             {
-                source: medicines
+                source: medicine_names
             });
+
+            // Constructing the suggestion engine
+            var medicine_brands = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.whitespace,
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                prefetch: {url:'/get-medicine-brands',cache:false}
+            });
+
+
+            // Initializing the typeahead
+            $('#med_brand').typeahead({
+                hint: true,
+                highlight: true, /* Enable substring highlighting */
+                minLength: 1 /* Specify minimum characters required for showing result */
+            },
+            {
+                source: medicine_brands
+            });
+
+
 
 
         });
