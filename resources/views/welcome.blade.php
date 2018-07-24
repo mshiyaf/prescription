@@ -614,30 +614,35 @@
 
               $.ajax({
                 url: "/get-medicine-brand-on-name",
-                method: 'get',
+                method: 'post',
                 data: {
                   medicine_name:medicine_name
+                },
+                success: function(data){
+
+                  // Constructing the suggestion engine
+                  var medicine_brands = new Bloodhound({
+                      datumTokenizer: Bloodhound.tokenizers.whitespace,
+                      queryTokenizer: Bloodhound.tokenizers.whitespace,
+                      prefetch: {url:'/get-medicine-brand-on-name',cache:false}
+                  });
+
+
+                  // Initializing the typeahead
+                  $('#med_brand').typeahead({
+                      hint: true,
+                      limit: 10,
+                      highlight: true, /* Enable substring highlighting */
+                      minLength: 1 /* Specify minimum characters required for showing result */
+                  },
+                  {
+                      source: medicine_brands
+                  });
+
+
                 }
               });
 
-              // Constructing the suggestion engine
-              var medicine_brands = new Bloodhound({
-                  datumTokenizer: Bloodhound.tokenizers.whitespace,
-                  queryTokenizer: Bloodhound.tokenizers.whitespace,
-                  prefetch: {url:'/get-medicine-brand-on-name',cache:false}
-              });
-
-
-              // Initializing the typeahead
-              $('#med_brand').typeahead({
-                  hint: true,
-                  limit: 10,
-                  highlight: true, /* Enable substring highlighting */
-                  minLength: 1 /* Specify minimum characters required for showing result */
-              },
-              {
-                  source: medicine_brands
-              });
 
 
             });
