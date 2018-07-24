@@ -564,43 +564,6 @@
                 m_inval = $(this).find("input[name=med_intake]").val();
             });
 
-            //
-            // // Constructing the suggestion engine
-            // var medicine_names = new Bloodhound({
-            //     datumTokenizer: Bloodhound.tokenizers.whitespace,
-            //     queryTokenizer: Bloodhound.tokenizers.whitespace,
-            //     prefetch: {url:'/get-medicine-names',cache:false}
-            // });
-            //
-            //
-            // $('#med_name').typeahead({
-            //     hint: true,
-            //     highlight: true, /* Enable substring highlighting */
-            //     minLength: 1 /* Specify minimum characters required for showing result */
-            // },
-            // {
-            //     source: medicine_names
-            // });
-            //
-            // // Constructing the suggestion engine
-            // var medicine_brands = new Bloodhound({
-            //     datumTokenizer: Bloodhound.tokenizers.whitespace,
-            //     queryTokenizer: Bloodhound.tokenizers.whitespace,
-            //     prefetch: {url:'/get-medicine-brands',cache:false}
-            // });
-            //
-            //
-            // // Initializing the typeahead
-            // $('#med_brand').typeahead({
-            //     hint: true,
-            //     limit: 10,
-            //     highlight: true, /* Enable substring highlighting */
-            //     minLength: 1 /* Specify minimum characters required for showing result */
-            // },
-            // {
-            //     source: medicine_brands
-            // });
-
 
             $("#med_name").change(function(){
               var medicine_name = $(this).val();
@@ -812,6 +775,13 @@
             e.preventDefault();
 
             x++;
+            $("#med_intake_but").hasClass("active", function(){
+                // num = +this.value;
+
+                m_inval = $(this).find("input[name=med_intake]").val();
+                alert(m_inval);
+            });
+
 
             $("#rcapp").parsley().validate();
             if($("#rcapp").parsley().isValid())
@@ -936,12 +906,27 @@
 
         $('#submit').click(function(e){
           e.preventDefault();
-
+          var appointment_id = 1;
           var description = $("#med_description").val();
+          $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+          });
+
+          $.ajax({
+            url: "/prescription_desc",
+            method: 'post',
+            dataType:'json',
+            data: {
+              appointment_id:appointment_id,
+              description:description
+            }
+          });
 
           $(".added_medicine").each(function(){
 
-            var appointment_id = 1;
+
             var medicine_name = $(this).find("#mname").html();
             var medicine_strength = $(this).find("#mstrength").html();
             var medicine_brand = $(this).find("#mbrand").html();
@@ -1014,8 +999,7 @@
                  afternoon_qty:afternoon_qty,
                  evening:evening,
                  evening_qty:evening_qty,
-                 custom_timing:custom_timing,
-                 description:description
+                 custom_timing:custom_timing
 
               },
               success: function(data){

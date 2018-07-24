@@ -1,6 +1,7 @@
 
 
   <div class="ui cards">
+
   @for ($i=$details->count()-1; $i >=0; $i=$i-9)
 
       <div class="card" style="border-radius: 5px; border: 1px solid rgb(26, 187, 156); margin: 15px 10px 11px 10px;">
