@@ -6,7 +6,7 @@ use App\Prescription;
 use App\MedicineGeneric;
 use App\MedicineBrand;
 use App\PrescriptionDescription;
-
+use DB;
 use App\Appointment;
 
 use Illuminate\Http\Request;
@@ -68,20 +68,14 @@ class PrescriptionsController extends Controller
 
         $appointments = Appointment::where('mobile',"=",$mobile)->pluck("id")->all();
         foreach ($appointments as $a) {
-          $prescriptions = Prescription::select("evening_qty","afternoon_qty","morning_qty","medicine_brand","medicine_name","medicine_strength","dosage_form","duration","created_at")->where('appointment_id',"=",$a)->get();
-          // $details = collect(['med_name', 'med_strength','dosage_form','duration']);
-          foreach ($prescriptions as $p) {
-            $x++;
-            $date = date('d-m-Y',strtotime($p->created_at));
-            if($x==1){
-            $details = collect([$p->evening_qty,$p->afternoon_qty,$p->morning_qty,$p->medicine_brand,$p->medicine_name,$p->medicine_strength,$p->dosage_form,$p->duration,$date]);
-            }
-            else
-            $details = $details->concat([$p->evening_qty,$p->afternoon_qty,$p->morning_qty,$p->intake_amount,$p->medicine_brand,$p->medicine_name,$p->medicine_strength,$p->dosage_form,$p->duration,$date]);
+          //$prescriptions = Prescription::select("evening_qty","afternoon_qty","morning_qty","medicine_brand","medicine_name","medicine_strength","dosage_form","duration","created_at")->where('appointment_id',"=",$a)->get();
+          $prescriptions = DB::table('prescriptions')
+          ->select("evening_qty","afternoon_qty","morning_qty","medicine_brand","medicine_name","medicine_strength","dosage_form","duration","created_at")
+          ->where('appointment_id',"=",$a)->get();
 
-            $details->all();
+          $details[$x]=$prescriptions;
+          $x++;
 
-          }
         }
 
         $data = view('/get_history', ['details'=>$details])->render();

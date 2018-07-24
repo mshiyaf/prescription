@@ -329,10 +329,10 @@
                                                       </div>
                                                       <div class="col-md-3 col-xs-12">
                                                           <div id="med_intake"  class="btn-group" data-toggle="buttons" >
-                                                              <label class="btn btn-default" id="med_intake_but" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default" >
+                                                              <label class="btn btn-default" id="med_intake_before" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default" >
                                                                 <input type="radio"  name="med_intake"  value="Before Food" data-parsley-errors-container="#checkbox-errors" required >Before food</label>
-                                                              <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                                <input type="radio" name="med_intake"  value="After Food">After food</label>
+                                                              <label class="btn btn-default" id="med_intake_after" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                                                <input type="radio" name="med_intake"   value="After Food">After food</label>
 
                                                           </div>
                                                           <div id="checkbox-errors"></div>
@@ -446,7 +446,6 @@
 
 
                                 <div id="p_history" class="tab-pane fade in">
-
 
                                 </div>
                             </div>
@@ -858,6 +857,8 @@
             $(wrapper).append($div1);
 
             $('#rcapp')[0].reset();
+            $("#med_intake_after").removeClass('active');
+            $("#med_intake_before").removeClass('active');
             $("#custom_timing").prop('disabled','disabled');
             $("#evening_qty").prop('disabled','disabled');
             $("#noon_qty").prop('disabled','disabled');
@@ -883,6 +884,8 @@
           var mdur1 = $(this).parent().parent().parent().parent().find("#mdur").text();
           var mtime1 = $(this).parent().parent().parent().parent().find("#mtime").text();
           var mval1 = $(this).parent().parent().parent().parent().find("#mval").text();
+          var mvalbefore=mval1.includes("Before Food");
+          var mvalafter=mval1.includes("After Food");
           var mrng1 = $(this).parent().parent().parent().parent().find("#mrng").text();
           var mintake_mrng = mrng1.includes("Morning");
           var noon1 = $(this).parent().parent().parent().parent().find("#noon").text();
@@ -926,6 +929,13 @@
             $("#evening_qty").val(eveningqty1);
             $("#evening_qty").trigger('change');
           }
+          if(mvalbefore==true){
+            $("#med_intake_before").addClass('active');
+          }
+          if(mvalafter==true){
+            $("#med_intake_after").addClass('active');
+          }
+
 
           $(this).parent().parent().parent().parent().parent().remove();
 

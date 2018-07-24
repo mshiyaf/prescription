@@ -1,30 +1,37 @@
 
 
   <div class="ui cards">
-  @for ($i=$details->count()-1; $i >=0; $i=$i-9)
+@foreach($details as $d)
 
-      <div class="card" style="border-radius: 5px; border: 1px solid rgb(26, 187, 156); margin: 15px 10px 11px 10px;">
-        <div class="card-body" style="padding: 17px 10px 14px 22px;">
-          <div class="row">
-            <div class="col-md-9 col-xs-12" id="m_name"><b style="font-size:16px;">{{ $details[$i-4] }}</b></div>
-            <div class="col-md-3 col-xs-12" style="float: right;">Prescribed On : {{ $details[$i] }}</div>
-            <div class="col-md-8 col-xs-12" id="m_brand">Brand : {{ $details[$i-5] }}</div>
-            <div class="col-md-8 col-xs-12" id="m_strength">Strength : {{ $details[$i-3] }}</div>
-            <div class="col-md-8 col-xs-12" id="dosage">Dosage Form : {{ $details[$i-2] }}</div>
-            @if ($details[$i-6] != 0)
-            <div class="col-md-8 col-xs-12" id="m_intake_mrng">Morning Intake Amount :{{ $details[$i-6] }}</div>
-            @endif
-            @if ($details[$i-7] != 0)
-            <div class="col-md-8 col-xs-12" id="m_intake_noon">Noon Intake Amount :{{ $details[$i-7] }}</div>
-            @endif
-            @if ($details[$i-8] != 0)
-            <div class="col-md-8 col-xs-12" id="m_intake_mrng">Evening Intake Amount :{{ $details[$i-8] }}</div>
-            @endif
-            <div class="col-md-8 col-xs-12" id="duration">Duration : {{ $details[$i-1] }}</div>
-          </div>
-          {{-- <div id="p_date" style="text-align: right;margin-top: 0rem;">{{ $details[$i] }}</p></div> --}}
-        </div>
+@foreach($d as $det)
+  <div class="card" style="border-radius: 5px; border: 1px solid rgb(26, 187, 156); margin: 15px 10px 11px 10px;">
+    <div class="card-body" style="padding: 17px 10px 14px 22px;">
+      <div class="row">
+        <div class="col-md-9 col-xs-12" id="m_name"><b style="font-size:16px;"><?php echo $det->medicine_name;?></b></div>
+        <div class="col-md-3 col-xs-12" style="float: right;">Prescribed On :<?php echo $det->created_at;?></div>
+        <div class="col-md-8 col-xs-12" id="m_brand">Brand : <?php echo $det->medicine_brand;?></div>
+        <div class="col-md-8 col-xs-12" id="m_strength">Strength : <?php echo $det->medicine_strength;?></div>
+        <div class="col-md-8 col-xs-12" id="dosage">Dosage Form : <?php echo $det->dosage_form;?></div>
+        @if ($det->morning_qty != 0)
+        <div class="col-md-8 col-xs-12" id="m_intake_mrng">Morning Intake Amount :<?php echo $det->morning_qty;?></div>
+        @endif
+        @if ($det->afternoon_qty != 0)
+        <div class="col-md-8 col-xs-12" id="m_intake_noon">Noon Intake Amount :<?php echo $det->afternoon_qty;?></div>
+        @endif
+        @if ($det->evening_qty != 0)
+        <div class="col-md-8 col-xs-12" id="m_intake_evening">Evening Intake Amount :<?php echo $det->evening_qty;?></div>
+        @endif
+        <div class="col-md-8 col-xs-12" id="duration">Duration : <?php echo $det->duration?></div>
       </div>
+    </div>
+  </div>
+@endforeach
+@endforeach
 
-  @endfor
+
+
+
+
+
+
   </div>
