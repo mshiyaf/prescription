@@ -330,9 +330,9 @@
                                                       <div class="col-md-3 col-xs-12">
                                                           <div id="med_intake"  class="btn-group" data-toggle="buttons" >
                                                               <label class="btn btn-default" id="med_intake_before" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default" >
-                                                                <input type="radio"  name="med_intake"  value="Before Food" data-parsley-errors-container="#checkbox-errors" required >Before food</label>
+                                                                <input type="radio"  name="med_intake" id="med_intake1" value="Before Food" data-parsley-errors-container="#checkbox-errors" required >Before food</label>
                                                               <label class="btn btn-default" id="med_intake_after" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                                <input type="radio" name="med_intake"   value="After Food">After food</label>
+                                                                <input type="radio" name="med_intake" id="med_intake1"  value="After Food">After food</label>
 
                                                           </div>
                                                           <div id="checkbox-errors"></div>
@@ -543,6 +543,8 @@
                 $(this).parents(".modal").hide();
                 $("#rcapp").parsley().reset();
                 $("div[id='to_delete']").remove();
+                $("#med_intake_after").removeClass('active');
+                $("#med_intake_before").removeClass('active');
                 $("#custom_timing").prop('disabled','disabled');
                 $("#evening_qty").prop('disabled','disabled');
                 $("#noon_qty").prop('disabled','disabled');
@@ -551,6 +553,8 @@
 
             $("body").on('click', "#m_reset", function() {
                 $("#rcapp").parsley().reset();
+                $("#med_intake_after").removeClass('active');
+                $("#med_intake_before").removeClass('active');
                 $("#custom_timing").prop('disabled','disabled');
                 $("#evening_qty").prop('disabled','disabled');
                 $("#noon_qty").prop('disabled','disabled');
@@ -765,9 +769,7 @@
           });
 
         };
-
-
-
+        
 
 
         $(add_button).click(function(e) {
@@ -901,9 +903,11 @@
           }
           if(mvalbefore==true){
             $("#med_intake_before").addClass('active');
+            $("#med_intake_before").trigger('click');
           }
           if(mvalafter==true){
             $("#med_intake_after").addClass('active');
+            $("#med_intake_after").trigger('click');
           }
 
 
