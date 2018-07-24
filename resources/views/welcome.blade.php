@@ -573,7 +573,6 @@
             });
 
 
-            // Initializing the typeahead
             $('#med_name').typeahead({
                 hint: true,
                 highlight: true, /* Enable substring highlighting */
@@ -605,47 +604,111 @@
 
             $("#med_name").change(function(){
               var medicine_name = $(this).val();
+              // alert(medicine_name);
 
-              $.ajaxSetup({
-              headers: {
-                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              // Constructing the suggestion engine
+
+              var medicine_brands_change = new Bloodhound({
+              datumTokenizer: Bloodhound.tokenizers.whitespace,
+              queryTokenizer: Bloodhound.tokenizers.whitespace,
+              prefetch: {
+                url:'/get-medicine-brand-on-name?medicine_name='+medicine_name+'',
+                cache:false
                 }
               });
 
-              $.ajax({
-                url: "/get-medicine-brand-on-name",
-                method: 'post',
-                data: {
-                  medicine_name:medicine_name
-                },
-                success: function(data){
+              medicine_brands_change.clearPrefetchCache();
+              medicine_brands_change.initialize();
+              // Initializing the typeahead
+              $('#med_brand').typeahead('destroy');
+              $('#med_brand').typeahead({
+                  hint: true,
+                  limit: 10,
+                  highlight: true, /* Enable substring highlighting */
+                  minLength: 1 /* Specify minimum characters required for showing result */
+              },
+              {
+                  source: medicine_brands_change
+              });
 
-                  // Constructing the suggestion engine
-                  var medicine_brands = new Bloodhound({
-                      datumTokenizer: Bloodhound.tokenizers.whitespace,
-                      queryTokenizer: Bloodhound.tokenizers.whitespace,
-                      prefetch: {url:'/get-medicine-brand-on-name',cache:false}
-                  });
+            });
 
+            $("#med_brand").select(function(){
 
-                  // Initializing the typeahead
-                  $('#med_brand').typeahead({
-                      hint: true,
-                      limit: 10,
-                      highlight: true, /* Enable substring highlighting */
-                      minLength: 1 /* Specify minimum characters required for showing result */
-                  },
-                  {
-                      source: medicine_brands
-                  });
+              // Constructing the suggestion engine
+              var medicine_brands = new Bloodhound({
+                  datumTokenizer: Bloodhound.tokenizers.whitespace,
+                  queryTokenizer: Bloodhound.tokenizers.whitespace,
+                  prefetch: {url:'/get-medicine-brands',cache:false}
+              });
 
 
+              // Initializing the typeahead
+              $('#med_brand').typeahead({
+                  hint: true,
+                  limit: 10,
+                  highlight: true, /* Enable substring highlighting */
+                  minLength: 1 /* Specify minimum characters required for showing result */
+              },
+              {
+                  source: medicine_brands
+              });
+
+            })
+
+            $('#med_name').select(function(){
+              $('#med_name').typeahead({
+                  hint: true,
+                  highlight: true, /* Enable substring highlighting */
+                  minLength: 1 /* Specify minimum characters required for showing result */
+              },
+              {
+                  source: medicine_names
+              });
+
+              // Constructing the suggestion engine
+              var medicine_brands = new Bloodhound({
+                  datumTokenizer: Bloodhound.tokenizers.whitespace,
+                  queryTokenizer: Bloodhound.tokenizers.whitespace,
+                  prefetch: {url:'/get-medicine-brands',cache:false}
+              });
+            });
+
+
+            $("#med_brand").change(function(){
+
+              var medicine_brand = $(this).val();
+              alert(medicine_brand);
+
+              // Constructing the suggestion engine
+
+              var medicine_names_change = new Bloodhound({
+              datumTokenizer: Bloodhound.tokenizers.whitespace,
+              queryTokenizer: Bloodhound.tokenizers.whitespace,
+              prefetch: {
+                url:'/get-medicine-name-on-brand?medicine_brand='+medicine_brand+'',
+                cache:false
                 }
+              });
+
+              medicine_names_change.clearPrefetchCache();
+              medicine_names_change.initialize();
+              // Initializing the typeahead
+              $('#med_name').typeahead('destroy');
+              $('#med_name').typeahead({
+                  hint: true,
+                  limit: 10,
+                  highlight: true, /* Enable substring highlighting */
+                  minLength: 1 /* Specify minimum characters required for showing result */
+              },
+              {
+                  source: medicine_names_change
               });
 
 
 
             });
+
 
         });
 
