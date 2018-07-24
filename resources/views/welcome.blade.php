@@ -564,42 +564,42 @@
                 m_inval = $(this).find("input[name=med_intake]").val();
             });
 
-
-            // Constructing the suggestion engine
-            var medicine_names = new Bloodhound({
-                datumTokenizer: Bloodhound.tokenizers.whitespace,
-                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                prefetch: {url:'/get-medicine-names',cache:false}
-            });
-
-
-            $('#med_name').typeahead({
-                hint: true,
-                highlight: true, /* Enable substring highlighting */
-                minLength: 1 /* Specify minimum characters required for showing result */
-            },
-            {
-                source: medicine_names
-            });
-
-            // Constructing the suggestion engine
-            var medicine_brands = new Bloodhound({
-                datumTokenizer: Bloodhound.tokenizers.whitespace,
-                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                prefetch: {url:'/get-medicine-brands',cache:false}
-            });
-
-
-            // Initializing the typeahead
-            $('#med_brand').typeahead({
-                hint: true,
-                limit: 10,
-                highlight: true, /* Enable substring highlighting */
-                minLength: 1 /* Specify minimum characters required for showing result */
-            },
-            {
-                source: medicine_brands
-            });
+            //
+            // // Constructing the suggestion engine
+            // var medicine_names = new Bloodhound({
+            //     datumTokenizer: Bloodhound.tokenizers.whitespace,
+            //     queryTokenizer: Bloodhound.tokenizers.whitespace,
+            //     prefetch: {url:'/get-medicine-names',cache:false}
+            // });
+            //
+            //
+            // $('#med_name').typeahead({
+            //     hint: true,
+            //     highlight: true, /* Enable substring highlighting */
+            //     minLength: 1 /* Specify minimum characters required for showing result */
+            // },
+            // {
+            //     source: medicine_names
+            // });
+            //
+            // // Constructing the suggestion engine
+            // var medicine_brands = new Bloodhound({
+            //     datumTokenizer: Bloodhound.tokenizers.whitespace,
+            //     queryTokenizer: Bloodhound.tokenizers.whitespace,
+            //     prefetch: {url:'/get-medicine-brands',cache:false}
+            // });
+            //
+            //
+            // // Initializing the typeahead
+            // $('#med_brand').typeahead({
+            //     hint: true,
+            //     limit: 10,
+            //     highlight: true, /* Enable substring highlighting */
+            //     minLength: 1 /* Specify minimum characters required for showing result */
+            // },
+            // {
+            //     source: medicine_brands
+            // });
 
 
             $("#med_name").change(function(){
@@ -633,53 +633,62 @@
 
             });
 
-            $("#med_brand").select(function(){
+            $("#med_brand").click(function(){
 
-              // Constructing the suggestion engine
-              var medicine_brands = new Bloodhound({
-                  datumTokenizer: Bloodhound.tokenizers.whitespace,
-                  queryTokenizer: Bloodhound.tokenizers.whitespace,
-                  prefetch: {url:'/get-medicine-brands',cache:false}
-              });
+                if( !$("#med_name").val() ) {
+                // Constructing the suggestion engine
+                var medicine_brands = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.whitespace,
+                    queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    prefetch: {url:'/get-medicine-brands',cache:false}
+                });
 
 
-              // Initializing the typeahead
-              $('#med_brand').typeahead({
-                  hint: true,
-                  limit: 10,
-                  highlight: true, /* Enable substring highlighting */
-                  minLength: 1 /* Specify minimum characters required for showing result */
-              },
-              {
-                  source: medicine_brands
-              });
+                // Initializing the typeahead
+                $('#med_brand').typeahead({
+                    hint: true,
+                    limit: 10,
+                    highlight: true, /* Enable substring highlighting */
+                    minLength: 1 /* Specify minimum characters required for showing result */
+                },
+                {
+                    source: medicine_brands
+                });
 
+
+                $('#med_brand').focus();
+              }
             })
 
-            $('#med_name').select(function(){
-              $('#med_name').typeahead({
-                  hint: true,
-                  highlight: true, /* Enable substring highlighting */
-                  minLength: 1 /* Specify minimum characters required for showing result */
-              },
-              {
-                  source: medicine_names
-              });
+            $('#med_name').click(function(){
 
-              // Constructing the suggestion engine
-              var medicine_brands = new Bloodhound({
-                  datumTokenizer: Bloodhound.tokenizers.whitespace,
-                  queryTokenizer: Bloodhound.tokenizers.whitespace,
-                  prefetch: {url:'/get-medicine-brands',cache:false}
-              });
+            if( !$("#med_brand").val() ) {
+
+            // Constructing the suggestion engine
+            var medicine_names = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.whitespace,
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                prefetch: {url:'/get-medicine-names',cache:false}
+            });
+
+            $('#med_name').typeahead({
+                hint: true,
+                highlight: true, /* Enable substring highlighting */
+                minLength: 1 /* Specify minimum characters required for showing result */
+            },
+            {
+                source: medicine_names
+            });
+            $('#med_name').focus();
+
+            // $(".tt-menu").addClass("tt-open");
+            }
             });
 
 
             $("#med_brand").change(function(){
 
               var medicine_brand = $(this).val();
-              alert(medicine_brand);
-
               // Constructing the suggestion engine
 
               var medicine_names_change = new Bloodhound({
