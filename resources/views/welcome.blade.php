@@ -330,9 +330,9 @@
                                                       <div class="col-md-3 col-xs-12">
                                                           <div id="med_intake"  class="btn-group" data-toggle="buttons" >
                                                               <label class="btn btn-default" id="med_intake_before" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default" >
-                                                                <input type="radio"  name="med_intake"  value="Before Food" data-parsley-errors-container="#checkbox-errors" required >Before food</label>
+                                                                <input type="radio"  name="med_intake" id="med_intake1" value="Before Food" data-parsley-errors-container="#checkbox-errors" required >Before food</label>
                                                               <label class="btn btn-default" id="med_intake_after" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                                <input type="radio" name="med_intake"   value="After Food">After food</label>
+                                                                <input type="radio" name="med_intake" id="med_intake1"  value="After Food">After food</label>
 
                                                           </div>
                                                           <div id="checkbox-errors"></div>
@@ -931,9 +931,11 @@
           }
           if(mvalbefore==true){
             $("#med_intake_before").addClass('active');
+            $("#med_intake_before").trigger('click');
           }
           if(mvalafter==true){
             $("#med_intake_after").addClass('active');
+            $("#med_intake_after").trigger('click');
           }
 
 
