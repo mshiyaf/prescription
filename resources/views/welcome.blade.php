@@ -543,6 +543,8 @@
                 $(this).parents(".modal").hide();
                 $("#rcapp").parsley().reset();
                 $("div[id='to_delete']").remove();
+                $("#med_intake_after").removeClass('active');
+                $("#med_intake_before").removeClass('active');
                 $("#custom_timing").prop('disabled','disabled');
                 $("#evening_qty").prop('disabled','disabled');
                 $("#noon_qty").prop('disabled','disabled');
@@ -551,6 +553,8 @@
 
             $("body").on('click', "#m_reset", function() {
                 $("#rcapp").parsley().reset();
+                $("#med_intake_after").removeClass('active');
+                $("#med_intake_before").removeClass('active');
                 $("#custom_timing").prop('disabled','disabled');
                 $("#evening_qty").prop('disabled','disabled');
                 $("#noon_qty").prop('disabled','disabled');
@@ -802,9 +806,7 @@
           });
 
         };
-
-
-
+        
 
 
         $(add_button).click(function(e) {
