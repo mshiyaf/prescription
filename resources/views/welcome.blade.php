@@ -962,7 +962,7 @@
           });
 
           $(".added_medicine").each(function(){
-
+            
 
             var medicine_name = $(this).find("#mname").html();
             var medicine_strength = $(this).find("#mstrength").html();
