@@ -884,6 +884,7 @@
           var custom_timing1 = $(this).parent().parent().parent().parent().find("#customtiming").text();
 
 
+
           $("#med_name").val(mname1);
           $("#med_name").trigger('change');
           $("#med_brand").val(mbrand1);
@@ -923,7 +924,11 @@
             $("#med_intake_after").addClass('active');
             $("#med_intake_after").trigger('click');
           }
-          if(custom_timing1!=null){
+          if(custom_timing1===''){
+            $("#other_check").removeAttr("checked");
+            $("#custom_timing").prop('disabled','disabled');
+          }
+          else{
           $("#other_check").prop("checked",true);
           $("#custom_timing").val(custom_timing1);
           $("#custom_timing").trigger('change');
