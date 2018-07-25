@@ -48,7 +48,7 @@
     <link href="https://www.booknmeet.com/assets/dropdownstyle/css/cs-skin-border.css" rel="stylesheet">
 
     <link href="/css/app.css?v=13" rel="stylesheet">
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.css" rel="stylesheet">
 </head>
 
 
@@ -242,170 +242,210 @@
                                 <div id="new_prescription" class="tab-pane fade in active">
 
 
-
                                     <form accept-charset="UTF-8" id="rcapp" data-parsley-validate>
 
                                         <div class="input_fields_wrap">
                                           <div class="m_initial card" style="border-radius: 10px; border: 1px solid rgb(26, 187, 156);">
                                             <div class="card-body" style="padding: 22px 18px 7px 20px;">
 
-                                              <div class="row" id="m_name">
-                                                  <div class="form-group">
-                                                      <div class="col-md-2 col-xs-12">
-                                                          <label for="medicine">Enter Medicine *</label>
-                                                      </div>
-                                                      <div class="col-md-3 col-xs-12">
-                                                          <input type="text" class="form-control typeahead tt-query" autocomplete="off" spellcheck="false" required="" id="med_name" name="med_name">
-                                                      </div>
-                                                      <div class="col-md-3 col-xs-12" id="m_form_label">
-                                                          <label for="m_brand">Brand *</label>
-                                                      </div>
-                                                      <div class="col-md-3 col-xs-12">
-                                                          <input type="text" class="form-control typeahead tt-query" autocomplete="off" spellcheck="false" required="" id="med_brand" name="med_brand">
-                                                      </div>
-                                                  </div>
+
+                                              <div class="row" id="mchoice">
+                                                <div class="col-md-6 col-xs-12">
+                                                <div id="m_choice" class="btn-group" data-toggle="buttons">
+                                                    <label class="btn btn-default" id="m_choice_gen" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                                      <input type="radio" name="m_choice_gen1" id="m_choice_gen1" value="Generic Name">Generic Name</label>
+                                                    <label class="btn btn-default" id="m_choice_brand" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                                      <input type="radio" name="m_choice_brand1" id="m_choice_brand1" value="Brand Name" >Brand Name</label>
+
+                                                </div>
+
+                                                </div>
                                               </div>
                                               <br>
 
+                                              <div id="m_dis_to_none">
+                                                <div class="row" id="m_name" style="display:none">
+                                                    <div class="form-group">
+                                                      <div id="m_gen_name">
+                                                        <div class="col-md-2 col-xs-12">
+                                                            <label for="medicine">Generic Name *</label>
+                                                        </div>
+                                                        <div class="col-md-3 col-xs-12">
+                                                            <input type="text" class="form-control typeahead tt-query" autocomplete="off" spellcheck="false" required="" id="med_name" name="med_name">
+                                                        </div>
+                                                      </div>
+                                                      <div id="m_brand_name" style="display:none">
+                                                        <div class="col-md-3 col-xs-12" id="m_form_label">
+                                                            <label for="m_brand">Brand Name *</label>
+                                                        </div>
+                                                        <div class="col-md-3 col-xs-12">
+                                                            <input type="text" class="form-control typeahead tt-query" autocomplete="off" spellcheck="false" required="" id="med_brand" name="med_brand">
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row" id="m_name_b" style="display:none">
+                                                    <div class="form-group">
+                                                      <div id="m_brand_name_b">
+                                                        <div class="col-md-2 col-xs-12" id="m_form_label_b">
+                                                            <label for="m_brand_b">Brand Name *</label>
+                                                        </div>
+                                                        <div class="col-md-3 col-xs-12">
+                                                            <input type="text" class="form-control typeahead tt-query" autocomplete="off" spellcheck="false" required="" id="med_brand_b" name="med_brand_b">
+                                                            <a href="#" id="m_toshow_name">Show Generic Name</a>
+                                                        </div>
+                                                        <div id="m_gen_name_b" style="display:none">
+                                                          <div class="col-md-3 col-xs-12">
+                                                              <input type="text" class="form-control" id="med_name_b" name="med_name_b" disabled>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                </div>
+                                                <br>
 
-                                              <div class="row" id="m_strength">
-                                                  <div class="form-group">
-                                                      <div class="col-md-2 col-xs-12">
-                                                          <label for="strength">Strength *</label>
-                                                      </div>
-                                                      <div class="col-md-3 col-xs-12">
-                                                          <input class="form-control" id="med_strength" required="" placeholder="Dosage" name="med_strength" type="text">
-                                                      </div>
-                                                      <div class="col-md-3 col-xs-12" id="m_form_label">
-                                                          <label for="m_form">Dosage Form *</label>
-                                                      </div>
-                                                      <div class="col-md-3 col-xs-12">
-                                                          <select class="form-control" required="" id="m_form" name="m_form">
-                                                            <option selected="selected" value="">Form..</option>
-                                                            <option value="Tablet">Tablet</option>
-                                                            <option value="Capsule">Capsule</option>
-                                                            <option value="Suspension">Suspension</option>
-                                                            <option value="Ointment">Ointment</option>
-                                                            <option value="Syrup">Syrup</option>
-                                                            <option value="Nasal">Nasal</option>
-                                                            <option value="Eye Drop">Eye Drop</option>
-                                                            <option value="Ear Drop">Ear Drop</option>
-                                                            <option value="Suppository">Suppository</option>
-                                                            <option value="Nebulizer">Nebulizer</option>
-                                                            <option value="Inhaler">Inhaler</option>
-                                                            <option value="Other">Other</option>
-                                                          </select>
+                                                <div id="m_show_rest" style="display:none">
+                                                  <div class="row" id="m_strength">
+                                                      <div class="form-group">
+                                                          <div class="col-md-2 col-xs-12">
+                                                              <label for="strength">Strength *</label>
+                                                          </div>
+                                                          <div class="col-md-3 col-xs-12">
+                                                              <input class="form-control" id="med_strength" required="" placeholder="Dosage" name="med_strength" type="text">
+                                                          </div>
+                                                          <div class="col-md-3 col-xs-12" id="m_form_label">
+                                                              <label for="m_form">Dosage Form *</label>
+                                                          </div>
+                                                          <div class="col-md-3 col-xs-12">
+                                                              <select class="form-control" required="" id="m_form" name="m_form">
+                                                                <option selected="selected" value="">Form..</option>
+                                                                <option value="Tablet">Tablet</option>
+                                                                <option value="Capsule">Capsule</option>
+                                                                <option value="Suspension">Suspension</option>
+                                                                <option value="Ointment">Ointment</option>
+                                                                <option value="Syrup">Syrup</option>
+                                                                <option value="Nasal">Nasal</option>
+                                                                <option value="Eye Drop">Eye Drop</option>
+                                                                <option value="Ear Drop">Ear Drop</option>
+                                                                <option value="Suppository">Suppository</option>
+                                                                <option value="Nebulizer">Nebulizer</option>
+                                                                <option value="Inhaler">Inhaler</option>
+                                                                <option value="Other">Other</option>
+                                                              </select>
+                                                          </div>
                                                       </div>
                                                   </div>
-                                              </div>
-                                              <br>
+                                                  <br>
 
-                                              <div class="row" id="m_dur">
-                                                  <div class="form-group">
-                                                      <div class="col-md-2 col-xs-12">
-                                                          <label for="duration">Duration *</label>
-                                                      </div>
-                                                      <div class="col-md-1 col-xs-4">
-                                                          <input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" " required data-parsley-errors-container="#msg-holder" >
-                                                      </div>
+                                                  <div class="row" id="m_dur">
+                                                      <div class="form-group">
+                                                          <div class="col-md-2 col-xs-12">
+                                                              <label for="duration">Duration *</label>
+                                                          </div>
+                                                          <div class="col-md-1 col-xs-4">
+                                                              <input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" " required data-parsley-errors-container="#msg-holder" >
+                                                          </div>
 
-                                                      <div class="col-md-2 col-xs-8">
-                                                          <select name="time" id="time" class="form-control" >
-                                                          <option value="Days">Days</option>
-                                                          <option value="Weeks">Weeks</option>
-                                                          <option value="Months">Months</option>
-                                                        </select>
+                                                          <div class="col-md-2 col-xs-8">
+                                                              <select name="time" id="time" class="form-control" >
+                                                              <option value="Days">Days</option>
+                                                              <option value="Weeks">Weeks</option>
+                                                              <option value="Months">Months</option>
+                                                            </select>
+                                                          </div>
+
                                                       </div>
 
                                                   </div>
+                                                  <div class="col-md-2"></div>
+                                                  <div class="col-md-3 col-xs-12" id="msg-holder" style="padding-left: 4px;"></div><br>
+                                                  <br>
 
-                                              </div>
-                                              <div class="col-md-2"></div>
-                                              <div class="col-md-3 col-xs-12" id="msg-holder" style="padding-left: 4px;"></div><br>
-                                              <br>
+                                                  <div class="row" id="intake">
+                                                      <div class="form-group">
+                                                          <div class="col-md-2 col-xs-12">
+                                                              <label for="med_intake">Intake *</label>
+                                                          </div>
+                                                          <div class="col-md-3 col-xs-12">
+                                                              <div id="med_intake"  class="btn-group" data-toggle="buttons" >
+                                                                  <label class="btn btn-default" id="med_intake_before" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default" >
+                                                                    <input type="radio"  name="med_intake" id="med_intake1" value="Before Food" data-parsley-errors-container="#checkbox-errors" required >Before food</label>
+                                                                  <label class="btn btn-default" id="med_intake_after" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                                                    <input type="radio" name="med_intake" id="med_intake1"  value="After Food">After food</label>
 
-                                              <div class="row" id="intake">
-                                                  <div class="form-group">
-                                                      <div class="col-md-2 col-xs-12">
-                                                          <label for="med_intake">Intake *</label>
-                                                      </div>
-                                                      <div class="col-md-3 col-xs-12">
-                                                          <div id="med_intake"  class="btn-group" data-toggle="buttons" >
-                                                              <label class="btn btn-default" id="med_intake_before" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default" >
-                                                                <input type="radio"  name="med_intake" id="med_intake1" value="Before Food" data-parsley-errors-container="#checkbox-errors" required >Before food</label>
-                                                              <label class="btn btn-default" id="med_intake_after" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                                <input type="radio" name="med_intake" id="med_intake1"  value="After Food">After food</label>
+                                                              </div>
+                                                              <div id="checkbox-errors"></div>
 
                                                           </div>
-                                                          <div id="checkbox-errors"></div>
 
                                                       </div>
-
                                                   </div>
-                                              </div>
-                                              <br>
+                                                  <br>
 
-                                              <div class="row" style="padding: 5px 0px 0px 0px;" id="timing">
-                                                <div class="form-group" >
+                                                  <div class="row" style="padding: 5px 0px 0px 0px;" id="timing">
+                                                    <div class="form-group" >
 
-                                                  <div class="col-md-2 col-xs-12">
-                                                      <label for="strength">Intake Time *</label>
+                                                      <div class="col-md-2 col-xs-12">
+                                                          <label for="strength">Intake Time *</label>
+                                                      </div>
+
+                                                      <div class="col-sm-2">
+
+                                                            <label class="control control--checkbox">Morning
+                                                              <input type="hidden" name="mrngcheck" id="mrngcheck" value="0">
+                                                              <input type="checkbox" value="1" id="mrngcheck1"  onchange="document.getElementById('mrngcheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" required data-parsley-errors-container="#message-holder" data-parsley-maxcheck="3">
+                                                              <div class="control__indicator"></div>
+                                                            </label>
+                                                            <input class="m_input_dis form-control" type="text" id="mrng_qty" disabled="disabled" placeholder="Qty" >
+                                                      </div>
+
+                                                      <div class="col-sm-2">
+
+                                                            <label class="control control--checkbox">Noon
+                                                              <input type="hidden" name="nooncheck" id="nooncheck" value="0">
+                                                              <input type="checkbox" value="1" id="nooncheck1" onchange="document.getElementById('nooncheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" >
+                                                              <div class="control__indicator"></div>
+                                                            </label>
+                                                            <input class="m_input_dis form-control" type="text" id="noon_qty" disabled="disabled" placeholder="Qty">
+                                                      </div>
+
+                                                      <div class="col-sm-2">
+
+                                                            <label class="control control--checkbox">Evening
+                                                              <input type="hidden" name="eveningcheck" id="eveningcheck" value="0">
+                                                              <input type="checkbox" value="1" id="eveningcheck1" onchange="document.getElementById('eveningcheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" >
+                                                              <div class="control__indicator"></div>
+                                                            </label>
+                                                            <input class="m_input_dis form-control" type="text" id="evening_qty" disabled="disabled" placeholder="Qty">
+
+                                                      </div>
+                                                      <div class="col-sm-2">
+
+
+                                                          <label class="control control--checkbox">Other
+                                                            <input type="hidden" name="othercheck" id="othercheck" value="0">
+                                                            <input type="checkbox" value="1" id="other_check" onchange="document.getElementById('othercheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c">
+                                                            <div class="control__indicator"></div>
+                                                          </label>
+                                                            <input class="m_input_dis form-control" type="text" id="custom_timing" placeholder="Interval" disabled="disabled" >
+                                                            <input class="m_input_dis form-control" type="text" id="custom_qty" placeholder="Qty" disabled="disabled" >
+                                                      </div>
+                                                    </div>
                                                   </div>
+                                                  <div class="col-md-2"></div>
+                                                  <p id="message-holder" ></p>
+                                                  <br>
 
-                                                  <div class="col-sm-2">
-
-                                                        <label class="control control--checkbox">Morning
-                                                          <input type="hidden" name="mrngcheck" id="mrngcheck" value="0">
-                                                          <input type="checkbox" value="1" id="mrngcheck1"  onchange="document.getElementById('mrngcheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" required data-parsley-errors-container="#message-holder" >
-                                                          <div class="control__indicator"></div>
-                                                        </label>
-                                                        <input class="m_input_dis form-control" type="text" id="mrng_qty" disabled="disabled" placeholder="Qty" >
-                                                  </div>
-
-                                                  <div class="col-sm-2">
-
-                                                        <label class="control control--checkbox">Noon
-                                                          <input type="hidden" name="nooncheck" id="nooncheck" value="0">
-                                                          <input type="checkbox" value="1" id="nooncheck1" onchange="document.getElementById('nooncheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" >
-                                                          <div class="control__indicator"></div>
-                                                        </label>
-                                                        <input class="m_input_dis form-control" type="text" id="noon_qty" disabled="disabled" placeholder="Qty">
-                                                  </div>
-
-                                                  <div class="col-sm-2">
-
-                                                        <label class="control control--checkbox">Evening
-                                                          <input type="hidden" name="eveningcheck" id="eveningcheck" value="0">
-                                                          <input type="checkbox" value="1" id="eveningcheck1" onchange="document.getElementById('eveningcheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c" >
-                                                          <div class="control__indicator"></div>
-                                                        </label>
-                                                        <input class="m_input_dis form-control" type="text" id="evening_qty" disabled="disabled" placeholder="Qty">
-
-                                                  </div>
-                                                  <div class="col-sm-2">
-
-
-                                                      <label class="control control--checkbox">Other
-                                                        <input type="checkbox" value="1" id="other_check" data-parsley-multiple="d-s-c" >
-                                                        <div class="control__indicator"></div>
-                                                      </label>
-                                                        <input class="m_input_dis form-control" type="text" id="custom_timing" disabled="disabled" >
+                                                  <div class="row" id="add_medicine">
+                                                      <div class="form-group">
+                                                          <div class="col-md-8 col-xs-12">
+                                                            <button type="button" id="add_medicine" class="add_field_button btn btn-primary">Add Medicine</button>
+                                                            <button class="btn btn-primary" id="m_reset" type="reset">Reset</button>
+                                                          </div>
+                                                      </div>
                                                   </div>
                                                 </div>
                                               </div>
-                                              <div class="col-md-2"></div>
-                                              <p id="message-holder" ></p>
-                                              <br>
-
-                                              <div class="row" id="add_medicine">
-                                                  <div class="form-group">
-                                                      <div class="col-md-8 col-xs-12">
-                                                        <button type="button" id="add_medicine" class="add_field_button btn btn-primary">Add Medicine</button>
-                                                        <button class="btn btn-primary" id="m_reset" type="reset">Reset</button>
-                                                      </div>
-                                                  </div>
-                                              </div>
-
                                             </div>
                                           </div>
                                         </div>
@@ -425,7 +465,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
 
                                     <div class="card col-md-12 col-xs-12" id="m_desc" style="border: 1px solid rgb(26, 187, 156);">
                                       <div class="col-md-3 col-xs-12" style="padding:  10px 10px 10px 10px;">
@@ -506,6 +545,7 @@
     <script src="https://www.booknmeet.com/assets/moment/min/moment.min.js"></script>
     <script src="https://www.booknmeet.com/assets/datepicker/daterangepicker.js"></script>
     <script src="https://www.booknmeet.com/assets/typeahead.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.js"></script>
     <script>
         var app_id;
         var x = 0;
@@ -515,8 +555,253 @@
         $(document).ready(function() {
             setDataTable();
 
+            $("#m_choice_gen").on("click",function(){
+              $('#rcapp')[0].reset();
+              $("#rcapp").parsley().reset();
+              $("#med_intake_after").removeClass('active');
+              $("#med_intake_before").removeClass('active');
+              $('#mrngcheck1').removeAttr('checked');
+              $('#nooncheck1').removeAttr('checked');
+              $('#eveningcheck1').removeAttr('checked');
+              $('#other_check').removeAttr('checked');
+              $("#custom_timing").prop('disabled','disabled');
+              $("#custom_qty").prop('disabled','disabled');
+              $("#evening_qty").prop('disabled','disabled');
+              $("#noon_qty").prop('disabled','disabled');
+              $("#mrng_qty").prop('disabled','disabled');
+              $("#m_name").css("display","block");
+              $("#m_name_b").css("display","none");
+              $("#m_show_rest").css("display","block");
+              $("#m_dis_to_none").css("display","block");
+              $("#med_intake > label.btn").on("click", function(){
+                  m_inval = $(this).find("input[name=med_intake]").val();
+              });
+              $("#med_brand_b").removeAttr('required');
+              $("#med_brand").prop('required',true);
+              $("#med_name").prop('required',true);
+              $('#med_name').click(function(){
+
+                if( !$("#med_brand").val() ) {
+
+                  // Constructing the suggestion engine
+                  var medicine_names = new Bloodhound({
+                      datumTokenizer: Bloodhound.tokenizers.whitespace,
+                      queryTokenizer: Bloodhound.tokenizers.whitespace,
+                      prefetch: {url:'/get-medicine-names',cache:false}
+                  });
+
+                  medicine_names.clearPrefetchCache();
+                  medicine_names.initialize();
+
+                  $('#med_name').typeahead('destroy');
+                  $('#med_name').typeahead({
+                      hint: true,
+                      highlight: true, /* Enable substring highlighting */
+                      minLength: 1 /* Specify minimum characters required for showing result */
+                  },
+                  {
+                      source: medicine_names
+                  });
+                  $('#med_name').focus();
+
+                  $(".tt-menu").addClass("tt-open");
+                }
+
+
+              });
+              $("#med_name").change(function(){
+                var medicine_name = $(this).val();
+                $("#m_brand_name").css("display","block");
+
+                var medicine_brands_change = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.whitespace,
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                prefetch: {
+                  url:'/get-medicine-brand-on-name?medicine_name='+medicine_name+'',
+                  cache:false
+                  }
+                });
+
+                medicine_brands_change.clearPrefetchCache();
+                medicine_brands_change.initialize();
+                // Initializing the typeahead
+                $('#med_brand').typeahead('destroy');
+                $('#med_brand').typeahead({
+                    hint: true,
+                    limit: 10,
+                    highlight: true, /* Enable substring highlighting */
+                    minLength: 1 /* Specify minimum characters required for showing result */
+                },
+                {
+                    source: medicine_brands_change
+                });
+              });
+              // $(add_button).click(function(e) {
+              //     e.preventDefault();
+              //     x++;
+              //
+              //     $("#rcapp").parsley().validate();
+              //     if($("#rcapp").parsley().isValid())
+              //     {
+              //     var mname=document.getElementById("med_name").value;
+              //     var mbrand=document.getElementById("med_brand").value;
+              //     var mstrength=document.getElementById("med_strength").value;
+              //     var mform=document.getElementById("m_form").value;
+              //     var mdur=document.getElementById("duration").value;
+              //     var mtime=document.getElementById("time").value;
+              //     if (document.getElementById("mrngcheck").value==1) {
+              //       var mrngcheck=1;
+              //       var mrng ="Morning ";
+              //     var mrng_qty=document.getElementById("mrng_qty").value;
+              //     }
+              //     else {
+              //       var mrng="";
+              //       var mrng_qty="";
+              //     }
+              //     if (document.getElementById("nooncheck").value==1) {
+              //       var nooncheck=1;
+              //       var noon=" Noon ";
+              //     var noon_qty=document.getElementById("noon_qty").value;
+              //
+              //     }
+              //     else {
+              //       var noon="";
+              //       var noon_qty="";
+              //     }
+              //     if (document.getElementById("eveningcheck").value==1) {
+              //       var eveningcheck=1;
+              //       var evening=" Evening ";
+              //       var evening_qty=document.getElementById("evening_qty").value;
+              //
+              //     }
+              //     else {
+              //       var evening="";
+              //       var evening_qty="";
+              //     }
+              //     var custom_timing=document.getElementById("custom_timing").value;
+              //
+              //     var $div1 = ('<div id="to_delete"><div class="panel added_medicine col-md-11 col-xs-9"><a class="added_medicine_head panel-heading collapsed" role="tab" id="heading'+x+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+x+'" aria-expanded="false" aria-controls="collapse'+x+'"><h5 id="mname">'+mname+'</h5></a><div id="collapse'+x+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+x+'"><div class="panel-body row"><div class="col-md-2 card mlist_card"><h4 class="h_med">Brand</h4><p id="mbrand">'+mbrand+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Strength</h4><p id="mstrength">'+mstrength+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Dosage Form</h4><p id="mform">'+mform+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Duration</h4><p id="mdur" style="display:inline;">'+mdur+'</p><p style="display:inline;"> </p><p id="mtime" style="display:inline;">'+mtime+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake</h4><p id="mval">'+m_inval+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Time and Quantity</h4><span id="mrng">'+mrng+'</span><span id="mrngqty">'+mrng_qty+'</span><br><span id="noon">'+noon+'</span><span id="noonqty">'+noon_qty+'</span><br><span id="evening">'+evening+'</span><span id="eveningqty">'+evening_qty+'</span></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Other</h4><p id="customtiming">'+custom_timing+'</p></div></div><div><div class="col-md-1 col-xs-12" style="float:right; margin-right:10px; margin-bottom: 5px;"><button type="button" class="edit_medicine btn btn-primary">Edit</button></div></div></div></div><div class="col-md-1 col-xs-1"><button type="button" class="del_medicine btn btn-primary">Delete</button></div></div>');
+              //
+              //     $(wrapper).append($div1);
+              //
+              //     $('#rcapp')[0].reset();
+              //     $("#rcapp").parsley().reset();
+              //     $("#med_intake_after").removeClass('active');
+              //     $("#med_intake_before").removeClass('active');
+              //     $('#mrngcheck1').removeAttr('checked');
+              //     $('#nooncheck1').removeAttr('checked');
+              //     $('#eveningcheck1').removeAttr('checked');
+              //     $('#other_check').removeAttr('checked');
+              //     $("#custom_timing").prop('disabled','disabled');
+              //     $("#evening_qty").prop('disabled','disabled');
+              //     $("#noon_qty").prop('disabled','disabled');
+              //     $("#mrng_qty").prop('disabled','disabled');
+              //   }
+              //
+              // });
+            });
+
+            $("#m_choice_brand").on("click",function(){
+              $('#rcapp')[0].reset();
+              $("#rcapp").parsley().reset();
+              $("#med_intake_after").removeClass('active');
+              $("#med_intake_before").removeClass('active');
+              $('#mrngcheck1').removeAttr('checked');
+              $('#nooncheck1').removeAttr('checked');
+              $('#eveningcheck1').removeAttr('checked');
+              $('#other_check').removeAttr('checked');
+              $("#custom_timing").prop('disabled','disabled');
+              $("#custom_qty").prop('disabled','disabled');
+              $("#evening_qty").prop('disabled','disabled');
+              $("#noon_qty").prop('disabled','disabled');
+              $("#mrng_qty").prop('disabled','disabled');
+              $("#m_name").css("display","none");
+              $("#m_name_b").css("display","block");
+              $("#m_show_rest").css("display","block");
+              $("#m_dis_to_none").css("display","block");
+              $("#med_intake > label.btn").on("click", function(){
+                  m_inval = $(this).find("input[name=med_intake]").val();
+              });
+              $("#med_brand_b").prop('required',true);
+              $("#med_brand").removeAttr('required');
+              $("#med_name").removeAttr('required');
+              // Constructing the suggestion engine
+              var medicine_brands = new Bloodhound({
+                  datumTokenizer: Bloodhound.tokenizers.whitespace,
+                  queryTokenizer: Bloodhound.tokenizers.whitespace,
+                  prefetch: {url:'/get-medicine-brands',cache:false}
+              });
+
+              medicine_brands.clearPrefetchCache();
+              medicine_brands.initialize();
+
+              $('#med_brand_b').typeahead('destroy');
+              // Initializing the typeahead
+              $('#med_brand_b').typeahead({
+                  hint: true,
+                  limit: 10,
+                  highlight: true, /* Enable substring highlighting */
+                  minLength: 1 /* Specify minimum characters required for showing result */
+              },
+              {
+                  source: medicine_brands
+              });
+
+              $("#med_brand_b").change(function(){
+                var medicine_brand = $("#med_brand_b").val();
+                var mname = "";
+                $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  }
+                });
+                $.ajax({
+                  url: "/get-medicine-name-on-brand",
+                  method: 'get',
+                  dataType:'json',
+                  data: {
+                    medicine_brand:medicine_brand
+                  },
+                  success: function(data){
+                    mname = data.med_name;
+                    $("#med_name_b").val(mname);
+                    return(mname);
+                  }
+                });
+              });
+              $("#m_toshow_name").click(function(){
+
+                  // var medicine_brand = $("#med_brand_b").val();
+                  // // Constructing the suggestion engine
+                  // $.ajaxSetup({
+                  // headers: {
+                  //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  //   }
+                  // });
+                  // $.ajax({
+                  //   url: "/get-medicine-name-on-brand",
+                  //   method: 'get',
+                  //   dataType:'json',
+                  //   data: {
+                  //     medicine_brand:medicine_brand
+                  //   },
+                  //   success: function(data){
+                      $("#m_gen_name_b").css("display","block");
+                      $('#med_name_b').val(data.med_name);
+                      $('#med_name_b').trigger('change');
+                  //   }
+                  // });
+
+
+              });
+
+
+
+            });
+
             $( "#other_check" ).on( "click", function() {
              $("#custom_timing").prop('disabled',!this.checked);
+             $("#custom_qty").prop('disabled',!this.checked);
             });
 
             $( "#mrngcheck1" ).on( "click", function() {
@@ -529,10 +814,6 @@
 
             $( "#eveningcheck1" ).on( "click", function() {
               $("#evening_qty").prop('disabled',!this.checked);
-            });
-
-            $( "#other_check" ).on( "click", function() {
-             $("#custom_timing").prop('disabled',!this.checked);
             });
 
             $("body").on('click', ".prescription", function() {
@@ -553,9 +834,17 @@
                 $("#med_intake_after").removeClass('active');
                 $("#med_intake_before").removeClass('active');
                 $("#custom_timing").prop('disabled','disabled');
+                $("#custom_qty").prop('disabled','disabled');
                 $("#evening_qty").prop('disabled','disabled');
                 $("#noon_qty").prop('disabled','disabled');
                 $("#mrng_qty").prop('disabled','disabled');
+                $("#m_dis_to_none").css("display","none");
+                $("#m_choice_gen").removeClass('active');
+                $("#m_choice_brand").removeClass('active');
+                $('#med_brand').typeahead('destroy');
+                $('#med_name').typeahead('destroy');
+                $('#med_brand_b').typeahead('destroy');
+                $("#m_gen_name_b").css("display","none");
             });
 
             $("body").on('click', "#m_reset", function() {
@@ -568,126 +857,17 @@
                 $('#eveningcheck1').removeAttr('checked');
                 $('#other_check').removeAttr('checked');
                 $("#custom_timing").prop('disabled','disabled');
+                $("#custom_qty").prop('disabled','disabled');
                 $("#evening_qty").prop('disabled','disabled');
                 $("#noon_qty").prop('disabled','disabled');
                 $("#mrng_qty").prop('disabled','disabled');
-            });
-
-
-            $("#med_intake > label.btn").on("click", function(){
-                m_inval = $(this).find("input[name=med_intake]").val();
-            });
-
-
-            $("#med_name").change(function(){
-              var medicine_name = $(this).val();
-              // alert(medicine_name);
-
-              // Constructing the suggestion engine
-
-              var medicine_brands_change = new Bloodhound({
-              datumTokenizer: Bloodhound.tokenizers.whitespace,
-              queryTokenizer: Bloodhound.tokenizers.whitespace,
-              prefetch: {
-                url:'/get-medicine-brand-on-name?medicine_name='+medicine_name+'',
-                cache:false
-                }
-              });
-
-              medicine_brands_change.clearPrefetchCache();
-              medicine_brands_change.initialize();
-              // Initializing the typeahead
-              $('#med_brand').typeahead('destroy');
-              $('#med_brand').typeahead({
-                  hint: true,
-                  limit: 10,
-                  highlight: true, /* Enable substring highlighting */
-                  minLength: 1 /* Specify minimum characters required for showing result */
-              },
-              {
-                  source: medicine_brands_change
-              });
-
-            });
-
-            $("#med_brand").click(function(){
-
-                if( !$("#med_name").val() ) {
-                // Constructing the suggestion engine
-                var medicine_brands = new Bloodhound({
-                    datumTokenizer: Bloodhound.tokenizers.whitespace,
-                    queryTokenizer: Bloodhound.tokenizers.whitespace,
-                    prefetch: {url:'/get-medicine-brands',cache:false}
-                });
-
-
-                // Initializing the typeahead
-                $('#med_brand').typeahead({
-                    hint: true,
-                    limit: 10,
-                    highlight: true, /* Enable substring highlighting */
-                    minLength: 1 /* Specify minimum characters required for showing result */
-                },
-                {
-                    source: medicine_brands
-                });
-
-
-                $('#med_brand').focus();
-              }
-
-            })
-
-            $('#med_name').click(function(){
-
-              if( !$("#med_brand").val() ) {
-
-              // Constructing the suggestion engine
-              var medicine_names = new Bloodhound({
-                  datumTokenizer: Bloodhound.tokenizers.whitespace,
-                  queryTokenizer: Bloodhound.tokenizers.whitespace,
-                  prefetch: {url:'/get-medicine-names',cache:false}
-              });
-
-              $('#med_name').typeahead({
-                  hint: true,
-                  highlight: true, /* Enable substring highlighting */
-                  minLength: 1 /* Specify minimum characters required for showing result */
-              },
-              {
-                  source: medicine_names
-              });
-              $('#med_name').focus();
-
-              // $(".tt-menu").addClass("tt-open");
-              }
-            });
-
-            $("#med_brand").change(function(){
-
-              if(!$("#med_name").val() ) {
-                var medicine_brand = $(this).val();
-                // Constructing the suggestion engine
-                $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                  }
-                });
-
-                $.ajax({
-                  url: "/get-medicine-name-on-brand",
-                  method: 'get',
-                  dataType:'json',
-                  data: {
-                    medicine_brand:medicine_brand
-                  },
-                  success: function(data){
-                    $('#med_name').val(data.med_name);
-                    $('#med_name').trigger('change');
-                  }
-                });
-              }
-
+                $("#m_dis_to_none").css("display","none");
+                $("#m_choice_gen").removeClass('active');
+                $("#m_choice_brand").removeClass('active');
+                $('#med_brand').typeahead('destroy');
+                $('#med_name').typeahead('destroy');
+                $('#med_brand_b').typeahead('destroy');
+                $("#m_gen_name_b").css("display","none");
             });
 
 
@@ -776,25 +956,21 @@
 
         };
 
-
-
         $(add_button).click(function(e) {
             e.preventDefault();
-
             x++;
-            $("#med_intake_but").hasClass("active", function(){
-                // num = +this.value;
-
-                m_inval = $(this).find("input[name=med_intake]").val();
-                alert(m_inval);
-            });
-
-
+            // Constructing the suggestion engine
             $("#rcapp").parsley().validate();
             if($("#rcapp").parsley().isValid())
             {
-            var mname=document.getElementById("med_name").value;
-            var mbrand=document.getElementById("med_brand").value;
+            if($("#m_choice_gen").hasClass("active")){
+              var mname=document.getElementById("med_name").value;
+              var mbrand=document.getElementById("med_brand").value;
+            }
+            else{
+              var mname=document.getElementById("med_name_b").value;
+              var mbrand=document.getElementById("med_brand_b").value;
+            }
             var mstrength=document.getElementById("med_strength").value;
             var mform=document.getElementById("m_form").value;
             var mdur=document.getElementById("duration").value;
@@ -828,13 +1004,21 @@
               var evening="";
               var evening_qty="";
             }
-            var custom_timing=document.getElementById("custom_timing").value;
+            if (document.getElementById("othercheck").value==1){
+              var custom_timing=document.getElementById("custom_timing").value;
+              var custom_qty=document.getElementById("custom_qty").value;
+            }
+            else {
+              var custom_timing="";
+              var custom_qty="";
+            }
 
-            var $div1 = ('<div id="to_delete"><div class="panel added_medicine col-md-11 col-xs-9"><a class="added_medicine_head panel-heading collapsed" role="tab" id="heading'+x+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+x+'" aria-expanded="false" aria-controls="collapse'+x+'"><h5 id="mname">'+mname+'</h5></a><div id="collapse'+x+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+x+'"><div class="panel-body row"><div class="col-md-2 card mlist_card"><h4 class="h_med">Brand</h4><p id="mbrand">'+mbrand+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Strength</h4><p id="mstrength">'+mstrength+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Dosage Form</h4><p id="mform">'+mform+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Duration</h4><p id="mdur" style="display:inline;">'+mdur+'</p><p style="display:inline;"> </p><p id="mtime" style="display:inline;">'+mtime+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake</h4><p id="mval">'+m_inval+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Time and Quantity</h4><span id="mrng">'+mrng+'</span><span id="mrngqty">'+mrng_qty+'</span><br><span id="noon">'+noon+'</span><span id="noonqty">'+noon_qty+'</span><br><span id="evening">'+evening+'</span><span id="eveningqty">'+evening_qty+'</span></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Other</h4><p id="customtiming">'+custom_timing+'</p></div></div><div><div class="col-md-1 col-xs-12" style="float:right; margin-right:10px; margin-bottom: 5px;"><button type="button" class="edit_medicine btn btn-primary">Edit</button></div></div></div></div><div class="col-md-1 col-xs-1"><button type="button" class="del_medicine btn btn-primary">Delete</button></div></div>');
+            var $div1 = ('<div id="to_delete"><div class="panel added_medicine col-md-11 col-xs-9"><a class="added_medicine_head panel-heading collapsed" role="tab" id="heading'+x+'" data-toggle="collapse" data-parent="#accordion" href="#collapse'+x+'" aria-expanded="false" aria-controls="collapse'+x+'"><h5 id="mname">'+mname+'</h5></a><div id="collapse'+x+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+x+'"><div class="panel-body row"><div class="col-md-2 card mlist_card"><h4 class="h_med">Brand</h4><p id="mbrand">'+mbrand+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Strength</h4><p id="mstrength">'+mstrength+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Dosage Form</h4><p id="mform">'+mform+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Duration</h4><p id="mdur" style="display:inline;">'+mdur+'</p><p style="display:inline;"> </p><p id="mtime" style="display:inline;">'+mtime+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Intake</h4><p id="mval">'+m_inval+'</p></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Time and Quantity</h4><span id="mrng">'+mrng+'</span><span id="mrngqty">'+mrng_qty+'</span><br><span id="noon">'+noon+'</span><span id="noonqty">'+noon_qty+'</span><br><span id="evening">'+evening+'</span><span id="eveningqty">'+evening_qty+'</span></div><div class="col-md-2 card mlist_card"><h4 class="h_med">Other</h4><p id="customtiming">'+custom_timing+'</p><p id="customqty">'+custom_qty+'</p></div></div><div><div class="col-md-1 col-xs-12" style="float:right; margin-right:10px; margin-bottom: 5px;"><button type="button" class="edit_medicine btn btn-primary">Edit</button></div></div></div></div><div class="col-md-1 col-xs-1"><button type="button" class="del_medicine btn btn-primary">Delete</button></div></div>');
 
             $(wrapper).append($div1);
 
             $('#rcapp')[0].reset();
+            $("#rcapp").parsley().reset();
             $("#med_intake_after").removeClass('active');
             $("#med_intake_before").removeClass('active');
             $('#mrngcheck1').removeAttr('checked');
@@ -842,12 +1026,14 @@
             $('#eveningcheck1').removeAttr('checked');
             $('#other_check').removeAttr('checked');
             $("#custom_timing").prop('disabled','disabled');
+            $("#custom_qty").prop('disabled','disabled');
             $("#evening_qty").prop('disabled','disabled');
             $("#noon_qty").prop('disabled','disabled');
             $("#mrng_qty").prop('disabled','disabled');
           }
 
         });
+
 
         $(wrapper).on("click",".del_medicine",function(e){
           e.preventDefault();
@@ -878,13 +1064,17 @@
           var noonqty1 = $(this).parent().parent().parent().parent().find("#noonqty").text();
           var eveningqty1 = $(this).parent().parent().parent().parent().find("#eveningqty").text();
           var custom_timing1 = $(this).parent().parent().parent().parent().find("#customtiming").text();
-
+          var custom_qty1 = $(this).parent().parent().parent().parent().find("#customqty").text();
 
 
           $("#med_name").val(mname1);
           $("#med_name").trigger('change');
           $("#med_brand").val(mbrand1);
           $("#med_brand").trigger('change');
+          $("#med_name_b").val(mname1);
+          $("#med_name_b").trigger('change');
+          $("#med_brand_b").val(mbrand1);
+          $("#med_brand_b").trigger('change');
           $("#med_strength").val(mstrength1);
           $("#med_strength").trigger('change');
           $("#m_form").val(mform1);
@@ -920,21 +1110,26 @@
             $("#med_intake_after").addClass('active');
             $("#med_intake_after").trigger('click');
           }
-          if(custom_timing1===""){
+          if(custom_timing1==="" && custom_qty1===""){
             $("#other_check").prop("checked",false);
             $("#custom_timing").prop('disabled',true);
+            $("#custom_qty").prop('disabled',true);
           }
           else {
             $("#other_check").prop("checked",true);
             $("#custom_timing").val(custom_timing1);
             $("#custom_timing").trigger('change');
             $("#custom_timing").prop('disabled',false);
+            $("#custom_qty").val(custom_qty1);
+            $("#custom_qty").trigger('change');
+            $("#custom_qty").prop('disabled',false);
           }
           $(this).parent().parent().parent().parent().parent().remove();
 
           $('#pres_modal').animate({scrollTop:0},'slow(100)');
 
         });
+
 
 
         $('#submit').click(function(e){
@@ -1003,6 +1198,7 @@
               var evening_qty=0;
             }
             var custom_timing = $(this).find("#customtiming").html();
+            var custom_qty = $(this).find("#customqty").html();
 
 
             $.ajaxSetup({
@@ -1032,7 +1228,8 @@
                  afternoon_qty:afternoon_qty,
                  evening:evening,
                  evening_qty:evening_qty,
-                 custom_timing:custom_timing
+                 custom_timing:custom_timing,
+                 custom_qty:custom_qty
 
               },
               success: function(data){
@@ -1040,6 +1237,7 @@
                 $('#rcapp')[0].reset();
                 $("div[id='to_delete']").remove();
                 $("#custom_timing").prop('disabled','disabled');
+                $("#custom_qty").prop('disabled','disabled');
                 $("#evening_qty").prop('disabled','disabled');
                 $("#noon_qty").prop('disabled','disabled');
                 $("#mrng_qty").prop('disabled','disabled');
