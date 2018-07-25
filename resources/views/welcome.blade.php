@@ -635,7 +635,7 @@
 
                 $('#med_brand').focus();
               }
-            
+
             })
 
             $('#med_name').click(function(){
@@ -665,53 +665,28 @@
 
             $("#med_brand").change(function(){
 
-              var medicine_brand = $(this).val();
-              // Constructing the suggestion engine
-              $.ajaxSetup({
-              headers: {
-                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-              });
+              if(!$("#med_name").val() ) {
+                var medicine_brand = $(this).val();
+                // Constructing the suggestion engine
+                $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  }
+                });
 
-              // medicine_names_change.clearPrefetchCache();
-              // medicine_names_change.initialize();
-              // // Initializing the typeahead
-              // $('#med_name').typeahead('destroy');
-
-              $.ajax({
-                url: "/get-medicine-name-on-brand",
-                method: 'get',
-                dataType:'json',
-                data: {
-                  medicine_brand:medicine_brand
-                },
-                success: function(data){
-                  $('#med_name').val(data.med_name);
-                  $('#med_name').trigger('change');
-                }
-              });
-
-              // var medicine_names_change = new Bloodhound({
-              // datumTokenizer: Bloodhound.tokenizers.whitespace,
-              // queryTokenizer: Bloodhound.tokenizers.whitespace,
-              // prefetch: {
-              //   url:'/get-medicine-name-on-brand?medicine_brand='+medicine_brand+'',
-              //   cache:false
-              //   }
-              // });
-
-
-              // $('#med_name').typeahead({
-              //     hint: true,
-              //     limit: 10,
-              //     highlight: true, /* Enable substring highlighting */
-              //     minLength: 1 /* Specify minimum characters required for showing result */
-              // },
-              // {
-              //     source: medicine_names_change
-              // });
-              // $('med_name').val('medicin');
-
+                $.ajax({
+                  url: "/get-medicine-name-on-brand",
+                  method: 'get',
+                  dataType:'json',
+                  data: {
+                    medicine_brand:medicine_brand
+                  },
+                  success: function(data){
+                    $('#med_name').val(data.med_name);
+                    $('#med_name').trigger('change');
+                  }
+                });
+              }
 
             });
 
@@ -944,11 +919,15 @@
             $("#med_intake_after").addClass('active');
             $("#med_intake_after").trigger('click');
           }
-          if(custom_timing1!=null){
-          $("#other_check").prop("checked",true);
-          $("#custom_timing").val(custom_timing1);
-          $("#custom_timing").trigger('change');
-          $("#custom_timing").prop('disabled',false);
+          if(custom_timing1===""){
+            $("#other_check").prop("checked",false);
+            $("#custom_timing").prop('disabled',true);
+          }
+          else {
+            $("#other_check").prop("checked",true);
+            $("#custom_timing").val(custom_timing1);
+            $("#custom_timing").trigger('change');
+            $("#custom_timing").prop('disabled',false);
           }
           $(this).parent().parent().parent().parent().parent().remove();
 
