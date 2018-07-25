@@ -283,9 +283,11 @@
                                                           <select class="form-control" required="" id="m_form" name="m_form">
                                                             <option selected="selected" value="">Form..</option>
                                                             <option value="Tablet">Tablet</option>
+                                                            <option value="Capsule">Capsule</option>
                                                             <option value="Suspension">Suspension</option>
                                                             <option value="Ointment">Ointment</option>
                                                             <option value="Syrup">Syrup</option>
+                                                            <option value="Nasal">Nasal</option>
                                                             <option value="Eye Drop">Eye Drop</option>
                                                             <option value="Ear Drop">Ear Drop</option>
                                                             <option value="Suppository">Suppository</option>
@@ -540,9 +542,14 @@
             });
 
             $("body").on('click', ".cancel,.close", function() {
+                $('#rcapp')[0].reset();
                 $(this).parents(".modal").hide();
                 $("#rcapp").parsley().reset();
                 $("div[id='to_delete']").remove();
+                $('#mrngcheck1').removeAttr('checked');
+                $('#nooncheck1').removeAttr('checked');
+                $('#eveningcheck1').removeAttr('checked');
+                $('#other_check').removeAttr('checked');
                 $("#med_intake_after").removeClass('active');
                 $("#med_intake_before").removeClass('active');
                 $("#custom_timing").prop('disabled','disabled');
@@ -552,9 +559,14 @@
             });
 
             $("body").on('click', "#m_reset", function() {
+                $('#rcapp')[0].reset();
                 $("#rcapp").parsley().reset();
                 $("#med_intake_after").removeClass('active');
                 $("#med_intake_before").removeClass('active');
+                $('#mrngcheck1').removeAttr('checked');
+                $('#nooncheck1').removeAttr('checked');
+                $('#eveningcheck1').removeAttr('checked');
+                $('#other_check').removeAttr('checked');
                 $("#custom_timing").prop('disabled','disabled');
                 $("#evening_qty").prop('disabled','disabled');
                 $("#noon_qty").prop('disabled','disabled');
@@ -563,7 +575,6 @@
 
 
             $("#med_intake > label.btn").on("click", function(){
-                // num = +this.value;
                 m_inval = $(this).find("input[name=med_intake]").val();
             });
 
@@ -628,29 +639,28 @@
 
             $('#med_name').click(function(){
 
-            if( !$("#med_brand").val() ) {
+              if( !$("#med_brand").val() ) {
 
-            // Constructing the suggestion engine
-            var medicine_names = new Bloodhound({
-                datumTokenizer: Bloodhound.tokenizers.whitespace,
-                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                prefetch: {url:'/get-medicine-names',cache:false}
+              // Constructing the suggestion engine
+              var medicine_names = new Bloodhound({
+                  datumTokenizer: Bloodhound.tokenizers.whitespace,
+                  queryTokenizer: Bloodhound.tokenizers.whitespace,
+                  prefetch: {url:'/get-medicine-names',cache:false}
+              });
+
+              $('#med_name').typeahead({
+                  hint: true,
+                  highlight: true, /* Enable substring highlighting */
+                  minLength: 1 /* Specify minimum characters required for showing result */
+              },
+              {
+                  source: medicine_names
+              });
+              $('#med_name').focus();
+
+              // $(".tt-menu").addClass("tt-open");
+              }
             });
-
-            $('#med_name').typeahead({
-                hint: true,
-                highlight: true, /* Enable substring highlighting */
-                minLength: 1 /* Specify minimum characters required for showing result */
-            },
-            {
-                source: medicine_names
-            });
-            $('#med_name').focus();
-
-            // $(".tt-menu").addClass("tt-open");
-            }
-            });
-
 
             $("#med_brand").change(function(){
 
@@ -665,7 +675,7 @@
                 cache:false
                 }
               });
-
+              console.log(medicine_names_change.index.datum);
               medicine_names_change.clearPrefetchCache();
               medicine_names_change.initialize();
               // Initializing the typeahead
@@ -679,7 +689,7 @@
               {
                   source: medicine_names_change
               });
-
+              // $('med_name').val('medicin');
 
 
             });
@@ -769,7 +779,7 @@
           });
 
         };
-        
+
 
 
         $(add_button).click(function(e) {
@@ -831,6 +841,10 @@
             $('#rcapp')[0].reset();
             $("#med_intake_after").removeClass('active');
             $("#med_intake_before").removeClass('active');
+            $('#mrngcheck1').removeAttr('checked');
+            $('#nooncheck1').removeAttr('checked');
+            $('#eveningcheck1').removeAttr('checked');
+            $('#other_check').removeAttr('checked');
             $("#custom_timing").prop('disabled','disabled');
             $("#evening_qty").prop('disabled','disabled');
             $("#noon_qty").prop('disabled','disabled');
@@ -882,24 +896,24 @@
           $("#duration").trigger('change');
           $("#time").val(mtime1);
           // $("#time").trigger('change');
-          $("#custom_timing").val(custom_timing1);
-          $("#custom_timing").trigger('change');
-          if (mintake_mrng==true) {
-            $("#mrngcheck1").attr("checked",1);
 
+          if (mintake_mrng==true) {
+            $("#mrngcheck1").prop("checked",true);
             $("#mrng_qty").val(mrngqty1);
             $("#mrng_qty").trigger('change');
             $("#mrng_qty").prop('disabled',false);
           }
           if(mintake_noon==true){
-            $("#nooncheck1").attr("checked",1);
+            $("#nooncheck1").prop("checked",true);
             $("#noon_qty").val(noonqty1);
             $("#noon_qty").trigger('change');
+            $("#noon_qty").prop('disabled',false);
           }
           if(mintake_evening==true){
-            $("#eveningcheck1").attr("checked",1);
+            $("#eveningcheck1").prop("checked",true);
             $("#evening_qty").val(eveningqty1);
             $("#evening_qty").trigger('change');
+            $("#evening_qty").prop('disabled',false);
           }
           if(mvalbefore==true){
             $("#med_intake_before").addClass('active');
@@ -909,8 +923,12 @@
             $("#med_intake_after").addClass('active');
             $("#med_intake_after").trigger('click');
           }
-
-
+          if(custom_timing1!=null){
+          $("#other_check").prop("checked",true);
+          $("#custom_timing").val(custom_timing1);
+          $("#custom_timing").trigger('change');
+          $("#custom_timing").prop('disabled',false);
+          }
           $(this).parent().parent().parent().parent().parent().remove();
 
           $('#pres_modal').animate({scrollTop:0},'slow(100)');
