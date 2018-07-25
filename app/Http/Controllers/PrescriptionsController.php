@@ -117,8 +117,9 @@ class PrescriptionsController extends Controller
       public function getMedicineNameOnBrand(){
         $medicine_brand = request('medicine_brand');
         $generic_id = MedicineBrand::where('brand_name',$medicine_brand)->pluck('generic_id');
-        $medicine_name = MedicineGeneric::where('id',$generic_id)->get()->toArray();
+        $medicine_name = MedicineGeneric::where('id',$generic_id)->pluck('medicine_name');
         // dd($medicine_brand);
-        return array_column($medicine_name, 'medicine_name');
+        // return array_column($medicine_name, 'medicine_name');
+        return response()->json(['med_name' => $medicine_name]);
       }
 }

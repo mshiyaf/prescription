@@ -664,33 +664,28 @@
 
             $("#med_brand").change(function(){
 
+              if( !$("#med_name").val() ) {
+
               var medicine_brand = $(this).val();
               // Constructing the suggestion engine
 
-              var medicine_names_change = new Bloodhound({
-              datumTokenizer: Bloodhound.tokenizers.whitespace,
-              queryTokenizer: Bloodhound.tokenizers.whitespace,
-              prefetch: {
-                url:'/get-medicine-name-on-brand?medicine_brand='+medicine_brand+'',
-                cache:false
+              $.ajaxSetup({
+              headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
               });
-              console.log(medicine_names_change.index.datum);
-              medicine_names_change.clearPrefetchCache();
-              medicine_names_change.initialize();
-              // Initializing the typeahead
-              $('#med_name').typeahead('destroy');
-              $('#med_name').typeahead({
-                  hint: true,
-                  limit: 10,
-                  highlight: true, /* Enable substring highlighting */
-                  minLength: 1 /* Specify minimum characters required for showing result */
-              },
-              {
-                  source: medicine_names_change
+              $.ajax({
+                url: '/get-medicine-name-on-brand',
+                method: 'get',
+                data: {
+                  medicine_brand:medicine_brand
+                },
+                success: function(data){
+                  $("#med_name").val(data.med_name);
+                  $("#med_name").trigger('change');
+                }
               });
-              // $('med_name').val('medicin');
-
+            }
 
             });
 
