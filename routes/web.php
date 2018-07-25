@@ -14,6 +14,7 @@
 Route::get('/', 'PrescriptionsController@show');
 Route::post('/appointment','DatatablesController@getData')->name('appointmentProcessing');
 Route::post('/prescription','PrescriptionsController@store');
+Route::post('/prescription_desc','PrescriptionsController@store_desc');
 Route::get('/get-medicine-names','PrescriptionsController@getMedicineName');
 Route::get('/get-medicine-brands','PrescriptionsController@getMedicineBrand');
 Route::get('/get-medicine-brand-on-name','PrescriptionsController@getMedicineBrandOnName');

@@ -40,15 +40,23 @@ class PrescriptionsController extends Controller
         $prescription->evening_qty = request('evening_qty');
         $prescription->custom_timing = request('custom_timing');
         $prescription->save();
-        $prescdesc= new PrescriptionDescription;
-        $prescdesc->appointment_id=request('appointment_id');
-        $prescdesc->description = request('description');
-        $prescdesc->save();
 
 
 
     return response()->json(['success' => true]);
-  }
+    }
+
+
+    public function store_desc(Request $request){
+
+      $prescdesc= new PrescriptionDescription;
+      $prescdesc->appointment_id=request('appointment_id');
+      $prescdesc->description = request('description');
+      // dd($prescdesc->description);
+      $prescdesc->save();
+
+    }
+
 
 
 
