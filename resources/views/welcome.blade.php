@@ -329,10 +329,10 @@
                                                       </div>
                                                       <div class="col-md-3 col-xs-12">
                                                           <div id="med_intake"  class="btn-group" data-toggle="buttons" >
-                                                              <label class="btn btn-default" id="med_intake_but" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default" >
-                                                                <input type="radio"  name="med_intake"  value="Before Food" data-parsley-errors-container="#checkbox-errors" required >Before food</label>
-                                                              <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                                <input type="radio" name="med_intake"  value="After Food">After food</label>
+                                                              <label class="btn btn-default" id="med_intake_before" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default" >
+                                                                <input type="radio"  name="med_intake" id="med_intake1" value="Before Food" data-parsley-errors-container="#checkbox-errors" required >Before food</label>
+                                                              <label class="btn btn-default" id="med_intake_after" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                                                <input type="radio" name="med_intake" id="med_intake1"  value="After Food">After food</label>
 
                                                           </div>
                                                           <div id="checkbox-errors"></div>
@@ -447,7 +447,6 @@
 
                                 <div id="p_history" class="tab-pane fade in">
 
-
                                 </div>
                             </div>
                         </div>
@@ -544,6 +543,8 @@
                 $(this).parents(".modal").hide();
                 $("#rcapp").parsley().reset();
                 $("div[id='to_delete']").remove();
+                $("#med_intake_after").removeClass('active');
+                $("#med_intake_before").removeClass('active');
                 $("#custom_timing").prop('disabled','disabled');
                 $("#evening_qty").prop('disabled','disabled');
                 $("#noon_qty").prop('disabled','disabled');
@@ -552,6 +553,8 @@
 
             $("body").on('click', "#m_reset", function() {
                 $("#rcapp").parsley().reset();
+                $("#med_intake_after").removeClass('active');
+                $("#med_intake_before").removeClass('active');
                 $("#custom_timing").prop('disabled','disabled');
                 $("#evening_qty").prop('disabled','disabled');
                 $("#noon_qty").prop('disabled','disabled');
@@ -563,43 +566,6 @@
                 // num = +this.value;
                 m_inval = $(this).find("input[name=med_intake]").val();
             });
-
-            //
-            // // Constructing the suggestion engine
-            // var medicine_names = new Bloodhound({
-            //     datumTokenizer: Bloodhound.tokenizers.whitespace,
-            //     queryTokenizer: Bloodhound.tokenizers.whitespace,
-            //     prefetch: {url:'/get-medicine-names',cache:false}
-            // });
-            //
-            //
-            // $('#med_name').typeahead({
-            //     hint: true,
-            //     highlight: true, /* Enable substring highlighting */
-            //     minLength: 1 /* Specify minimum characters required for showing result */
-            // },
-            // {
-            //     source: medicine_names
-            // });
-            //
-            // // Constructing the suggestion engine
-            // var medicine_brands = new Bloodhound({
-            //     datumTokenizer: Bloodhound.tokenizers.whitespace,
-            //     queryTokenizer: Bloodhound.tokenizers.whitespace,
-            //     prefetch: {url:'/get-medicine-brands',cache:false}
-            // });
-            //
-            //
-            // // Initializing the typeahead
-            // $('#med_brand').typeahead({
-            //     hint: true,
-            //     limit: 10,
-            //     highlight: true, /* Enable substring highlighting */
-            //     minLength: 1 /* Specify minimum characters required for showing result */
-            // },
-            // {
-            //     source: medicine_brands
-            // });
 
 
             $("#med_name").change(function(){
@@ -806,8 +772,6 @@
 
 
 
-
-
         $(add_button).click(function(e) {
             e.preventDefault();
 
@@ -858,6 +822,8 @@
             $(wrapper).append($div1);
 
             $('#rcapp')[0].reset();
+            $("#med_intake_after").removeClass('active');
+            $("#med_intake_before").removeClass('active');
             $("#custom_timing").prop('disabled','disabled');
             $("#evening_qty").prop('disabled','disabled');
             $("#noon_qty").prop('disabled','disabled');
@@ -883,6 +849,8 @@
           var mdur1 = $(this).parent().parent().parent().parent().find("#mdur").text();
           var mtime1 = $(this).parent().parent().parent().parent().find("#mtime").text();
           var mval1 = $(this).parent().parent().parent().parent().find("#mval").text();
+          var mvalbefore=mval1.includes("Before Food");
+          var mvalafter=mval1.includes("After Food");
           var mrng1 = $(this).parent().parent().parent().parent().find("#mrng").text();
           var mintake_mrng = mrng1.includes("Morning");
           var noon1 = $(this).parent().parent().parent().parent().find("#noon").text();
@@ -926,6 +894,15 @@
             $("#evening_qty").val(eveningqty1);
             $("#evening_qty").trigger('change');
           }
+          if(mvalbefore==true){
+            $("#med_intake_before").addClass('active');
+            $("#med_intake_before").trigger('click');
+          }
+          if(mvalafter==true){
+            $("#med_intake_after").addClass('active');
+            $("#med_intake_after").trigger('click');
+          }
+
 
           $(this).parent().parent().parent().parent().parent().remove();
 
