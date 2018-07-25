@@ -39,6 +39,7 @@ class PrescriptionsController extends Controller
         $prescription->evening = request('evening');
         $prescription->evening_qty = request('evening_qty');
         $prescription->custom_timing = request('custom_timing');
+        $prescription->custom_qty = request('custom_qty');
         $prescription->save();
 
 
