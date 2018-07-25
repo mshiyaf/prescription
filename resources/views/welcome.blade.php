@@ -635,6 +635,7 @@
 
                 $('#med_brand').focus();
               }
+
             })
 
             $('#med_name').click(function(){
@@ -664,28 +665,28 @@
 
             $("#med_brand").change(function(){
 
-              if( !$("#med_name").val() ) {
+              if(!$("#med_name").val() ) {
+                var medicine_brand = $(this).val();
+                // Constructing the suggestion engine
+                $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  }
+                });
 
-              var medicine_brand = $(this).val();
-              // Constructing the suggestion engine
-
-              $.ajaxSetup({
-              headers: {
-                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-              });
-              $.ajax({
-                url: '/get-medicine-name-on-brand',
-                method: 'get',
-                data: {
-                  medicine_brand:medicine_brand
-                },
-                success: function(data){
-                  $("#med_name").val(data.med_name);
-                  $("#med_name").trigger('change');
-                }
-              });
-            }
+                $.ajax({
+                  url: "/get-medicine-name-on-brand",
+                  method: 'get',
+                  dataType:'json',
+                  data: {
+                    medicine_brand:medicine_brand
+                  },
+                  success: function(data){
+                    $('#med_name').val(data.med_name);
+                    $('#med_name').trigger('change');
+                  }
+                });
+              }
 
             });
 
@@ -879,6 +880,7 @@
           var custom_timing1 = $(this).parent().parent().parent().parent().find("#customtiming").text();
 
 
+
           $("#med_name").val(mname1);
           $("#med_name").trigger('change');
           $("#med_brand").val(mbrand1);
@@ -918,11 +920,15 @@
             $("#med_intake_after").addClass('active');
             $("#med_intake_after").trigger('click');
           }
-          if(custom_timing1!=null){
-          $("#other_check").prop("checked",true);
-          $("#custom_timing").val(custom_timing1);
-          $("#custom_timing").trigger('change');
-          $("#custom_timing").prop('disabled',false);
+          if(custom_timing1===""){
+            $("#other_check").prop("checked",false);
+            $("#custom_timing").prop('disabled',true);
+          }
+          else {
+            $("#other_check").prop("checked",true);
+            $("#custom_timing").val(custom_timing1);
+            $("#custom_timing").trigger('change');
+            $("#custom_timing").prop('disabled',false);
           }
           $(this).parent().parent().parent().parent().parent().remove();
 
