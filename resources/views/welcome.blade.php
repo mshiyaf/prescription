@@ -343,7 +343,7 @@
                                                               <label for="duration">Duration *</label>
                                                           </div>
                                                           <div class="col-md-1 col-xs-4">
-                                                              <input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" " required data-parsley-errors-container="#msg-holder" >
+                                                              <input name="duration" type="number" min="1" class="form-control" id="duration" placeholder=" " required data-parsley-errors-container="#msg-holder" >
                                                           </div>
 
                                                           <div class="col-md-2 col-xs-8">
@@ -1038,7 +1038,7 @@
             $("#evening_qty").prop('disabled','disabled');
             $("#noon_qty").prop('disabled','disabled');
             $("#mrng_qty").prop('disabled','disabled');
-            $('#input_fields_wrap_am').animate({scrollTop:$('#input_fields_wrap_am').height()}, 1000);
+            $("#pres_modal").animate({scrollTop:$("#input_fields_wrap_am").height()}, 1000);
           }
 
         });

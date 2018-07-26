@@ -80,6 +80,7 @@ class PrescriptionsController extends Controller
           //$prescriptions = Prescription::select("evening_qty","afternoon_qty","morning_qty","medicine_brand","medicine_name","medicine_strength","dosage_form","duration","created_at")->where('appointment_id',"=",$a)->get();
           $prescriptions = DB::table('prescriptions')
           ->select("evening_qty","afternoon_qty","morning_qty","medicine_brand","medicine_name","medicine_strength","dosage_form","duration","created_at")
+          ->orderby("created_at","desc")
           ->where('appointment_id',"=",$a)->get();
 
           $details[$x]=$prescriptions;
