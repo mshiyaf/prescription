@@ -250,16 +250,16 @@
 
 
                                               <div class="row" id="mchoice">
-                                                <div class="col-md-6 col-xs-12">
+                                                <div class="col-md-4"></div>
+                                                <div class="col-md-4 col-xs-12">
                                                 <div id="m_choice" class="btn-group" data-toggle="buttons">
                                                     <label class="btn btn-default" id="m_choice_gen" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                                                       <input type="radio" name="m_choice_gen1" id="m_choice_gen1" value="Generic Name">Generic Name</label>
                                                     <label class="btn btn-default" id="m_choice_brand" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                                                       <input type="radio" name="m_choice_brand1" id="m_choice_brand1" value="Brand Name" >Brand Name</label>
-
                                                 </div>
-
                                                 </div>
+                                                <div class="col-md-4"></div>
                                               </div>
                                               <br>
 
@@ -343,7 +343,7 @@
                                                               <label for="duration">Duration *</label>
                                                           </div>
                                                           <div class="col-md-1 col-xs-4">
-                                                              <input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" " required data-parsley-errors-container="#msg-holder" >
+                                                              <input name="duration" type="number" min="1" class="form-control" id="duration" placeholder=" " required data-parsley-errors-container="#msg-holder" >
                                                           </div>
 
                                                           <div class="col-md-2 col-xs-8">
@@ -419,7 +419,7 @@
                                                             <input class="m_input_dis form-control" type="text" id="evening_qty" disabled="disabled" placeholder="Qty">
 
                                                       </div>
-                                                      <div class="col-sm-2">
+                                                      <div class="col-sm-4">
 
 
                                                           <label class="control control--checkbox">Other
@@ -427,8 +427,12 @@
                                                             <input type="checkbox" value="1" id="other_check" onchange="document.getElementById('othercheck').value = this.checked ? 1 : 0" data-parsley-multiple="d-s-c">
                                                             <div class="control__indicator"></div>
                                                           </label>
+                                                          <div class="col-sm-6" style="padding-left:  0px;">
                                                             <input class="m_input_dis form-control" type="text" id="custom_timing" placeholder="Interval" disabled="disabled" >
+                                                          </div>
+                                                          <div class="col-sm-4" style="padding-left:  0px;">
                                                             <input class="m_input_dis form-control" type="text" id="custom_qty" placeholder="Qty" disabled="disabled" >
+                                                          </div>
                                                       </div>
                                                     </div>
                                                   </div>
@@ -450,7 +454,7 @@
                                           </div>
                                         </div>
 
-                                        <div class="input_fields_wrap" style="border-radius: 10px;">
+                                        <div class="input_fields_wrap" id="input_fields_wrap_am" style="border-radius: 10px; display:none;">
                                             <div class="x_panel">
                                                 <div class="x_title">
                                                   <h5><i class="fa fa-align-left"></i> Added Medicines </h5>
@@ -466,7 +470,7 @@
                                             </div>
                                         </div>
 
-                                    <div class="card col-md-12 col-xs-12" id="m_desc" style="border: 1px solid rgb(26, 187, 156);">
+                                    <div class="card col-md-12 col-xs-12" id="m_desc" style="border: 1px solid rgb(26, 187, 156); display:none">
                                       <div class="col-md-3 col-xs-12" style="padding:  10px 10px 10px 10px;">
                                         <label for="med_description">Description (Max Length:200) Optional </label>
                                       </div>
@@ -476,12 +480,10 @@
                                     </div>
                                     </form>
 
-                                    <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-5">
+                                    <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-5" id="m_sub_btn" style="display:none">
                                       <button type="button" class="cancel btn btn-primary">Cancel</button>
                                       <button class="prescription_btn btn btn-success" id="submit">Submit</button>
                                     </div>
-
-
 
                                 </div>
 
@@ -845,6 +847,9 @@
                 $('#med_name').typeahead('destroy');
                 $('#med_brand_b').typeahead('destroy');
                 $("#m_gen_name_b").css("display","none");
+                $("#input_fields_wrap_am").css("display","none");
+                $("#m_desc").css("display","none");
+                $("#m_sub_btn").css("display","none");
             });
 
             $("body").on('click', "#m_reset", function() {
@@ -959,6 +964,9 @@
         $(add_button).click(function(e) {
             e.preventDefault();
             x++;
+            $("#input_fields_wrap_am").css("display","block");
+            $("#m_desc").css("display","block");
+            $("#m_sub_btn").css("display","block");
             // Constructing the suggestion engine
             $("#rcapp").parsley().validate();
             if($("#rcapp").parsley().isValid())
@@ -1030,6 +1038,7 @@
             $("#evening_qty").prop('disabled','disabled');
             $("#noon_qty").prop('disabled','disabled');
             $("#mrng_qty").prop('disabled','disabled');
+            $("#pres_modal").animate({scrollTop:$("#input_fields_wrap_am").height()}, 1000);
           }
 
         });
@@ -1241,6 +1250,9 @@
                 $("#evening_qty").prop('disabled','disabled');
                 $("#noon_qty").prop('disabled','disabled');
                 $("#mrng_qty").prop('disabled','disabled');
+                $("#input_fields_wrap_am").css("display","none");
+                $("#m_desc").css("display","none");
+                $("#m_sub_btn").css("display","none");
                 $(".modal").hide();
               }
             });
